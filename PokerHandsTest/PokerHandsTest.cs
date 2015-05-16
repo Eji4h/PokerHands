@@ -24,5 +24,11 @@ namespace PokerHandsTest
         {
             Assert.AreEqual('D', new Card('D').GetSuit());
         }
+
+        [Test]
+        public void TestCardSuitIsHeart()
+        {
+            Assert.AreEqual('H', new Card('H').GetSuit());
+        }
     }
 }
