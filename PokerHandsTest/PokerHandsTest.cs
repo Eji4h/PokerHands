@@ -36,5 +36,11 @@ namespace PokerHandsTest
         {
             Assert.AreEqual(Card.SuitType.S, new Card(Card.SuitType.S).Suit);
         }
+
+        [Test]
+        public void TestCardValueIs2()
+        {
+            Assert.AreEqual(2, new Card(Card.SuitType.C).GetValue());
+        }
     }
 }

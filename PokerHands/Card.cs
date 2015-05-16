@@ -27,5 +27,10 @@ namespace PokerHands
         {
             this.suit = suit;
         }
+
+        public int GetValue()
+        {
+            return 2;
+        }
     }
 }
