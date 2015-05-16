@@ -32,7 +32,7 @@ namespace PokerHands
 
         public int GetValue()
         {
-            return 2;
+            return value;
         }
     }
 }
