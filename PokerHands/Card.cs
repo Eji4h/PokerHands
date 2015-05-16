@@ -6,13 +6,7 @@ using System.Threading.Tasks;
 
 namespace PokerHands
 {
-    public class Deck
+    class Card
     {
-        Card[] cards = new Card[52];
-
-        public int Amount()
-        {
-            return cards.Length;
-        }
     }
 }
