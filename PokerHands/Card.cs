@@ -17,15 +17,17 @@ namespace PokerHands
         }
 
         SuitType suit;
+        int value;
 
         public SuitType Suit
         {
             get { return suit; }
         }
 
-        public Card(SuitType suit)
+        public Card(SuitType suit, int value)
         {
             this.suit = suit;
+            this.value = value;
         }
 
         public int GetValue()
