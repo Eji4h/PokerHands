@@ -7,6 +7,7 @@ namespace PokerHandsTest
     [TestFixture]
     public class PokerHandsTest
     {
+        Card.SuitType dummyCardSuit = Card.SuitType.C;
         int dummyCardValue = 2;
 
         [Test]
@@ -42,13 +43,13 @@ namespace PokerHandsTest
         [Test]
         public void TestCardValueIs2()
         {
-            Assert.AreEqual(2, new Card(Card.SuitType.C, 2).GetValue());
+            Assert.AreEqual(2, new Card(dummyCardSuit, 2).GetValue());
         }
 
         [Test]
         public void TestCardValueIs10()
         {
-            Assert.AreEqual(10, new Card(Card.SuitType.C, 10).GetValue());
+            Assert.AreEqual(10, new Card(dummyCardSuit, 10).GetValue());
         }
     }
 }
