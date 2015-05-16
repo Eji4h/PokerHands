@@ -12,5 +12,11 @@ namespace PokerHandsTest
         {
             Assert.AreEqual(52, new Deck().Amount());
         }
+
+        [Test]
+        public void TestCardSuitIsClub()
+        {
+            Assert.AreEqual('C', new Card().GetSuit());
+        }
     }
 }

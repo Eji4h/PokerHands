@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace PokerHands
 {
-    class Card
+    public class Card
     {
+
+        public char GetSuit()
+        {
+            return 'C';
+        }
     }
 }
