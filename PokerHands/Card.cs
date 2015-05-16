@@ -8,16 +8,24 @@ namespace PokerHands
 {
     public class Card
     {
-        char suit;
-
-        public Card(char suit)
+        public enum SuitType
         {
-            this.suit = suit;
+            C,
+            D,
+            H,
+            S
         }
 
-        public char GetSuit()
+        SuitType suit;
+
+        public SuitType Suit
         {
-            return suit;
+            get { return suit; }
+        }
+
+        public Card(SuitType suit)
+        {
+            this.suit = suit;
         }
     }
 }
