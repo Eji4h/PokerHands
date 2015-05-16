@@ -47,9 +47,9 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void TestCardValueIs10()
+        public void TestCardValueIsT()
         {
-            Assert.AreEqual(10, new Card(dummyCardSuit, 10).GetValue());
+            Assert.AreEqual('T', new Card(dummyCardSuit, 10).GetValue());
         }
     }
 }

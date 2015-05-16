@@ -30,8 +30,10 @@ namespace PokerHands
             this.value = value;
         }
 
-        public int GetValue()
+        public object GetValue()
         {
+            if (value == 10)
+                return 'T';
             return value;
         }
     }
