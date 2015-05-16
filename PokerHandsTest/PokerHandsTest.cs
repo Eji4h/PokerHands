@@ -16,7 +16,13 @@ namespace PokerHandsTest
         [Test]
         public void TestCardSuitIsClub()
         {
-            Assert.AreEqual('C', new Card().GetSuit());
+            Assert.AreEqual('C', new Card('C').GetSuit());
+        }
+
+        [Test]
+        public void TestCardSuitIsDiamond()
+        {
+            Assert.AreEqual('D', new Card('D').GetSuit());
         }
     }
 }
