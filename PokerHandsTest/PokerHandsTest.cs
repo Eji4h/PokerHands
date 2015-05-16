@@ -30,5 +30,11 @@ namespace PokerHandsTest
         {
             Assert.AreEqual('H', new Card('H').GetSuit());
         }
+
+        [Test]
+        public void TestCardSuitIsSpades()
+        {
+            Assert.AreEqual('S', new Card('S').GetSuit());
+        }
     }
 }
