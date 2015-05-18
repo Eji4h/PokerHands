@@ -34,6 +34,8 @@ namespace PokerHands
         {
             if (value == 10)
                 return 'T';
+            if (value == 11)
+                return 'J';
             return value;
         }
     }
