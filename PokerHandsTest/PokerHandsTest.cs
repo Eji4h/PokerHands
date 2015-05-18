@@ -8,7 +8,7 @@ namespace PokerHandsTest
     public class PokerHandsTest
     {
         Card.SuitType dummyCardSuit = Card.SuitType.C;
-        int dummyCardValue = 2;
+        char dummyCardValue = '2';
 
         [Test]
         public void TestPokerDeckContains_52_Cards()
@@ -43,19 +43,19 @@ namespace PokerHandsTest
         [Test]
         public void TestCardValueIs2()
         {
-            Assert.AreEqual(2, new Card(dummyCardSuit, 2).GetValue());
+            Assert.AreEqual('2', new Card(dummyCardSuit, '2').GetValue());
         }
 
         [Test]
         public void TestCardValueIsT()
         {
-            Assert.AreEqual('T', new Card(dummyCardSuit, 10).GetValue());
+            Assert.AreEqual('T', new Card(dummyCardSuit, 'T').GetValue());
         }
 
         [Test]
         public void TestCardValueIsJ()
         {
-            Assert.AreEqual('J', new Card(dummyCardSuit, 11).GetValue());
+            Assert.AreEqual('J', new Card(dummyCardSuit, 'J').GetValue());
         }
     }
 }

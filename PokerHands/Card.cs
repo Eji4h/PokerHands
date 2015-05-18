@@ -17,25 +17,21 @@ namespace PokerHands
         }
 
         SuitType suit;
-        int value;
+        char value;
 
         public SuitType Suit
         {
             get { return suit; }
         }
 
-        public Card(SuitType suit, int value)
+        public Card(SuitType suit, char value)
         {
             this.suit = suit;
             this.value = value;
         }
 
-        public object GetValue()
+        public char GetValue()
         {
-            if (value == 10)
-                return 'T';
-            if (value == 11)
-                return 'J';
             return value;
         }
     }
