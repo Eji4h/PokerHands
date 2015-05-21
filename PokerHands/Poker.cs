@@ -8,10 +8,15 @@ namespace PokerHands
 {
     public static class Poker
     {
-
-        public static string Compare(Card card1, Card card2)
+        public enum ResultDual
         {
-            return "Lose";
+            Win,
+            Lose
+        }
+
+        public static ResultDual Compare(Card card1, Card card2)
+        {
+            return ResultDual.Lose;
         }
     }
 }
