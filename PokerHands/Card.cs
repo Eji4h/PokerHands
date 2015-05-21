@@ -34,5 +34,10 @@ namespace PokerHands
         {
             return value;
         }
+
+        public static string Compare(Card card1, Card card2)
+        {
+            return "Lose";
+        }
     }
 }

@@ -57,5 +57,13 @@ namespace PokerHandsTest
         {
             Assert.AreEqual('J', new Card(dummyCardSuit, 'J').GetValue());
         }
+
+        [Test]
+        public void CompareScoring_2Vs3_2IsLose()
+        {
+            Card card1 = new Card(dummyCardSuit, '2');
+            Card card2 = new Card(dummyCardSuit, '3');
+            Assert.AreEqual("Lose", Card.Compare(card1, card2));
+        }
     }
 }
