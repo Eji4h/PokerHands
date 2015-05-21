@@ -11,11 +11,14 @@ namespace PokerHands
         public enum ResultDual
         {
             Win,
-            Lose
+            Lose,
+            Draw
         }
 
         public static ResultDual Compare(Card card1, Card card2)
         {
+            if (card1.Value == card2.Value)
+                return ResultDual.Draw;
             if (card1.Value > card2.Value)
                 return ResultDual.Win;
             return ResultDual.Lose;
