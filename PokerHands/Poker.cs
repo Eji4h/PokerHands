@@ -16,6 +16,8 @@ namespace PokerHands
 
         public static ResultDual Compare(Card card1, Card card2)
         {
+            if (card1.Value > card2.Value)
+                return ResultDual.Win;
             return ResultDual.Lose;
         }
     }
