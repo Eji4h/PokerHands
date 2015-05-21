@@ -18,7 +18,7 @@ namespace PokerHandsTest
         {
             Card card1 = new Card(dummyCardSuit, ValueType.Two);
             Card card2 = new Card(dummyCardSuit, ValueType.Three);
-            Assert.AreEqual(ResultDual.Lose, Poker.Compare(card1, card2));
+            Assert.AreEqual(ResultDual.Lose, Poker.CompareScoring(card1, card2));
         }
 
         [Test]
@@ -26,7 +26,7 @@ namespace PokerHandsTest
         {
             Card card1 = new Card(dummyCardSuit, ValueType.Three);
             Card card2 = new Card(dummyCardSuit, ValueType.Two);
-            Assert.AreEqual(ResultDual.Win, Poker.Compare(card1, card2));
+            Assert.AreEqual(ResultDual.Win, Poker.CompareScoring(card1, card2));
         }
 
         [Test]
@@ -34,7 +34,7 @@ namespace PokerHandsTest
         {
             Card card1 = new Card(dummyCardSuit, ValueType.Two);
             Card card2 = new Card(dummyCardSuit, ValueType.Jack);
-            Assert.AreEqual(ResultDual.Lose, Poker.Compare(card1, card2));
+            Assert.AreEqual(ResultDual.Lose, Poker.CompareScoring(card1, card2));
         }
 
         [Test]
@@ -42,7 +42,7 @@ namespace PokerHandsTest
         {
             Card card1 = new Card(dummyCardSuit, ValueType.Two);
             Card card2 = new Card(dummyCardSuit, ValueType.Two);
-            Assert.AreEqual(ResultDual.Draw, Poker.Compare(card1, card2));
+            Assert.AreEqual(ResultDual.Draw, Poker.CompareScoring(card1, card2));
         }
 
         [Test]
@@ -50,7 +50,7 @@ namespace PokerHandsTest
         {
             Card card1 = new Card(dummyCardSuit, ValueType.Two);
             Card card2 = new Card(dummyCardSuit, ValueType.Ace);
-            Assert.AreEqual(ResultDual.Lose, Poker.Compare(card1, card2));
+            Assert.AreEqual(ResultDual.Lose, Poker.CompareScoring(card1, card2));
         }
 
         [Test]
@@ -58,7 +58,7 @@ namespace PokerHandsTest
         {
             Card card1 = new Card(dummyCardSuit, ValueType.Ace);
             Card card2 = new Card(dummyCardSuit, ValueType.Two);
-            Assert.AreEqual(ResultDual.Win, Poker.Compare(card1, card2));
+            Assert.AreEqual(ResultDual.Win, Poker.CompareScoring(card1, card2));
         }
     }
 }

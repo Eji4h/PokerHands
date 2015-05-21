@@ -16,7 +16,7 @@ namespace PokerHands
             Draw
         }
 
-        public static ResultDual Compare(Card card1, Card card2)
+        public static ResultDual CompareScoring(Card card1, Card card2)
         {
             if (card1.Value == card2.Value)
                 return ResultDual.Draw;
