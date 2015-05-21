@@ -10,34 +10,51 @@ namespace PokerHands
     {
         public enum SuitType
         {
-            C,
-            D,
-            H,
-            S
+            Club,
+            Diamond,
+            Heart,
+            Spade
         }
 
+        public enum ValueType
+        {
+            Ace = 1,
+            Two = 2,
+            Three = 3,
+            Four = 4,
+            Five = 5,
+            Six = 6,
+            Seven = 7,
+            Eight = 8,
+            Nine = 9,
+            Ten = 10,
+            Jack = 11,
+            Queen = 12,
+            King = 13
+        }
+
+        //public static ValueType ConvertToValueType(string value)
+        //{
+        //    return
+        //}
+
         SuitType suit;
-        char value;
+        ValueType value;
+
+        public ValueType Value
+        {
+            get { return this.value; }
+        }
 
         public SuitType Suit
         {
             get { return suit; }
         }
 
-        public Card(SuitType suit, char value)
+        public Card(SuitType suit, ValueType value)
         {
             this.suit = suit;
             this.value = value;
-        }
-
-        public char GetValue()
-        {
-            return value;
-        }
-
-        public static string Compare(Card card1, Card card2)
-        {
-            return "Lose";
         }
     }
 }
