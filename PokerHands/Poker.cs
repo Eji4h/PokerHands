@@ -20,6 +20,8 @@ namespace PokerHands
         {
             if (card1.Value == card2.Value)
                 return ResultDual.Draw;
+            if (card1.Value == ValueType.Ace)
+                return ResultDual.Win;
             if (card2.Value == ValueType.Ace)
                 return ResultDual.Lose;
             if (card1.Value > card2.Value)
