@@ -76,5 +76,13 @@ namespace PokerHandsTest
             Card card2 = new Card(dummyCardSuit, ValueType.Ace);
             Assert.AreEqual(ResultDual.Lose, Poker.CompareScoring(card1, card2));
         }
+
+        [Test]
+        public void CompareScoring_5VsKing_ResultDualIsLose()
+        {
+            Card card1 = new Card(dummyCardSuit, ValueType.Five);
+            Card card2 = new Card(dummyCardSuit, ValueType.King);
+            Assert.AreEqual(ResultDual.Lose, Poker.CompareScoring(card1, card2));
+        }
     }
 }
