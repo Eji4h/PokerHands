@@ -44,5 +44,13 @@ namespace PokerHandsTest
             Card card2 = new Card(dummyCardSuit, ValueType.Two);
             Assert.AreEqual(ResultDual.Draw, Poker.Compare(card1, card2));
         }
+
+        [Test]
+        public void CompareScoring_2VsAce_ResultDualIsLose()
+        {
+            Card card1 = new Card(dummyCardSuit, ValueType.Two);
+            Card card2 = new Card(dummyCardSuit, ValueType.Ace);
+            Assert.AreEqual(ResultDual.Lose, Poker.Compare(card1, card2));
+        }
     }
 }
