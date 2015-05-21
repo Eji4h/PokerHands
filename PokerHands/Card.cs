@@ -16,7 +16,7 @@ namespace PokerHands
             Spade
         }
 
-        public enum ValueType
+        public enum RankType
         {
             Ace = 1,
             Two = 2,
@@ -34,22 +34,22 @@ namespace PokerHands
         }
 
         SuitType suit;
-        ValueType value;
+        RankType rank;
 
         public SuitType Suit
         {
             get { return suit; }
         }
 
-        public ValueType Value
+        public RankType Rank
         {
-            get { return this.value; }
+            get { return this.rank; }
         }
 
-        public Card(SuitType suit, ValueType value)
+        public Card(SuitType suit, RankType rank)
         {
             this.suit = suit;
-            this.value = value;
+            this.rank = rank;
         }
     }
 }

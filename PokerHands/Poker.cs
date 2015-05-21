@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ValueType = PokerHands.Card.ValueType;
+using RankType = PokerHands.Card.RankType;
 
 namespace PokerHands
 {
@@ -18,13 +18,13 @@ namespace PokerHands
 
         public static ResultDual CompareScoring(Card card1, Card card2)
         {
-            if (card1.Value == card2.Value)
+            if (card1.Rank == card2.Rank)
                 return ResultDual.Draw;
-            if (card1.Value == ValueType.Ace)
+            if (card1.Rank == RankType.Ace)
                 return ResultDual.Win;
-            if (card2.Value == ValueType.Ace)
+            if (card2.Rank == RankType.Ace)
                 return ResultDual.Lose;
-            if (card1.Value > card2.Value)
+            if (card1.Rank > card2.Rank)
                 return ResultDual.Win;
             return ResultDual.Lose;
         }
