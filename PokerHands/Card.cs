@@ -33,22 +33,17 @@ namespace PokerHands
             King = 13
         }
 
-        //public static ValueType ConvertToValueType(string value)
-        //{
-        //    return
-        //}
-
         SuitType suit;
         ValueType value;
-
-        public ValueType Value
-        {
-            get { return this.value; }
-        }
 
         public SuitType Suit
         {
             get { return suit; }
+        }
+
+        public ValueType Value
+        {
+            get { return this.value; }
         }
 
         public Card(SuitType suit, ValueType value)

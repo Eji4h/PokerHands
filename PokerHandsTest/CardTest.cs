@@ -9,7 +9,7 @@ namespace PokerHandsTest
     class CardTest
     {
         SuitType dummyCardSuit = SuitType.Club;
-        ValueType dummyCardValue = (ValueType)2;
+        ValueType dummyCardValue = ValueType.Two;
 
         [Test]
         public void TestCardSuitIsClub()
@@ -39,25 +39,25 @@ namespace PokerHandsTest
             Assert.AreEqual(SuitType.Spade, cardSuitSpade.Suit);
         }
 
-        //[Test]
-        //public void TestCardValueIs2()
-        //{
-        //    Card cardValue2 = new Card(dummyCardSuit, "2");
-        //    Assert.AreEqual("2", cardValue2.Value);
-        //}
+        [Test]
+        public void TestCardValueIs2()
+        {
+            Card cardValue2 = new Card(dummyCardSuit, ValueType.Two);
+            Assert.AreEqual(2, (int)cardValue2.Value);
+        }
 
-        //[Test]
-        //public void TestCardValueIs10()
-        //{
-        //    Card cardValueT = new Card(dummyCardSuit, "10");
-        //    Assert.AreEqual("10", cardValueT.Value);
-        //}
+        [Test]
+        public void TestCardValueIs10()
+        {
+            Card cardValueT = new Card(dummyCardSuit, ValueType.Ten);
+            Assert.AreEqual(10, (int)cardValueT.Value);
+        }
 
-        //[Test]
-        //public void TestCardValueIsJack()
-        //{
-        //    Card cardValueJ = new Card(dummyCardSuit, "Jack");
-        //    Assert.AreEqual("Jack", cardValueJ.Value);
-        //}
+        [Test]
+        public void TestCardValueIsJack()
+        {
+            Card cardValueJ = new Card(dummyCardSuit, ValueType.Jack);
+            Assert.AreEqual(ValueType.Jack, cardValueJ.Value);
+        }
     }
 }
