@@ -19,19 +19,25 @@ namespace PokerHands
         {
             cardsInput.Sort();
 
-            var queueAce = new Queue<Card>();
+            var aceQueue = GetAceQueue(cardsInput);
+            cardsInput.AddRange(aceQueue);
+        }
 
+        static Queue<Card> GetAceQueue(List<Card> cardsInput)
+        {
+            var aceQueue = new Queue<Card>();
             for (int i = 0; i < cardsInput.Count; i++)
             {
-                if (cardsInput[i].Rank == Card.RankType.Ace)
+                var card = cardsInput[i];
+                bool cardRankIsAce = card.Rank == Card.RankType.Ace;
+                if (cardRankIsAce)
                 {
-                    var card = cardsInput[i];
                     cardsInput.Remove(card);
-                    queueAce.Enqueue(card);
+                    aceQueue.Enqueue(card);
                     i--;
                 }
             }
-            cardsInput.AddRange(queueAce);
+            return aceQueue;
         }
     }
 }
