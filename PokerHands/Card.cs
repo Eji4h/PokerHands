@@ -54,6 +54,8 @@ namespace PokerHands
 
         public int CompareTo(Card other)
         {
+            if (this.Rank == other.Rank)
+                return this.Suit.CompareTo(other.Suit);
             return this.Rank.CompareTo(other.Rank);
         }
     }

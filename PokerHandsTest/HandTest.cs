@@ -23,6 +23,10 @@ namespace PokerHandsTest
         Card dummyCardRankKing = new Card(SuitType.Club, RankType.King);
         Card dummyCardRankAce = new Card(SuitType.Club, RankType.Ace);
 
+        Card dummyCardSuitClub = new Card(SuitType.Club, RankType.Seven);
+        Card dummyCardSuitDiamond = new Card(SuitType.Diamond, RankType.Seven);
+        Card dummyCardSuitHeart = new Card(SuitType.Heart, RankType.Seven);
+        Card dummyCardSuitSpade = new Card(SuitType.Spade, RankType.Seven);
         [Test]
         public void NumberCardOnHandIs5()
         {
@@ -30,7 +34,7 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void OrderCardOnHand_65432_ShouldBe_23456()
+        public void OrderCardOnHandByRank_65432_ShouldBe_23456()
         {
             List<Card> cardsShouldBeOrder = new List<Card>(5)
             {
@@ -47,7 +51,7 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void OrderCardOnHand_AceJackKingQueen10_ShouldBe_10JackQueenKingAce()
+        public void OrderCardOnHandByRank_AceJackKingQueen10_ShouldBe_10JackQueenKingAce()
         {
             List<Card> cardsShouldBeOrder = new List<Card>(5)
             {
@@ -57,6 +61,23 @@ namespace PokerHandsTest
             List<Card> cardsInput = new List<Card>(5)
             {
                 dummyCardRankAce, dummyCardRankJack, dummyCardRankKing, dummyCardRankQueen, dummyCardRank10
+            };
+
+            Hand.OrderCard(cardsInput);
+            CollectionAssert.AreEqual(cardsShouldBeOrder, cardsInput);
+        }
+
+        [Test]
+        public void OrderCardOnHandBySuit_HeartDiamondSpadeClub_ShouldBe_ClubDiamondHeartSpade()
+        {
+            List<Card> cardsShouldBeOrder = new List<Card>(4)
+            {
+                dummyCardSuitClub, dummyCardSuitDiamond, dummyCardSuitHeart, dummyCardSuitSpade
+            };
+
+            List<Card> cardsInput = new List<Card>(4)
+            {
+                dummyCardSuitHeart, dummyCardSuitDiamond, dummyCardSuitSpade, dummyCardSuitClub
             };
 
             Hand.OrderCard(cardsInput);

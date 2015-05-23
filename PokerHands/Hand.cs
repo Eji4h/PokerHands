@@ -19,9 +19,9 @@ namespace PokerHands
         {
             cardsInput.Sort();
 
-            for(int i = 0; i < cardsInput.Count; i++)
+            for (int i = 0; i < cardsInput.Count; i++)
             {
-                if(cardsInput[i].Rank == Card.RankType.Ace)
+                if (cardsInput[i].Rank == Card.RankType.Ace)
                 {
                     if (i == cardsInput.Count - 1)
                         break;
