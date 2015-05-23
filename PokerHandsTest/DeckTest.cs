@@ -24,5 +24,14 @@ namespace PokerHandsTest
             Assert.AreEqual(aceClubCard.Suit, firstCardOfDeck.Suit);
             Assert.AreEqual(aceClubCard.Rank, firstCardOfDeck.Rank);
         }
+
+        [Test]
+        public void LastCardOfDeck_ShouldBe_KingSpade()
+        {
+            Card kingSpadeCard = new Card(SuitType.Spade, RankType.King);
+            Card lastCardOfDeck = deck.Cards[deck.Cards.Length - 1];
+            Assert.AreEqual(kingSpadeCard.Suit, lastCardOfDeck.Suit);
+            Assert.AreEqual(kingSpadeCard.Rank, lastCardOfDeck.Rank);
+        }
     }
 }
