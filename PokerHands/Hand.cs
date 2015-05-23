@@ -8,9 +8,11 @@ namespace PokerHands
 {
     public class Hand
     {
+        Card[] cards = new Card[5];
+
         public Card[] GetCards()
         {
-            return new Card[5];
+            return cards;
         }
     }
 }
