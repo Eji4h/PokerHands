@@ -15,13 +15,9 @@ namespace PokerHands
             return cards;
         }
 
-        public static Card[] OrderCard(Card[] cardsInput)
+        public static void OrderCard(Card[] cardsInput)
         {
-            Array.Sort(cardsInput, delegate(Card card1, Card card2)
-            {
-                return card1.Rank.CompareTo(card2.Rank);
-            });
-            return cardsInput;
+            Array.Sort(cardsInput);
         }
     }
 }

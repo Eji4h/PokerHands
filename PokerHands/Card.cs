@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PokerHands
 {
-    public class Card
+    public class Card : IComparable<Card>
     {
         public enum SuitType
         {
@@ -50,6 +50,11 @@ namespace PokerHands
         {
             this.suit = suit;
             this.rank = rank;
+        }
+
+        public int CompareTo(Card other)
+        {
+            return this.Rank.CompareTo(other.Rank);
         }
     }
 }
