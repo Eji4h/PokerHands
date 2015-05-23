@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RankType = PokerHands.Card.RankType;
+using SuitType = PokerHands.Card.SuitType;
 
 namespace PokerHands
 {
@@ -10,9 +12,23 @@ namespace PokerHands
     {
         Card[] cards = new Card[52];
 
-        public int Amount()
+        public Card[] Cards
         {
-            return cards.Length;
+            get { return cards; }
+        }
+
+        public Deck()
+        {
+            int suitCount = 4;
+            int rankCount = 13;
+            int cardIndex = 0;
+
+            for(int i = 0; i < suitCount; i++)
+                for(int j = 1; j <= rankCount; j++)
+                {
+                    cards[cardIndex] = new Card((SuitType)i, (RankType)j);
+                    cardIndex++;
+                }
         }
     }
 }
