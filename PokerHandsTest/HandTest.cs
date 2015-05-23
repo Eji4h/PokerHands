@@ -27,6 +27,12 @@ namespace PokerHandsTest
         Card dummyCardSuitDiamond = new Card(SuitType.Diamond, RankType.Seven);
         Card dummyCardSuitHeart = new Card(SuitType.Heart, RankType.Seven);
         Card dummyCardSuitSpade = new Card(SuitType.Spade, RankType.Seven);
+
+        Card dummyCardRankAceSuitClub = new Card(SuitType.Club, RankType.Ace);
+        Card dummyCardRankAceSuitDiamond = new Card(SuitType.Diamond, RankType.Ace);
+        Card dummyCardRankAceSuitHeart = new Card(SuitType.Heart, RankType.Ace);
+        Card dummyCardRankAceSuitSpade = new Card(SuitType.Spade, RankType.Ace);
+
         [Test]
         public void NumberCardOnHandIs5()
         {
@@ -83,5 +89,25 @@ namespace PokerHandsTest
             Hand.OrderCard(cardsInput);
             CollectionAssert.AreEqual(cardsShouldBeOrder, cardsInput);
         }
+
+        [Test]
+        public void OrderCardOnHandAceBySuit_HeartDiamondSpadeClub_ShouldBe_ClubDiamondHeartSpade()
+        {
+            List<Card> cardsShouldBeOrder = new List<Card>(4)
+            {
+                dummyCardRankAceSuitClub, dummyCardRankAceSuitDiamond, 
+                dummyCardRankAceSuitHeart, dummyCardRankAceSuitSpade
+            };
+
+            List<Card> cardsInput = new List<Card>(4)
+            {
+                dummyCardRankAceSuitHeart, dummyCardRankAceSuitDiamond, 
+                dummyCardRankAceSuitSpade, dummyCardRankAceSuitClub
+            };
+
+            Hand.OrderCard(cardsInput);
+            CollectionAssert.AreEqual(cardsShouldBeOrder, cardsInput);
+        }
+
     }
 }
