@@ -8,16 +8,28 @@ namespace PokerHands
 {
     public class Hand
     {
-        Card[] cards = new Card[5];
+        List<Card> cards = new List<Card>(5);
 
-        public Card[] GetCards()
+        public List<Card> GetCards()
         {
             return cards;
         }
 
-        public static void OrderCard(Card[] cardsInput)
+        public static void OrderCard(List<Card> cardsInput)
         {
-            Array.Sort(cardsInput);
+            cardsInput.Sort();
+
+            for(int i = 0; i < cardsInput.Count; i++)
+            {
+                if(cardsInput[i].Rank == Card.RankType.Ace)
+                {
+                    if (i == cardsInput.Count - 1)
+                        break;
+                    var card = cardsInput[i];
+                    cardsInput.Remove(card);
+                    cardsInput.Add(card);
+                }
+            }
         }
     }
 }
