@@ -8,7 +8,7 @@ using ResultDual = PokerHands.Poker.ResultDual;
 namespace PokerHandsTest
 {
     [TestFixture]
-    public class PokerHandsTest
+    public class PokerTest
     {
         SuitType dummyCardSuit = SuitType.Club;
         RankType dummyCardRank = RankType.Two;
