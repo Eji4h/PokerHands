@@ -10,9 +10,9 @@ namespace PokerHands
 {
     public class Deck
     {
-        Card[] cards = new Card[52];
+        List<Card> cards = new List<Card>(52);
 
-        public Card[] Cards
+        public List<Card> Cards
         {
             get { return cards; }
         }
@@ -31,9 +31,14 @@ namespace PokerHands
             for (int i = 0; i < suitCount; i++)
                 for (int j = 1; j <= rankCount; j++)
                 {
-                    cards[cardIndex] = new Card((SuitType)i, (RankType)j);
+                    cards.Add(new Card((SuitType)i, (RankType)j));
                     cardIndex++;
                 }
+        }
+
+        public void Shuffle()
+        {
+            cards = cards.OrderBy(card => Guid.NewGuid()).ToList();
         }
     }
 }
