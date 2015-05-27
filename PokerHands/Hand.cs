@@ -8,17 +8,11 @@ namespace PokerHands
 {
     public class Hand
     {
-        Deck deck;
         List<Card> cards = new List<Card>(5);
 
         public List<Card> GetCards()
         {
             return cards;
-        }
-
-        public Hand(Deck deck)
-        {
-            this.deck = deck;
         }
 
         public static void OrderCard(List<Card> cardsInput)
@@ -46,9 +40,9 @@ namespace PokerHands
             return aceQueue;
         }
 
-        public void DealCardsFromDeck(int amountOfCards)
+        public void DealCardsFromDeck(Deck fromDeck, int amountOfCards)
         {
-            cards.AddRange(deck.DealCards(amountOfCards));
+            cards.AddRange(fromDeck.DealCards(amountOfCards));
         }
     }
 }
