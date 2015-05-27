@@ -114,81 +114,81 @@ namespace PokerHandsTest
         [Test]
         public void CompareHighCard_HandOneIs_23456_And_HandTwoIs_34567_ShouldBe_Lose()
         {
-            List<Card> cardsOnHand1 = new List<Card>()
+            List<Card> onHandCards1 = new List<Card>()
             {
                 dummyCardRank2, dummyCardRank3, dummyCardRank4, dummyCardRank5, dummyCardRank6
             };
 
-            List<Card> cardsOnHand2 = new List<Card>()
+            List<Card> onHandCards2 = new List<Card>()
             {
                 dummyCardRank3, dummyCardRank4, dummyCardRank5, dummyCardRank6, dummyCardRank7
             };
 
-            Assert.AreEqual(ResultDual.Lose, Poker.CompareHighCard(cardsOnHand1, cardsOnHand2));
+            Assert.AreEqual(ResultDual.Lose, Poker.CompareHighCard(onHandCards1, onHandCards2));
         }
 
         [Test]
         public void CompareHighCard_HandOneIs_A23K5_And_HandTwoIs_10J6K7_ShouldBe_Win()
         {
-            List<Card> cardsOnHand1 = new List<Card>()
+            List<Card> onHandCards1 = new List<Card>()
             {
                 dummyCardRankAce, dummyCardRank2, dummyCardRank3, dummyCardRankKing, dummyCardRank5
             };
 
-            List<Card> cardsOnHand2 = new List<Card>()
+            List<Card> onHandCards2 = new List<Card>()
             {
                 dummyCardRank10, dummyCardRankJack, dummyCardRank6, dummyCardRankKing, dummyCardRank7
             };
 
-            Assert.AreEqual(ResultDual.Win, Poker.CompareHighCard(cardsOnHand1, cardsOnHand2));
+            Assert.AreEqual(ResultDual.Win, Poker.CompareHighCard(onHandCards1, onHandCards2));
         }
 
         [Test]
         public void CompareHighCard_HandOneIs_AKQJT_And_HandTwoIs_AQJT9_ShouldBe_Win()
         {
-            List<Card> cardsOnHand1 = new List<Card>()
+            List<Card> onHandCards1 = new List<Card>()
             {
                 dummyCardRankAce, dummyCardRankKing, dummyCardRankQueen, dummyCardRankJack, dummyCardRank10
             };
 
-            List<Card> cardsOnHand2 = new List<Card>()
+            List<Card> onHandCards2 = new List<Card>()
             {
                 dummyCardRankAce, dummyCardRankQueen, dummyCardRankJack, dummyCardRank10, dummyCardRank9
             };
 
-            Assert.AreEqual(ResultDual.Win, Poker.CompareHighCard(cardsOnHand1, cardsOnHand2));
+            Assert.AreEqual(ResultDual.Win, Poker.CompareHighCard(onHandCards1, onHandCards2));
         }
 
         [Test]
         public void CompareHighCard_HandOneIs_AKQJ9_And_HandTwoIs_AKQJT_ShouldBe_Lose()
         {
-            List<Card> cardsOnHand1 = new List<Card>()
+            List<Card> onHandCards1 = new List<Card>()
             {
                 dummyCardRankAce, dummyCardRankKing, dummyCardRankQueen, dummyCardRankJack, dummyCardRank9
             };
 
-            List<Card> cardsOnHand2 = new List<Card>()
+            List<Card> onHandCards2 = new List<Card>()
             {
                 dummyCardRankAce, dummyCardRankKing, dummyCardRankQueen, dummyCardRankJack, dummyCardRank10
             };
 
-            Assert.AreEqual(ResultDual.Lose, Poker.CompareHighCard(cardsOnHand1, cardsOnHand2));
+            Assert.AreEqual(ResultDual.Lose, Poker.CompareHighCard(onHandCards1, onHandCards2));
         }
 
         [Test]
         public void CompareHighCard_HandOneIs_AKQJT_And_HandTwoIs_AKQJT_ShouldBe_Draw()
         {
-            List<Card> cardsOnHand1 = new List<Card>()
+            List<Card> onHandCards1 = new List<Card>()
             {
                 dummyCardRankAce, dummyCardRankKing, dummyCardRankQueen, dummyCardRankJack, dummyCardRank10
             };
 
-            List<Card> cardsOnHand2 = new List<Card>()
+            List<Card> onHandCards2 = new List<Card>()
             {
                 dummyCardRankAce, dummyCardRankKing, dummyCardRankQueen, dummyCardRankJack, dummyCardRank10
             };
 
-            Assert.AreEqual(ResultDual.Draw, Poker.CompareHighCard(cardsOnHand1, cardsOnHand2));
+            Assert.AreEqual(ResultDual.Draw, Poker.CompareHighCard(onHandCards1, onHandCards2));
         }
         #endregion
 
