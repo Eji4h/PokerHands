@@ -43,8 +43,7 @@ namespace PokerHands
 
         public void DealCards(int amountOfCard)
         {
-            for (int i = 0; i < amountOfCard; i++)
-                cards.Remove(cards.First());
+            cards.RemoveRange(0, 5);
         }
     }
 }
