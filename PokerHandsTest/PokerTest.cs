@@ -123,5 +123,21 @@ namespace PokerHandsTest
 
             Assert.AreEqual(ResultDual.Lose, Poker.CompareHighCard(cardsOnHand1, cardsOnHand2));
         }
+
+        [Test]
+        public void CompareHighCard_HandOneIs_A23K5_And_HandTwoIs_10J6K7_ShouldBe_Win()
+        {
+            List<Card> cardsOnHand1 = new List<Card>()
+            {
+                dummyCardRankAce, dummyCardRank2, dummyCardRank3, dummyCardRankKing, dummyCardRank5
+            };
+
+            List<Card> cardsOnHand2 = new List<Card>()
+            {
+                dummyCardRank10, dummyCardRankJack, dummyCardRank6, dummyCardRankKing, dummyCardRank7
+            };
+
+            Assert.AreEqual(ResultDual.Win, Poker.CompareHighCard(cardsOnHand1, cardsOnHand2));
+        }
     }
 }

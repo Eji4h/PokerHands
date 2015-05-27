@@ -31,6 +31,8 @@ namespace PokerHands
 
         public static ResultDual CompareHighCard(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
+            Hand.OrderCard(cardsOnHand1);
+            Hand.OrderCard(cardsOnHand2);
             return CompareScoring(cardsOnHand1.Last(), cardsOnHand2.Last());
         }
     }
