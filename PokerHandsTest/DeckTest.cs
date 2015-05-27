@@ -26,5 +26,14 @@ namespace PokerHandsTest
 
             CollectionAssert.AreNotEqual(originalDeck.Cards, shuffleDeck.Cards);
         }
+
+        [Test]
+        public void Deal_5_CardsFromDeck_DeckShouldBeRemain_47_Cards()
+        {
+            var deck = new Deck();
+            deck.DealCards(5);
+
+            Assert.AreEqual(47, deck.Cards.Count);
+        }
     }
 }

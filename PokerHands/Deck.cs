@@ -40,5 +40,11 @@ namespace PokerHands
         {
             cards = cards.OrderBy(card => Guid.NewGuid()).ToList();
         }
+
+        public void DealCards(int amountOfCard)
+        {
+            for (int i = 0; i < amountOfCard; i++)
+                cards.Remove(cards.First());
+        }
     }
 }
