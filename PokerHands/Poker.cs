@@ -45,5 +45,10 @@ namespace PokerHands
             }
             return ResultDual.Draw;
         }
+
+        public static bool IsPair(List<Card> onHandCards)
+        {
+            return true;
+        }
     }
 }

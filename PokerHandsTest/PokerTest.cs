@@ -191,5 +191,17 @@ namespace PokerHandsTest
             Assert.AreEqual(ResultDual.Draw, Poker.CompareHighCard(cardsOnHand1, cardsOnHand2));
         }
         #endregion
+
+        [Test]
+        public void OnHandIs_22345_ShouldBe_Pair()
+        {
+            List<Card> onHandCards = new List<Card>()
+            {
+                dummyCardRank2, new Card(SuitType.Diamond, RankType.Two),
+                dummyCardRank3, dummyCardRank4, dummyCardRank5
+            };
+
+            Assert.True(Poker.IsPair(onHandCards));
+        }
     }
 }
