@@ -28,5 +28,10 @@ namespace PokerHands
                 return ResultDual.Win;
             return ResultDual.Lose;
         }
+
+        public static ResultDual CompareHighCard(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
+        {
+            return ResultDual.Lose;
+        }
     }
 }

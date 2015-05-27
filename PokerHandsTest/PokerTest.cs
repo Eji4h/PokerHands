@@ -1,9 +1,10 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using PokerHands;
-using SuitType = PokerHands.Card.SuitType;
+using System;
+using System.Collections.Generic;
 using RankType = PokerHands.Card.RankType;
 using ResultDual = PokerHands.Poker.ResultDual;
+using SuitType = PokerHands.Card.SuitType;
 
 namespace PokerHandsTest
 {
@@ -91,6 +92,30 @@ namespace PokerHandsTest
             Card card1 = new Card(dummyCardSuit, RankType.King);
             Card card2 = new Card(dummyCardSuit, RankType.Five);
             Assert.AreEqual(ResultDual.Win, Poker.CompareScoring(card1, card2));
+        }
+
+        [Test]
+        public void CompareHighCard_HandOneIs_23456_And_HandTwoIs_34567_ShouldBe_Lose()
+        {
+            List<Card> cardsOnHand1 = new List<Card>()
+            {
+                new Card(dummyCardSuit, RankType.Two),
+                new Card(dummyCardSuit, RankType.Three),
+                new Card(dummyCardSuit, RankType.Four),
+                new Card(dummyCardSuit, RankType.Five),
+                new Card(dummyCardSuit, RankType.Six)
+            };
+
+            List<Card> cardsOnHand2 = new List<Card>()
+            {
+                new Card(dummyCardSuit, RankType.Three),
+                new Card(dummyCardSuit, RankType.Four),
+                new Card(dummyCardSuit, RankType.Five),
+                new Card(dummyCardSuit, RankType.Six),
+                new Card(dummyCardSuit, RankType.Seven)
+            };
+
+            Assert.AreEqual(ResultDual.Lose, Poker.CompareHighCard(cardsOnHand1, cardsOnHand2));
         }
     }
 }
