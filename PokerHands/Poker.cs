@@ -48,7 +48,14 @@ namespace PokerHands
 
         public static bool IsPair(List<Card> onHandCards)
         {
-            return true;
+            var rankOfOldCard = onHandCards.First().Rank;
+            for(int i = 1; i < onHandCards.Count; i++)
+            {
+                if (onHandCards[i].Rank == rankOfOldCard)
+                    return true;
+                rankOfOldCard = onHandCards[i].Rank;
+            }
+            return false;
         }
     }
 }

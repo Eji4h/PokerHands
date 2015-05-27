@@ -203,5 +203,16 @@ namespace PokerHandsTest
 
             Assert.True(Poker.IsPair(onHandCards));
         }
+
+        [Test]
+        public void OnHandIs_23456_ShouldBe_NotPair()
+        {
+            List<Card> onHandCards = new List<Card>()
+            {
+                dummyCardRank2, dummyCardRank3, dummyCardRank4, dummyCardRank5, dummyCardRank6
+            };
+
+            Assert.False(Poker.IsPair(onHandCards));
+        }
     }
 }
