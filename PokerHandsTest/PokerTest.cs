@@ -14,6 +14,20 @@ namespace PokerHandsTest
         SuitType dummyCardSuit = SuitType.Club;
         RankType dummyCardRank = RankType.Two;
 
+        Card dummyCardRank2 = new Card(SuitType.Club, RankType.Two);
+        Card dummyCardRank3 = new Card(SuitType.Club, RankType.Three);
+        Card dummyCardRank4 = new Card(SuitType.Club, RankType.Four);
+        Card dummyCardRank5 = new Card(SuitType.Club, RankType.Five);
+        Card dummyCardRank6 = new Card(SuitType.Club, RankType.Six);
+        Card dummyCardRank7 = new Card(SuitType.Club, RankType.Seven);
+        Card dummyCardRank8 = new Card(SuitType.Club, RankType.Eight);
+        Card dummyCardRank9 = new Card(SuitType.Club, RankType.Nine);
+        Card dummyCardRank10 = new Card(SuitType.Club, RankType.Ten);
+        Card dummyCardRankJack = new Card(SuitType.Club, RankType.Jack);
+        Card dummyCardRankQueen = new Card(SuitType.Club, RankType.Queen);
+        Card dummyCardRankKing = new Card(SuitType.Club, RankType.King);
+        Card dummyCardRankAce = new Card(SuitType.Club, RankType.Ace);
+
         [Test]
         public void CompareScoring_2Vs3_ResultDualIsLose()
         {
@@ -99,20 +113,12 @@ namespace PokerHandsTest
         {
             List<Card> cardsOnHand1 = new List<Card>()
             {
-                new Card(dummyCardSuit, RankType.Two),
-                new Card(dummyCardSuit, RankType.Three),
-                new Card(dummyCardSuit, RankType.Four),
-                new Card(dummyCardSuit, RankType.Five),
-                new Card(dummyCardSuit, RankType.Six)
+                dummyCardRank2, dummyCardRank3, dummyCardRank4, dummyCardRank5, dummyCardRank6
             };
 
             List<Card> cardsOnHand2 = new List<Card>()
             {
-                new Card(dummyCardSuit, RankType.Three),
-                new Card(dummyCardSuit, RankType.Four),
-                new Card(dummyCardSuit, RankType.Five),
-                new Card(dummyCardSuit, RankType.Six),
-                new Card(dummyCardSuit, RankType.Seven)
+                dummyCardRank3, dummyCardRank4, dummyCardRank5, dummyCardRank6, dummyCardRank7
             };
 
             Assert.AreEqual(ResultDual.Lose, Poker.CompareHighCard(cardsOnHand1, cardsOnHand2));

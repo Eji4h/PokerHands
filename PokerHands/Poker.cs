@@ -31,7 +31,7 @@ namespace PokerHands
 
         public static ResultDual CompareHighCard(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
-            return ResultDual.Lose;
+            return CompareScoring(cardsOnHand1.Last(), cardsOnHand2.Last());
         }
     }
 }
