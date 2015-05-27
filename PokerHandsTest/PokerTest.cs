@@ -28,6 +28,7 @@ namespace PokerHandsTest
         Card dummyCardRankKing = new Card(SuitType.Club, RankType.King);
         Card dummyCardRankAce = new Card(SuitType.Club, RankType.Ace);
 
+        #region CompareScoring
         [Test]
         public void CompareScoring_2Vs3_ResultDualIsLose()
         {
@@ -107,7 +108,9 @@ namespace PokerHandsTest
             Card card2 = new Card(dummyCardSuit, RankType.Five);
             Assert.AreEqual(ResultDual.Win, Poker.CompareScoring(card1, card2));
         }
+        #endregion
 
+        #region CompareHighCard
         [Test]
         public void CompareHighCard_HandOneIs_23456_And_HandTwoIs_34567_ShouldBe_Lose()
         {
@@ -187,5 +190,6 @@ namespace PokerHandsTest
 
             Assert.AreEqual(ResultDual.Draw, Poker.CompareHighCard(cardsOnHand1, cardsOnHand2));
         }
+        #endregion
     }
 }
