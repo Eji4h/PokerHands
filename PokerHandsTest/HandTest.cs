@@ -109,6 +109,7 @@ namespace PokerHandsTest
             CollectionAssert.AreEqual(cardsShouldBeOrder, cardsInput);
         }
 
+        [Test]
         public void OrderCardOnHandByRankAndSuit_AceHeart_JackClub_7Club_AceDiamond_JackSpade_ShouldBe_7Club_JackClub_JackSpade_AceDiamond_AceHeart()
         {
             Card jackSpadeCard = new Card(SuitType.Spade, RankType.Jack);
