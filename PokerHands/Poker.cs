@@ -34,14 +34,16 @@ namespace PokerHands
             Hand.OrderCard(cardsOnHand1);
             Hand.OrderCard(cardsOnHand2);
 
-            var lastIndexResultDual = CompareScoring(cardsOnHand1.Last(), cardsOnHand2.Last());
-            if (lastIndexResultDual != ResultDual.Draw)
-                return lastIndexResultDual;
+            for(int i = cardsOnHand1.Count - 1; i >= 0; i--)
+            {
+                var nextHighestCardFromHand1 = cardsOnHand1[i];
+                var nextHighestCardFromHand2 = cardsOnHand2[i];
 
-            var nextHighestCardFromHand1 = cardsOnHand1[cardsOnHand1.Count - 2];
-            var nextHighestCardFromHand2 = cardsOnHand2[cardsOnHand2.Count - 2];
-
-            return CompareScoring(nextHighestCardFromHand1, nextHighestCardFromHand2);
+                var nextIndexResultDual = CompareScoring(nextHighestCardFromHand1, nextHighestCardFromHand2);
+                if (nextIndexResultDual != ResultDual.Draw)
+                    return nextIndexResultDual;
+            }
+            return ResultDual.Draw;
         }
     }
 }
