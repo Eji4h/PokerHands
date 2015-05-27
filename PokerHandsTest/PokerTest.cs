@@ -30,7 +30,7 @@ namespace PokerHandsTest
 
         #region CompareScoring
         [Test]
-        public void CompareScoring_2Vs3_ResultDualIsLose()
+        public void CompareScoring_2Vs3_ResultDual_ShouldBe_Lose()
         {
             Card card1 = new Card(dummyCardSuit, RankType.Two);
             Card card2 = new Card(dummyCardSuit, RankType.Three);
@@ -38,7 +38,7 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void CompareScoring_3Vs2_ResultDualIsWin()
+        public void CompareScoring_3Vs2_ResultDual_ShouldBe_Win()
         {
             Card card1 = new Card(dummyCardSuit, RankType.Three);
             Card card2 = new Card(dummyCardSuit, RankType.Two);
@@ -46,7 +46,7 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void CompareScoring_2VsJack_ResultDualIsLose()
+        public void CompareScoring_2VsJack_ResultDual_ShouldBe_Lose()
         {
             Card card1 = new Card(dummyCardSuit, RankType.Two);
             Card card2 = new Card(dummyCardSuit, RankType.Jack);
@@ -54,7 +54,7 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void CompareScoring_2Vs2_ResultDualIsDraw()
+        public void CompareScoring_2Vs2_ResultDual_ShouldBe_Draw()
         {
             Card card1 = new Card(dummyCardSuit, RankType.Two);
             Card card2 = new Card(dummyCardSuit, RankType.Two);
@@ -62,7 +62,7 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void CompareScoring_2VsAce_ResultDualIsLose()
+        public void CompareScoring_2VsAce_ResultDual_ShouldBe_Lose()
         {
             Card card1 = new Card(dummyCardSuit, RankType.Two);
             Card card2 = new Card(dummyCardSuit, RankType.Ace);
@@ -70,7 +70,7 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void CompareScoring_AceVs2_ResultDualIsWin()
+        public void CompareScoring_AceVs2_ResultDual_ShouldBe_Win()
         {
             Card card1 = new Card(dummyCardSuit, RankType.Ace);
             Card card2 = new Card(dummyCardSuit, RankType.Two);
@@ -78,7 +78,7 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void CompareScoring_AceVsKing_ResultDualIsWin()
+        public void CompareScoring_AceVsKing_ResultDual_ShouldBe_Win()
         {
             Card card1 = new Card(dummyCardSuit, RankType.Ace);
             Card card2 = new Card(dummyCardSuit, RankType.King);
@@ -86,7 +86,7 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void CompareScoring_QueenVsAce_ResultDualIsLose()
+        public void CompareScoring_QueenVsAce_ResultDual_ShouldBe_Lose()
         {
             Card card1 = new Card(dummyCardSuit, RankType.Queen);
             Card card2 = new Card(dummyCardSuit, RankType.Ace);
@@ -94,7 +94,7 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void CompareScoring_5VsKing_ResultDualIsLose()
+        public void CompareScoring_5VsKing_ResultDual_ShouldBe_Lose()
         {
             Card card1 = new Card(dummyCardSuit, RankType.Five);
             Card card2 = new Card(dummyCardSuit, RankType.King);
@@ -102,7 +102,7 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void CompareScoring_KingVs5_ResultDualIsWin()
+        public void CompareScoring_KingVs5_ResultDual_ShouldBe_Win()
         {
             Card card1 = new Card(dummyCardSuit, RankType.King);
             Card card2 = new Card(dummyCardSuit, RankType.Five);
@@ -201,7 +201,7 @@ namespace PokerHandsTest
                 dummyCardRank3, dummyCardRank4, dummyCardRank5
             };
 
-            Assert.True(Poker.IsPair(onHandCards));
+            Assert.True(Poker.OnHandIsPair(onHandCards));
         }
 
         [Test]
@@ -212,7 +212,7 @@ namespace PokerHandsTest
                 dummyCardRank2, dummyCardRank3, dummyCardRank4, dummyCardRank5, dummyCardRank6
             };
 
-            Assert.False(Poker.IsPair(onHandCards));
+            Assert.False(Poker.OnHandIsPair(onHandCards));
         }
     }
 }

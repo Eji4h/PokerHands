@@ -46,7 +46,7 @@ namespace PokerHands
             return ResultDual.Draw;
         }
 
-        public static bool IsPair(List<Card> onHandCards)
+        public static bool OnHandIsPair(List<Card> onHandCards)
         {
             var rankOfOldCard = onHandCards.First().Rank;
             for(int i = 1; i < onHandCards.Count; i++)

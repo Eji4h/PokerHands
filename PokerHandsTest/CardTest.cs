@@ -12,49 +12,49 @@ namespace PokerHandsTest
         RankType dummyCardRank = RankType.Two;
 
         [Test]
-        public void TestCardSuitIsClub()
+        public void CardSuitClub_ShouldBe_Club()
         {
             Card cardSuitClub = new Card(SuitType.Club, dummyCardRank);
             Assert.AreEqual(SuitType.Club, cardSuitClub.Suit);
         }
 
         [Test]
-        public void TestCardSuitIsDiamond()
+        public void CardSuitDiamond_ShouldBe_Diamond()
         {
             Card cardSuitDiamond = new Card(SuitType.Diamond, dummyCardRank);
             Assert.AreEqual(SuitType.Diamond, cardSuitDiamond.Suit);
         }
 
         [Test]
-        public void TestCardSuitIsHeart()
+        public void CardSuitHeart_ShouldBe_Heart()
         {
             Card cardSuitHeart = new Card(SuitType.Heart, dummyCardRank);
             Assert.AreEqual(SuitType.Heart, cardSuitHeart.Suit);
         }
 
         [Test]
-        public void TestCardSuitIsSpade()
+        public void CardSuitSpade_ShouldBe_Spade()
         {
             Card cardSuitSpade = new Card(SuitType.Spade, dummyCardRank);
             Assert.AreEqual(SuitType.Spade, cardSuitSpade.Suit);
         }
 
         [Test]
-        public void TestCardRankIs2()
+        public void CardRank2_ShouldBe_2()
         {
             Card cardRank2 = new Card(dummyCardSuit, RankType.Two);
             Assert.AreEqual(2, (int)cardRank2.Rank);
         }
 
         [Test]
-        public void TestCardRankIs10()
+        public void CardRank10_ShouldBe_10()
         {
             Card cardRank10 = new Card(dummyCardSuit, RankType.Ten);
             Assert.AreEqual(10, (int)cardRank10.Rank);
         }
 
         [Test]
-        public void TestCardRankIsJack()
+        public void CardRankJack_ShouldBe_Jack()
         {
             Card cardRankJ = new Card(dummyCardSuit, RankType.Jack);
             Assert.AreEqual(RankType.Jack, cardRankJ.Rank);

@@ -11,7 +11,7 @@ namespace PokerHandsTest
         Deck deck = new Deck();
 
         [Test]
-        public void DeckContains_52_Cards()
+        public void DeckContains_ShouldBe_52_Cards()
         {
             Assert.AreEqual(52, deck.Cards.Count);
         }

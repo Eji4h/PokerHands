@@ -34,7 +34,7 @@ namespace PokerHandsTest
         Card dummyCardRankAceSuitSpade = new Card(SuitType.Spade, RankType.Ace);
 
         [Test]
-        public void NumberCardOnHandIs5()
+        public void NumberCardOnHand_ShouldBe_5()
         {
             Assert.AreEqual(5, new Hand().GetCards().Capacity);
         }
