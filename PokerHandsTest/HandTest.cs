@@ -36,7 +36,7 @@ namespace PokerHandsTest
         [Test]
         public void NumberCardOnHandIs5()
         {
-            Assert.AreEqual(5, new Hand().GetCards().Capacity);
+            Assert.AreEqual(5, new Hand(new Deck()).GetCards().Capacity);
         }
 
         [Test]
@@ -128,6 +128,14 @@ namespace PokerHandsTest
 
             Hand.OrderCard(cardsInput);
             CollectionAssert.AreEqual(cardsShouldBeOrder, cardsInput);
+        }
+
+        [Test]
+        public void DealCardsFromDeck_ShouldBe_5_CardsOnHand()
+        {
+            Hand hand = new Hand(new Deck());
+            hand.DealCardsFromDeck(5);
+            Assert.AreEqual(5, hand.GetCards().Count);
         }
 
     }
