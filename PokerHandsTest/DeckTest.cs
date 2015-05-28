@@ -24,7 +24,26 @@ namespace PokerHandsTest
 
             shuffleDeck.Shuffle();
 
-            CollectionAssert.AreNotEqual(originalDeck.Cards, shuffleDeck.Cards);
+            Assert.False(DeckIsSameCardsOrder(originalDeck, shuffleDeck));
+        }
+
+        bool CardIsEqual(Card firstCard, Card secondCard)
+        {
+            return firstCard.Suit == secondCard.Suit &&
+                    firstCard.Rank == secondCard.Rank;
+        }
+
+        bool DeckIsSameCardsOrder(Deck firstDeck, Deck secondDeck)
+        {
+            for (int i = 0; i < firstDeck.Cards.Count; i++)
+            {
+                var cardFromOriginalDeck = firstDeck.Cards[i];
+                var cardFromShuffleDeck = secondDeck.Cards[i];
+
+                if (!CardIsEqual(cardFromOriginalDeck, cardFromShuffleDeck))
+                    return false;
+            }
+            return true;
         }
 
         [Test]
