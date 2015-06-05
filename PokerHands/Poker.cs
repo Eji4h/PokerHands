@@ -57,5 +57,10 @@ namespace PokerHands
             }
             return false;
         }
+
+        public static string RecognizeCategory(List<Card> onHandCards)
+        {
+            return "Pair";
+        }
     }
 }

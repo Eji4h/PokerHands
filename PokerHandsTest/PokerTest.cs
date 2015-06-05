@@ -214,5 +214,17 @@ namespace PokerHandsTest
 
             Assert.False(Poker.OnHandIsPair(onHandCards));
         }
+
+        [Test]
+        public void OnHandIs_22345_CategoryShouldBe_Pair()
+        {
+            List<Card> onHandCards = new List<Card>()
+            {
+                dummyCardRank2, new Card(SuitType.Diamond, RankType.Two),
+                dummyCardRank3, dummyCardRank4, dummyCardRank5
+            };
+
+            Assert.AreEqual("Pair", Poker.RecognizeCategory(onHandCards));
+        }
     }
 }
