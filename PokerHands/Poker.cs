@@ -76,7 +76,20 @@ namespace PokerHands
             Card cardPairOfHand1 = CardPair(onHandCards1);
             Card cardPairOfHand2 = CardPair(onHandCards2);
 
-            return CompareScoring(cardPairOfHand1, cardPairOfHand2);
+            ResultDual resultCompareScoring = CompareScoring(cardPairOfHand1, cardPairOfHand2);
+
+            if(resultCompareScoring == ResultDual.Draw)
+            {
+                List<Card> onHand1NotPairCards = 
+                    onHandCards1.Where(card => card.Rank != cardPairOfHand1.Rank).ToList();
+
+                List<Card> onHand2NotPairCards =
+                    onHandCards2.Where(card => card.Rank != cardPairOfHand2.Rank).ToList();
+
+                resultCompareScoring = CompareHighCard(onHand1NotPairCards, onHand2NotPairCards);
+            }
+
+            return resultCompareScoring;
         }
 
         public static Card CardPair(List<Card> onHandCards)

@@ -28,6 +28,8 @@ namespace PokerHandsTest
         Card dummyCardRankKing = new Card(SuitType.Club, RankType.King);
         Card dummyCardRankAce = new Card(SuitType.Club, RankType.Ace);
 
+        Card dummyCardRank2Diamond = new Card(SuitType.Diamond, RankType.Two);
+
         List<Card> onHandCards23456Dummy;
         List<Card> onHandCards34567Dummy;
 
@@ -49,7 +51,7 @@ namespace PokerHandsTest
 
             onHandCards22345Dummy = new List<Card>()
             {
-                dummyCardRank2, new Card(SuitType.Diamond, RankType.Two),
+                dummyCardRank2, dummyCardRank2Diamond,
                 dummyCardRank3, dummyCardRank4, dummyCardRank5
             };
 
@@ -237,6 +239,24 @@ namespace PokerHandsTest
         public void ComparePairValue_HandOneIs_23345_And_HandTwoIs_22345_ResultShouldBe_Win()
         {
             Assert.AreEqual(ResultDual.Win, Poker.ComparePair(onHandCards23345Dummy, onHandCards22345Dummy));
+        }
+
+        [Test]
+        public void ComparePairValue_HandOneIs_22356_And_HandTwoIs_22456_ResultShouldBe_Lose()
+        {
+            var onHand22356 = new List<Card>()
+            {
+                dummyCardRank2, dummyCardRank2Diamond,
+                dummyCardRank3, dummyCardRank5, dummyCardRank6
+            };
+
+            var onHand22456 = new List<Card>()
+            {
+                dummyCardRank2, dummyCardRank2Diamond,
+                dummyCardRank4, dummyCardRank5, dummyCardRank6
+            };
+
+            Assert.AreEqual(ResultDual.Lose, Poker.ComparePair(onHand22356, onHand22456));
         }
     }
 }
