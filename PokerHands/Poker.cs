@@ -35,6 +35,20 @@ namespace PokerHands
             return ResultDual.Lose;
         }
 
+        public static Category RecognizeCategory(List<Card> onHandCards)
+        {
+            if (OnHandIsPair(onHandCards))
+                return Category.Pair;
+            return Category.HighCard;
+        }
+
+        static bool OnHandIsPair(List<Card> onHandCards)
+        {
+            bool havePairCard = GetPairCard(onHandCards) != null;
+
+            return havePairCard;
+        }
+
         public static ResultDual CompareHighCard(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
             Hand.OrderCard(cardsOnHand1);
@@ -49,42 +63,21 @@ namespace PokerHands
                 if (nextIndexResultDual != ResultDual.Draw)
                     return nextIndexResultDual;
             }
+
             return ResultDual.Draw;
-        }
-
-        public static bool OnHandIsPair(List<Card> onHandCards)
-        {
-            var rankOfOldCard = onHandCards.First().Rank;
-            for (int i = 1; i < onHandCards.Count; i++)
-            {
-                if (onHandCards[i].Rank == rankOfOldCard)
-                    return true;
-                rankOfOldCard = onHandCards[i].Rank;
-            }
-            return false;
-        }
-
-        public static Category RecognizeCategory(List<Card> onHandCards)
-        {
-            if (OnHandIsPair(onHandCards))
-                return Category.Pair;
-            return Category.HighCard;
         }
 
         public static ResultDual ComparePair(List<Card> onHandCards1, List<Card> onHandCards2)
         {
-            Card cardPairOfHand1 = CardPair(onHandCards1);
-            Card cardPairOfHand2 = CardPair(onHandCards2);
+            var cardPairOfHand1 = GetPairCard(onHandCards1);
+            var cardPairOfHand2 = GetPairCard(onHandCards2);
 
-            ResultDual resultCompareScoring = CompareScoring(cardPairOfHand1, cardPairOfHand2);
+            var resultCompareScoring = CompareScoring(cardPairOfHand1, cardPairOfHand2);
 
             if(resultCompareScoring == ResultDual.Draw)
             {
-                List<Card> onHand1NotPairCards = 
-                    onHandCards1.Where(card => card.Rank != cardPairOfHand1.Rank).ToList();
-
-                List<Card> onHand2NotPairCards =
-                    onHandCards2.Where(card => card.Rank != cardPairOfHand2.Rank).ToList();
+                var onHand1NotPairCards = GetOnHandNotPairCards(onHandCards1, cardPairOfHand1);
+                var onHand2NotPairCards = GetOnHandNotPairCards(onHandCards2, cardPairOfHand2);
 
                 resultCompareScoring = CompareHighCard(onHand1NotPairCards, onHand2NotPairCards);
             }
@@ -92,15 +85,22 @@ namespace PokerHands
             return resultCompareScoring;
         }
 
-        public static Card CardPair(List<Card> onHandCards)
+        private static List<Card> GetOnHandNotPairCards(List<Card> onHandCards, Card cardPairOfHand)
+        {
+            return onHandCards.Where(card => card.Rank != cardPairOfHand.Rank).ToList();
+        }
+
+        static Card GetPairCard(List<Card> onHandCards)
         {
             var rankOfOldCard = onHandCards.First().Rank;
+
             for (int i = 1; i < onHandCards.Count; i++)
             {
                 if (onHandCards[i].Rank == rankOfOldCard)
                     return onHandCards[i];
                 rankOfOldCard = onHandCards[i].Rank;
             }
+
             return null;
         }
     }

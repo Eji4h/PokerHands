@@ -145,12 +145,12 @@ namespace PokerHandsTest
         [Test]
         public void CompareHighCard_HandOneIs_A23K5_And_HandTwoIs_10J6K7_ShouldBe_Win()
         {
-            List<Card> onHandCards1 = new List<Card>()
+            var onHandCards1 = new List<Card>()
             {
                 dummyCardRankAce, dummyCardRank2, dummyCardRank3, dummyCardRankKing, dummyCardRank5
             };
 
-            List<Card> onHandCards2 = new List<Card>()
+            var onHandCards2 = new List<Card>()
             {
                 dummyCardRank10, dummyCardRankJack, dummyCardRank6, dummyCardRankKing, dummyCardRank7
             };
@@ -161,12 +161,12 @@ namespace PokerHandsTest
         [Test]
         public void CompareHighCard_HandOneIs_AKQJT_And_HandTwoIs_AQJT9_ShouldBe_Win()
         {
-            List<Card> onHandCards1 = new List<Card>()
+            var onHandCards1 = new List<Card>()
             {
                 dummyCardRankAce, dummyCardRankKing, dummyCardRankQueen, dummyCardRankJack, dummyCardRank10
             };
 
-            List<Card> onHandCards2 = new List<Card>()
+            var onHandCards2 = new List<Card>()
             {
                 dummyCardRankAce, dummyCardRankQueen, dummyCardRankJack, dummyCardRank10, dummyCardRank9
             };
@@ -177,12 +177,12 @@ namespace PokerHandsTest
         [Test]
         public void CompareHighCard_HandOneIs_AKQJ9_And_HandTwoIs_AKQJT_ShouldBe_Lose()
         {
-            List<Card> onHandCards1 = new List<Card>()
+            var onHandCards1 = new List<Card>()
             {
                 dummyCardRankAce, dummyCardRankKing, dummyCardRankQueen, dummyCardRankJack, dummyCardRank9
             };
 
-            List<Card> onHandCards2 = new List<Card>()
+            var onHandCards2 = new List<Card>()
             {
                 dummyCardRankAce, dummyCardRankKing, dummyCardRankQueen, dummyCardRankJack, dummyCardRank10
             };
@@ -193,12 +193,12 @@ namespace PokerHandsTest
         [Test]
         public void CompareHighCard_HandOneIs_AKQJT_And_HandTwoIs_AKQJT_ShouldBe_Draw()
         {
-            List<Card> onHandCards1 = new List<Card>()
+            var onHandCards1 = new List<Card>()
             {
                 dummyCardRankAce, dummyCardRankKing, dummyCardRankQueen, dummyCardRankJack, dummyCardRank10
             };
 
-            List<Card> onHandCards2 = new List<Card>()
+            var onHandCards2 = new List<Card>()
             {
                 dummyCardRankAce, dummyCardRankKing, dummyCardRankQueen, dummyCardRankJack, dummyCardRank10
             };
