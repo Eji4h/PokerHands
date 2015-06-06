@@ -70,5 +70,10 @@ namespace PokerHands
                 return Category.Pair;
             return Category.HighCard;
         }
+
+        public static ResultDual ComparePair(List<Card> onHandCards1, List<Card> onHandCards2)
+        {
+            return ResultDual.Lose;
+        }
     }
 }
