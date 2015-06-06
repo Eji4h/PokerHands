@@ -244,7 +244,7 @@ namespace PokerHandsTest
             List<Card> onHandCards1 = new List<Card>()
             {
                 dummyCardRank2, new Card(SuitType.Diamond, RankType.Two), 
-                dummyCardRank4, dummyCardRank5, dummyCardRank6
+                dummyCardRank3, dummyCardRank4, dummyCardRank5
             };
 
             List<Card> onHandCards2 = new List<Card>()
@@ -270,7 +270,7 @@ namespace PokerHandsTest
             List<Card> onHandCards2 = new List<Card>()
             {
                 dummyCardRank2, new Card(SuitType.Diamond, RankType.Two), 
-                dummyCardRank4, dummyCardRank5, dummyCardRank6
+                dummyCardRank3, dummyCardRank4, dummyCardRank5
             };
 
             Assert.AreEqual(ResultDual.Win, Poker.ComparePair(onHandCards1, onHandCards2));
