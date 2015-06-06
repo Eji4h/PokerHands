@@ -263,5 +263,17 @@ namespace PokerHandsTest
             Assert.AreEqual(ResultDual.Lose, Poker.ComparePair(onHand22356, onHand22456));
         }
         #endregion
+
+        [Test]
+        public void OnHandIs_24A2A_ShouldBe_TwoPair()
+        {
+            var onHandCards = new List<Card>()
+            {
+                dummyCardRank2, dummyCardRank4, dummyCardRankAce, 
+                dummyCardRank2, dummyCardRankAce
+            };
+
+            Assert.True(Poker.OnHandIsTwoPair(onHandCards));
+        }
     }
 }

@@ -49,6 +49,29 @@ namespace PokerHands
             return havePairCard;
         }
 
+        public static bool OnHandIsTwoPair(List<Card> onHandCards)
+        {
+            Hand.OrderCard(onHandCards);
+
+            var tempOnHandCards = onHandCards.ToList();
+            var oldCard = onHandCards.First();
+
+            int pairCount = 0;
+
+            for (int i = 1; i < onHandCards.Count; i++)
+            {
+                var card = onHandCards[i];
+                if (card.Rank == oldCard.Rank)
+                {
+                    tempOnHandCards.Remove(card);
+                    tempOnHandCards.Remove(oldCard);
+                    pairCount++;
+                }
+                oldCard = card;
+            }
+            return pairCount == 2;
+        }
+
         public static ResultDual CompareHighCard(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
             Hand.OrderCard(cardsOnHand1);
