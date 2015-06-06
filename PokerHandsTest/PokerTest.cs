@@ -226,5 +226,16 @@ namespace PokerHandsTest
 
             Assert.AreEqual(Poker.Category.Pair, Poker.RecognizeCategory(onHandCards));
         }
+
+        [Test]
+        public void OnHandIs_23456_CategoryShouldBe_HighCard()
+        {
+            List<Card> onHandCards = new List<Card>()
+            {
+                dummyCardRank2, dummyCardRank3, dummyCardRank4, dummyCardRank5, dummyCardRank6
+            };
+
+            Assert.AreEqual(Poker.Category.HighCard, Poker.RecognizeCategory(onHandCards));
+        }
     }
 }

@@ -40,7 +40,7 @@ namespace PokerHands
             Hand.OrderCard(cardsOnHand1);
             Hand.OrderCard(cardsOnHand2);
 
-            for(int i = cardsOnHand1.Count - 1; i >= 0; i--)
+            for (int i = cardsOnHand1.Count - 1; i >= 0; i--)
             {
                 var nextHighestCardFromHand1 = cardsOnHand1[i];
                 var nextHighestCardFromHand2 = cardsOnHand2[i];
@@ -55,7 +55,7 @@ namespace PokerHands
         public static bool OnHandIsPair(List<Card> onHandCards)
         {
             var rankOfOldCard = onHandCards.First().Rank;
-            for(int i = 1; i < onHandCards.Count; i++)
+            for (int i = 1; i < onHandCards.Count; i++)
             {
                 if (onHandCards[i].Rank == rankOfOldCard)
                     return true;
@@ -66,7 +66,9 @@ namespace PokerHands
 
         public static Category RecognizeCategory(List<Card> onHandCards)
         {
-            return Category.Pair;
+            if (OnHandIsPair(onHandCards))
+                return Category.Pair;
+            return Category.HighCard;
         }
     }
 }
