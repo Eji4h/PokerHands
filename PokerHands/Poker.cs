@@ -42,7 +42,7 @@ namespace PokerHands
             return Category.HighCard;
         }
 
-        static bool OnHandIsPair(List<Card> onHandCards)
+        public static bool OnHandIsPair(List<Card> onHandCards)
         {
             bool havePairCard = GetPairCard(onHandCards) != null;
 

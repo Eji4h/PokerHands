@@ -209,6 +209,29 @@ namespace PokerHandsTest
 
         #region Pair
         [Test]
+        public void OnHandIs_22345_ShouldBe_Pair()
+        {
+            var onHandCards = new List<Card>()
+            {
+                dummyCardRank2, new Card(SuitType.Diamond, RankType.Two),
+                dummyCardRank3, dummyCardRank4, dummyCardRank5
+            };
+
+            Assert.True(Poker.OnHandIsPair(onHandCards));
+        }
+
+        [Test]
+        public void OnHandIs_23456_ShouldBe_NotPair()
+        {
+            var onHandCards = new List<Card>()
+            {
+                dummyCardRank2, dummyCardRank3, dummyCardRank4, dummyCardRank5, dummyCardRank6
+            };
+
+            Assert.False(Poker.OnHandIsPair(onHandCards));
+        }
+
+        [Test]
         public void ComparePairValue_HandOneIs_22345_And_HandTwoIs_23345_ResultShouldBe_Lose()
         {
             Assert.AreEqual(ResultDual.Lose, 
