@@ -256,5 +256,24 @@ namespace PokerHandsTest
 
             Assert.AreEqual(ResultDual.Lose, Poker.ComparePair(onHandCards1, onHandCards2));
         }
+
+        [Test]
+        public void ComparePairValue_HandOneIs_23345_And_HandTwoIs_22345_ResultShouldBe_Win()
+        {
+            List<Card> onHandCards1 = new List<Card>()
+            {
+                dummyCardRank2, 
+                dummyCardRank3, new Card(SuitType.Diamond, RankType.Three),
+                dummyCardRank4, dummyCardRank5
+            };
+
+            List<Card> onHandCards2 = new List<Card>()
+            {
+                dummyCardRank2, new Card(SuitType.Diamond, RankType.Two), 
+                dummyCardRank4, dummyCardRank5, dummyCardRank6
+            };
+
+            Assert.AreEqual(ResultDual.Win, Poker.ComparePair(onHandCards1, onHandCards2));
+        }
     }
 }

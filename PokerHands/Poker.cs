@@ -73,7 +73,31 @@ namespace PokerHands
 
         public static ResultDual ComparePair(List<Card> onHandCards1, List<Card> onHandCards2)
         {
-            return ResultDual.Lose;
+            Card cardPairOfHand1 = null;
+            var rankOfOldCard = onHandCards1.First().Rank;
+            for (int i = 1; i < onHandCards1.Count; i++)
+            {
+                if (onHandCards1[i].Rank == rankOfOldCard)
+                {
+                    cardPairOfHand1 = onHandCards1[i];
+                    break;
+                }
+                rankOfOldCard = onHandCards1[i].Rank;
+            }
+
+            Card cardPairOfHand2 = null;
+            rankOfOldCard = onHandCards2.First().Rank;
+            for (int i = 1; i < onHandCards2.Count; i++)
+            {
+                if (onHandCards2[i].Rank == rankOfOldCard)
+                {
+                    cardPairOfHand2 = onHandCards2[i];
+                    break;
+                }
+                rankOfOldCard = onHandCards2[i].Rank;
+            }
+
+            return CompareScoring(cardPairOfHand1, cardPairOfHand2);
         }
     }
 }
