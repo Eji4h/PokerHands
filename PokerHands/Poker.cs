@@ -16,6 +16,12 @@ namespace PokerHands
             Draw
         }
 
+        public enum Category
+        {
+            Pair,
+            HighCard
+        }
+
         public static ResultDual CompareScoring(Card card1, Card card2)
         {
             if (card1.Rank == card2.Rank)
@@ -58,9 +64,9 @@ namespace PokerHands
             return false;
         }
 
-        public static string RecognizeCategory(List<Card> onHandCards)
+        public static Category RecognizeCategory(List<Card> onHandCards)
         {
-            return "Pair";
+            return Category.Pair;
         }
     }
 }

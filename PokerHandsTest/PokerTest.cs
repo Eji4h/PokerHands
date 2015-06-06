@@ -224,7 +224,7 @@ namespace PokerHandsTest
                 dummyCardRank3, dummyCardRank4, dummyCardRank5
             };
 
-            Assert.AreEqual("Pair", Poker.RecognizeCategory(onHandCards));
+            Assert.AreEqual(Poker.Category.Pair, Poker.RecognizeCategory(onHandCards));
         }
     }
 }
