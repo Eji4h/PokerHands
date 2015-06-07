@@ -44,32 +44,38 @@ namespace PokerHands
 
         public static bool OnHandIsPair(List<Card> onHandCards)
         {
-            bool havePairCard = GetPairCard(onHandCards) != null;
-
-            return havePairCard;
+            int pairCount = GetPairCount(onHandCards);
+            return pairCount == 1;
         }
 
         public static bool OnHandIsTwoPair(List<Card> onHandCards)
         {
+            int pairCount = GetPairCount(onHandCards);
+            return pairCount == 2;
+        }
+
+        private static int GetPairCount(List<Card> onHandCards)
+        {
             Hand.OrderCard(onHandCards);
 
-            var tempOnHandCards = onHandCards.ToList();
-            var oldCard = onHandCards.First();
-
             int pairCount = 0;
+            var tempOnHandCards = onHandCards.ToList();
+            var oldCard = tempOnHandCards.First();
 
-            for (int i = 1; i < onHandCards.Count; i++)
+            for (int i = 1; i < tempOnHandCards.Count; i++)
             {
-                var card = onHandCards[i];
+                var card = tempOnHandCards[i];
+
                 if (card.Rank == oldCard.Rank)
                 {
                     tempOnHandCards.Remove(card);
                     tempOnHandCards.Remove(oldCard);
                     pairCount++;
+                    i = 0;
                 }
-                oldCard = card;
+                oldCard = tempOnHandCards[i];
             }
-            return pairCount == 2;
+            return pairCount;
         }
 
         public static ResultDual CompareHighCard(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
@@ -86,7 +92,6 @@ namespace PokerHands
                 if (nextIndexResultDual != ResultDual.Draw)
                     return nextIndexResultDual;
             }
-
             return ResultDual.Draw;
         }
 
@@ -104,7 +109,6 @@ namespace PokerHands
 
                 resultCompareScoring = CompareHighCard(onHand1NotPairCards, onHand2NotPairCards);
             }
-
             return resultCompareScoring;
         }
 
@@ -123,7 +127,6 @@ namespace PokerHands
                     return onHandCards[i];
                 rankOfOldCard = onHandCards[i].Rank;
             }
-
             return null;
         }
     }
