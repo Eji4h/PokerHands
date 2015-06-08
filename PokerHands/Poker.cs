@@ -19,7 +19,8 @@ namespace PokerHands
         public enum Category
         {
             Pair,
-            HighCard
+            HighCard,
+            TwoPair
         }
 
         public static ResultDual CompareScoring(Card card1, Card card2)
@@ -37,6 +38,8 @@ namespace PokerHands
 
         public static Category RecognizeCategory(List<Card> onHandCards)
         {
+            if (OnHandIsTwoPair(onHandCards))
+                return Category.TwoPair;
             if (OnHandIsPair(onHandCards))
                 return Category.Pair;
             return Category.HighCard;

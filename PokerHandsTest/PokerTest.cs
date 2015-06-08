@@ -27,6 +27,19 @@ namespace PokerHandsTest
 
         #region RecognizeCatagory
         [Test]
+        public void OnHandIs_77QQA_CategoryShouldBe_TwoPair()
+        {
+            var onHandCards = new List<Card>()
+            {
+                dummyCardRank7, dummyCardRank7, 
+                dummyCardRankQueen, dummyCardRankQueen,
+                dummyCardRankAce
+            };
+
+            Assert.AreEqual(Poker.Category.TwoPair, Poker.RecognizeCategory(onHandCards));
+        }
+
+        [Test]
         public void OnHandIs_22345_CategoryShouldBe_Pair()
         {
             var onHandCards = new List<Card>()
