@@ -18,8 +18,8 @@ namespace PokerHands
 
         public enum Category
         {
-            Pair,
             HighCard,
+            Pair,
             TwoPair
         }
 
