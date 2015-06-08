@@ -66,9 +66,8 @@ namespace PokerHands
             for (int i = 1; i < onHandCards.Count; i++)
             {
                 var oldCard = onHandCards[i - 1];
-                var card = onHandCards[i];
 
-                if (oldCard.Rank == card.Rank)
+                if (onHandCards[i].Rank == oldCard.Rank)
                 {
                     pairCount++;
                     i++;
@@ -118,13 +117,13 @@ namespace PokerHands
 
         static Card GetPairCard(List<Card> onHandCards)
         {
-            var rankOfOldCard = onHandCards.First().Rank;
+            var oldCard = onHandCards.First();
 
             for (int i = 1; i < onHandCards.Count; i++)
             {
-                if (onHandCards[i].Rank == rankOfOldCard)
+                if (onHandCards[i].Rank == oldCard.Rank)
                     return onHandCards[i];
-                rankOfOldCard = onHandCards[i].Rank;
+                oldCard = onHandCards[i];
             }
             return null;
         }
