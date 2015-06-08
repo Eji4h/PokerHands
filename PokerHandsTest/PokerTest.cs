@@ -315,6 +315,26 @@ namespace PokerHandsTest
 
             Assert.False(Poker.OnHandIsTwoPair(onHandCards));
         }
+
+        [Test]
+        public void CompareTwoPairValue_HandOneIs_5577J_And_HandTwoIs_77QQA_ResultShouldBe_Lose()
+        {
+            var onHandCards1 = new List<Card>()
+            {
+                dummyCardRank5, dummyCardRank5,
+                dummyCardRank7, dummyCardRank7,
+                dummyCardRankJack
+            };
+
+            var onHandCards2 = new List<Card>()
+            {
+                dummyCardRank7, dummyCardRank7,
+                dummyCardRankQueen, dummyCardRankQueen,
+                dummyCardRankAce
+            };
+
+            Assert.AreEqual(ResultDual.Lose, Poker.CompareTwoPair(onHandCards1, onHandCards2));
+        }
         #endregion
     }
 }

@@ -128,5 +128,10 @@ namespace PokerHands
             }
             return null;
         }
+
+        public static ResultDual CompareTwoPair(List<Card> onHandCards1, List<Card> onHandCards2)
+        {
+            return ResultDual.Lose;
+        }
     }
 }
