@@ -25,50 +25,28 @@ namespace PokerHandsTest
         Card dummyCardRankKing = new Card(SuitType.Club, RankType.King);
         Card dummyCardRankAce = new Card(SuitType.Club, RankType.Ace);
 
-        List<Card> onHandCards23456Dummy;
-        List<Card> onHandCards34567Dummy;
-
-        List<Card> onHandCards22345Dummy;
-        List<Card> onHandCards23345Dummy;
-
-
-        public PokerTest()
+        #region RecognizeCatagory
+        [Test]
+        public void OnHandIs_22345_CategoryShouldBe_Pair()
         {
-            onHandCards23456Dummy = new List<Card>()
-            {
-                dummyCardRank2, dummyCardRank3, dummyCardRank4, dummyCardRank5, dummyCardRank6
-            };
-
-            onHandCards34567Dummy = new List<Card>()
-            {
-                dummyCardRank3, dummyCardRank4, dummyCardRank5, dummyCardRank6, dummyCardRank7
-            };
-
-            onHandCards22345Dummy = new List<Card>()
+            var onHandCards = new List<Card>()
             {
                 dummyCardRank2, dummyCardRank2,
                 dummyCardRank3, dummyCardRank4, dummyCardRank5
             };
 
-            onHandCards23345Dummy = new List<Card>()
-            {
-                dummyCardRank2, 
-                dummyCardRank3, dummyCardRank3,
-                dummyCardRank4, dummyCardRank5
-            };
-        }
-
-        #region RecognizeCatagory
-        [Test]
-        public void OnHandIs_22345_CategoryShouldBe_Pair()
-        {
-            Assert.AreEqual(Poker.Category.Pair, Poker.RecognizeCategory(onHandCards22345Dummy));
+            Assert.AreEqual(Poker.Category.Pair, Poker.RecognizeCategory(onHandCards));
         }
 
         [Test]
         public void OnHandIs_23456_CategoryShouldBe_HighCard()
         {
-            Assert.AreEqual(Poker.Category.HighCard, Poker.RecognizeCategory(onHandCards23456Dummy));
+            var onHandCards = new List<Card>()
+            {
+                dummyCardRank2, dummyCardRank3, dummyCardRank4, dummyCardRank5, dummyCardRank6
+            };
+
+            Assert.AreEqual(Poker.Category.HighCard, Poker.RecognizeCategory(onHandCards));
         }
         #endregion
 
@@ -138,8 +116,18 @@ namespace PokerHandsTest
         [Test]
         public void CompareHighCard_HandOneIs_23456_And_HandTwoIs_34567_ShouldBe_Lose()
         {
+            var onHandCards1 = new List<Card>()
+            {
+                dummyCardRank2, dummyCardRank3, dummyCardRank4, dummyCardRank5, dummyCardRank6
+            };
+
+            var onHandCards2 = new List<Card>()
+            {
+                dummyCardRank3, dummyCardRank4, dummyCardRank5, dummyCardRank6, dummyCardRank7
+            };
+
             Assert.AreEqual(ResultDual.Lose, 
-                Poker.CompareHighCard(onHandCards23456Dummy, onHandCards34567Dummy));
+                Poker.CompareHighCard(onHandCards1, onHandCards2));
         }
 
         [Test]
@@ -213,7 +201,7 @@ namespace PokerHandsTest
         {
             var onHandCards = new List<Card>()
             {
-                dummyCardRank2, new Card(SuitType.Diamond, RankType.Two),
+                dummyCardRank2, dummyCardRank2,
                 dummyCardRank3, dummyCardRank4, dummyCardRank5
             };
 
@@ -234,15 +222,41 @@ namespace PokerHandsTest
         [Test]
         public void ComparePairValue_HandOneIs_22345_And_HandTwoIs_23345_ResultShouldBe_Lose()
         {
+            var onHandCards1 = new List<Card>()
+            {
+                dummyCardRank2, dummyCardRank2,
+                dummyCardRank3, dummyCardRank4, dummyCardRank5
+            };
+
+            var onHandCards2 = new List<Card>()
+            {
+                dummyCardRank2, 
+                dummyCardRank3, dummyCardRank3,
+                dummyCardRank4, dummyCardRank5
+            };
+
             Assert.AreEqual(ResultDual.Lose, 
-                Poker.ComparePair(onHandCards22345Dummy, onHandCards23345Dummy));
+                Poker.ComparePair(onHandCards1, onHandCards2));
         }
 
         [Test]
         public void ComparePairValue_HandOneIs_23345_And_HandTwoIs_22345_ResultShouldBe_Win()
         {
+            var onHandCards1 = new List<Card>()
+            {
+                dummyCardRank2, 
+                dummyCardRank3, dummyCardRank3,
+                dummyCardRank4, dummyCardRank5
+            };
+
+            var onHandCards2 = new List<Card>()
+            {
+                dummyCardRank2, dummyCardRank2,
+                dummyCardRank3, dummyCardRank4, dummyCardRank5
+            };
+
             Assert.AreEqual(ResultDual.Win, 
-                Poker.ComparePair(onHandCards23345Dummy, onHandCards22345Dummy));
+                Poker.ComparePair(onHandCards1, onHandCards2));
         }
 
         [Test]
@@ -264,6 +278,7 @@ namespace PokerHandsTest
         }
         #endregion
 
+        #region TwoPair
         [Test]
         public void OnHandIs_24A2A_ShouldBe_TwoPair()
         {
@@ -281,11 +296,12 @@ namespace PokerHandsTest
         {
             var onHandCards = new List<Card>()
             {
-                dummyCardRank2, new Card(SuitType.Diamond, RankType.Two),
+                dummyCardRank2, dummyCardRank2,
                 dummyCardRank3, dummyCardRank4, dummyCardRank5
             };
 
             Assert.False(Poker.OnHandIsTwoPair(onHandCards));
         }
+        #endregion
     }
 }
