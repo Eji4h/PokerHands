@@ -275,5 +275,17 @@ namespace PokerHandsTest
 
             Assert.True(Poker.OnHandIsTwoPair(onHandCards));
         }
+
+        [Test]
+        public void OnHandIs_22345_ShouldBe_NotTwoPair()
+        {
+            var onHandCards = new List<Card>()
+            {
+                dummyCardRank2, new Card(SuitType.Diamond, RankType.Two),
+                dummyCardRank3, dummyCardRank4, dummyCardRank5
+            };
+
+            Assert.False(Poker.OnHandIsTwoPair(onHandCards));
+        }
     }
 }
