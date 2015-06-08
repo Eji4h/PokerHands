@@ -59,21 +59,17 @@ namespace PokerHands
             Hand.OrderCard(onHandCards);
 
             int pairCount = 0;
-            var tempOnHandCards = onHandCards.ToList();
-            var oldCard = tempOnHandCards.First();
 
-            for (int i = 1; i < tempOnHandCards.Count; i++)
+            for (int i = 1; i < onHandCards.Count; i++)
             {
-                var card = tempOnHandCards[i];
+                var oldCard = onHandCards[i - 1];
+                var card = onHandCards[i];
 
-                if (card.Rank == oldCard.Rank)
+                if (oldCard.Rank == card.Rank)
                 {
-                    tempOnHandCards.Remove(card);
-                    tempOnHandCards.Remove(oldCard);
                     pairCount++;
-                    i = 0;
+                    i++;
                 }
-                oldCard = tempOnHandCards[i];
             }
             return pairCount;
         }
@@ -102,7 +98,7 @@ namespace PokerHands
 
             var resultCompareScoring = CompareScoring(cardPairOfHand1, cardPairOfHand2);
 
-            if(resultCompareScoring == ResultDual.Draw)
+            if (resultCompareScoring == ResultDual.Draw)
             {
                 var onHand1NotPairCards = GetOnHandNotPairCards(onHandCards1, cardPairOfHand1);
                 var onHand2NotPairCards = GetOnHandNotPairCards(onHandCards2, cardPairOfHand2);
