@@ -93,17 +93,17 @@ namespace PokerHands
             return ResultDual.Draw;
         }
 
-        public static ResultDual ComparePair(List<Card> onHandCards1, List<Card> onHandCards2)
+        public static ResultDual ComparePair(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
-            var cardPairOfHand1 = GetPairCard(onHandCards1);
-            var cardPairOfHand2 = GetPairCard(onHandCards2);
+            var cardPairOfHand1 = GetPairCard(cardsOnHand1);
+            var cardPairOfHand2 = GetPairCard(cardsOnHand2);
 
             var resultCompareScoring = CompareScoring(cardPairOfHand1, cardPairOfHand2);
 
             if (resultCompareScoring == ResultDual.Draw)
             {
-                var onHand1NotPairCards = GetOnHandNotPairCards(onHandCards1, cardPairOfHand1);
-                var onHand2NotPairCards = GetOnHandNotPairCards(onHandCards2, cardPairOfHand2);
+                var onHand1NotPairCards = GetOnHandNotPairCards(cardsOnHand1, cardPairOfHand1);
+                var onHand2NotPairCards = GetOnHandNotPairCards(cardsOnHand2, cardPairOfHand2);
 
                 resultCompareScoring = CompareHighCard(onHand1NotPairCards, onHand2NotPairCards);
             }
