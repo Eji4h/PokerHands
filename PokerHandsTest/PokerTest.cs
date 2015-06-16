@@ -335,6 +335,26 @@ namespace PokerHandsTest
 
             Assert.AreEqual(ResultDual.Lose, Poker.CompareTwoPair(cardsOnHand1, cardsOnHand2));
         }
+
+        [Test]
+        public void CompareTwoPairValue_HandOneIs_6688T_And_HandTwoIs_3355K_ResultDualShouldBe_Win()
+        {
+            var cardsOnHand1 = new List<Card>()
+            {
+                dummyCardRank6, dummyCardRank6,
+                dummyCardRank8, dummyCardRank8,
+                dummyCardRank10
+            };
+
+            var cardsOnHand2 = new List<Card>()
+            {
+                dummyCardRank3, dummyCardRank3,
+                dummyCardRank5, dummyCardRank5,
+                dummyCardRankKing
+            };
+
+            Assert.AreEqual(ResultDual.Win, Poker.CompareTwoPair(cardsOnHand1, cardsOnHand2));
+        }
         #endregion
     }
 }

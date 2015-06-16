@@ -117,9 +117,9 @@ namespace PokerHands
 
         static Card GetPairCard(List<Card> onHandCards)
         {
-            var oldCard = onHandCards.First();
+            var oldCard = onHandCards.Last();
 
-            for (int i = 1; i < onHandCards.Count; i++)
+            for (int i = onHandCards.Count - 2; i >= 0; i--)
             {
                 if (onHandCards[i].Rank == oldCard.Rank)
                     return onHandCards[i];
@@ -130,7 +130,7 @@ namespace PokerHands
 
         public static ResultDual CompareTwoPair(List<Card> onHandCards1, List<Card> onHandCards2)
         {
-            return ResultDual.Lose;
+            return ComparePair(onHandCards1, onHandCards2);
         }
     }
 }
