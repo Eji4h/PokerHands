@@ -168,7 +168,21 @@ namespace PokerHands
 
         public static ResultDual CompareThree_Of_A_Kind(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
-            return ResultDual.Lose;
+            Hand.OrderCard(cardsOnHand1);
+            Hand.OrderCard(cardsOnHand2);
+
+            var groupRankOnHand1 = GetGroupRankCard(cardsOnHand1);
+            var groupRankOnHand2 = GetGroupRankCard(cardsOnHand2);
+
+            var three_Of_A_Kind_CardOnHand1 = (from g in groupRankOnHand1
+                                              where g.Value.Count == 3
+                                              select g.Value).First().First();
+
+            var three_Of_A_Kind_CardOnHand2 = (from g in groupRankOnHand2
+                                              where g.Value.Count == 3
+                                              select g.Value.First()).First();
+
+            return CompareScoring(three_Of_A_Kind_CardOnHand1, three_Of_A_Kind_CardOnHand2);
         }
     }
 }
