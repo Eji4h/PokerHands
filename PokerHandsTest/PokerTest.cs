@@ -245,7 +245,7 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void ComparePairValue_HandOneIs_22345_And_HandTwoIs_23345_ResultDual_ShouldBe_Lose()
+        public void ComparePair_HandOneIs_22345_And_HandTwoIs_23345_ResultDual_ShouldBe_Lose()
         {
             var cardsOnHand1 = new List<Card>()
             {
@@ -265,7 +265,7 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void ComparePairValue_HandOneIs_23345_And_HandTwoIs_22345_ResultDual_ShouldBe_Win()
+        public void ComparePair_HandOneIs_23345_And_HandTwoIs_22345_ResultDual_ShouldBe_Win()
         {
             var cardsOnHand1 = new List<Card>()
             {
@@ -285,7 +285,7 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void ComparePairValue_HandOneIs_22356_And_HandTwoIs_22456_ResultDual_ShouldBe_Lose()
+        public void ComparePair_HandOneIs_22356_And_HandTwoIs_22456_ResultDual_ShouldBe_Lose()
         {
             var onHand22356 = new List<Card>()
             {
@@ -329,7 +329,7 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void CompareTwoPairsValue_HandOneIs_5577J_And_HandTwoIs_77QQA_ResultShouldBe_Lose()
+        public void CompareTwoPairs_HandOneIs_5577J_And_HandTwoIs_77QQA_ResultShouldBe_Lose()
         {
             var cardsOnHand1 = new List<Card>()
             {
@@ -349,7 +349,7 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void CompareTwoPairsValue_HandOneIs_6688T_And_HandTwoIs_3355K_ResultDualShouldBe_Win()
+        public void CompareTwoPairs_HandOneIs_6688T_And_HandTwoIs_3355K_ResultDualShouldBe_Win()
         {
             var cardsOnHand1 = new List<Card>()
             {
@@ -369,7 +369,7 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void CompareTwoPairsValue_HandOneIs_TTKAA_And_HandTwoIs_JJQAA_ResultDualShouldBe_Lose()
+        public void CompareTwoPairs_HandOneIs_TTKAA_And_HandTwoIs_JJQAA_ResultDualShouldBe_Lose()
         {
             var cardsOnHand1 = new List<Card>()
             {
@@ -389,7 +389,7 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void CompareTwoPairsValue_HandOneIs_JJKAA_And_HandTwoIs_JJQAA_ResultDualShouldBe_Win()
+        public void CompareTwoPairs_HandOneIs_JJKAA_And_HandTwoIs_JJQAA_ResultDualShouldBe_Win()
         {
             var cardsOnHand1 = new List<Card>()
             {
