@@ -174,7 +174,11 @@ namespace PokerHands
             var three_Of_A_Kind_CardOnHand1 = GetThree_Of_A_KindCardOnHand(cardsOnHand1);
             var three_Of_A_Kind_CardOnHand2 = GetThree_Of_A_KindCardOnHand(cardsOnHand2);
 
-            return CompareScoring(three_Of_A_Kind_CardOnHand1, three_Of_A_Kind_CardOnHand2);
+            var resultDual = CompareScoring(three_Of_A_Kind_CardOnHand1, three_Of_A_Kind_CardOnHand2);
+
+            if (resultDual == ResultDual.Draw)
+                resultDual = ResultDual.Lose;
+            return resultDual;
         }
 
         private static Card GetThree_Of_A_KindCardOnHand(List<Card> onHandCards)
