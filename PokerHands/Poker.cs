@@ -50,10 +50,10 @@ namespace PokerHands
 
         public static bool OnHandIsPair(List<Card> onHandCards)
         {
-            var groupRankCard = GetGroupRankCard(onHandCards);
+            var rankCardGroupsCount = GetRankCardGroupsCount(onHandCards);
 
-            foreach (var group in groupRankCard.Values)
-                if (group.Count == 2)
+            foreach (var rankCardGroupCount in rankCardGroupsCount.Values)
+                if (rankCardGroupCount == 2)
                     return true;
             return false;
         }
@@ -61,10 +61,10 @@ namespace PokerHands
         public static bool OnHandIsTwoPairs(List<Card> onHandCards)
         {
             int pairCount = 0;
-            var groupRankCard = GetGroupRankCard(onHandCards);
+            var rankCardGroupsCount = GetRankCardGroupsCount(onHandCards);
 
-            foreach (var group in groupRankCard.Values)
-                if (group.Count == 2)
+            foreach (var rankCardGroupCount in rankCardGroupsCount.Values)
+                if (rankCardGroupCount == 2)
                     pairCount++;
 
             return pairCount == 2;
@@ -72,18 +72,18 @@ namespace PokerHands
 
         public static bool OnHandIsThree_Of_A_Kind(List<Card> onHandCards)
         {
-            var groupRankCard = GetGroupRankCard(onHandCards);
+            var rankCardGroupsCount = GetRankCardGroupsCount(onHandCards);
 
-            foreach (var group in groupRankCard.Values)
-                if (group.Count == 3)
+            foreach (var rankCardGroupCount in rankCardGroupsCount.Values)
+                if (rankCardGroupCount == 3)
                     return true;
             return false;
         }
 
-        static Dictionary<RankType, List<Card>> GetGroupRankCard(List<Card> onHandCards)
+        static Dictionary<RankType, int> GetRankCardGroupsCount(List<Card> onHandCards)
         {
             return onHandCards.GroupBy(card => card.Rank).
-                ToDictionary(g => g.Key, g => g.ToList());
+                ToDictionary(g => g.Key, g => g.Count());
         }
 
         public static ResultDual CompareHighCard(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
@@ -156,7 +156,7 @@ namespace PokerHands
 
             var resultCompare = ComparePairCard(cardsOnHand1, cardsOnHand2);
 
-            if(resultCompare == ResultDual.Draw)
+            if (resultCompare == ResultDual.Draw)
             {
                 var remainCardsOnHand1 = RemoveHighestPairCardsOnHand(cardsOnHand1);
                 var remainCardsOnHand2 = RemoveHighestPairCardsOnHand(cardsOnHand2);
@@ -171,18 +171,18 @@ namespace PokerHands
             Hand.OrderCard(cardsOnHand1);
             Hand.OrderCard(cardsOnHand2);
 
-            var groupRankOnHand1 = GetGroupRankCard(cardsOnHand1);
-            var groupRankOnHand2 = GetGroupRankCard(cardsOnHand2);
-
-            var three_Of_A_Kind_CardOnHand1 = (from g in groupRankOnHand1
-                                              where g.Value.Count == 3
-                                              select g.Value).First().First();
-
-            var three_Of_A_Kind_CardOnHand2 = (from g in groupRankOnHand2
-                                              where g.Value.Count == 3
-                                              select g.Value.First()).First();
+            var three_Of_A_Kind_CardOnHand1 = GetThree_Of_A_KindCardOnHand(cardsOnHand1);
+            var three_Of_A_Kind_CardOnHand2 = GetThree_Of_A_KindCardOnHand(cardsOnHand2);
 
             return CompareScoring(three_Of_A_Kind_CardOnHand1, three_Of_A_Kind_CardOnHand2);
+        }
+
+        private static Card GetThree_Of_A_KindCardOnHand(List<Card> onHandCards)
+        {
+            return (from card in onHandCards
+                    group card by card.Rank into rankGroupCard
+                    where rankGroupCard.Count() == 3
+                    select rankGroupCard).First().First();
         }
     }
 }
