@@ -155,5 +155,10 @@ namespace PokerHands
             }
             return resultCompare;
         }
+
+        public static bool OnHandIsThree_Of_A_Kind(List<Card> onHandCards)
+        {
+            return false;
+        }
     }
 }

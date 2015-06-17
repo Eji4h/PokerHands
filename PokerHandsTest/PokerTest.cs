@@ -139,7 +139,7 @@ namespace PokerHandsTest
                 dummyCardRank3, dummyCardRank4, dummyCardRank5, dummyCardRank6, dummyCardRank7
             };
 
-            Assert.AreEqual(ResultDual.Lose, 
+            Assert.AreEqual(ResultDual.Lose,
                 Poker.CompareHighCard(cardsOnHand1, cardsOnHand2));
         }
 
@@ -248,7 +248,7 @@ namespace PokerHandsTest
                 dummyCardRank4, dummyCardRank5
             };
 
-            Assert.AreEqual(ResultDual.Lose, 
+            Assert.AreEqual(ResultDual.Lose,
                 Poker.ComparePair(cardsOnHand1, cardsOnHand2));
         }
 
@@ -268,7 +268,7 @@ namespace PokerHandsTest
                 dummyCardRank3, dummyCardRank4, dummyCardRank5
             };
 
-            Assert.AreEqual(ResultDual.Win, 
+            Assert.AreEqual(ResultDual.Win,
                 Poker.ComparePair(cardsOnHand1, cardsOnHand2));
         }
 
@@ -394,6 +394,21 @@ namespace PokerHandsTest
             };
 
             Assert.AreEqual(ResultDual.Win, Poker.CompareTwoPairs(cardsOnHand1, cardsOnHand2));
+        }
+        #endregion
+
+        #region Three_Of_A_Kind
+        [Test]
+        public void OnHandIs_22JJK_Three_Of_A_Kind_ShouldBe_False()
+        {
+            var onHandCards = new List<Card>()
+            {
+                dummyCardRank2, dummyCardRank2, 
+                dummyCardRankJack, dummyCardRankJack,
+                dummyCardRankKing
+            };
+
+            Assert.False(Poker.OnHandIsThree_Of_A_Kind(onHandCards));
         }
         #endregion
     }
