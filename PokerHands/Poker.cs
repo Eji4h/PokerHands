@@ -57,6 +57,17 @@ namespace PokerHands
             return pairCount == 2;
         }
 
+        public static bool OnHandIsThree_Of_A_Kind(List<Card> onHandCards)
+        {
+            var groupCounts = onHandCards.GroupBy(card => card.Rank).
+                ToDictionary(group => group.Key, group => group.Count());
+
+            foreach (var groupCount in groupCounts.Values)
+                if (groupCount == 3)
+                    return true;
+            return false;
+        }
+
         private static int GetPairCount(List<Card> onHandCards)
         {
             Hand.OrderCard(onHandCards);
@@ -154,17 +165,6 @@ namespace PokerHands
                 resultCompare = ComparePair(remainCardsOnHand1, remainCardsOnHand2);
             }
             return resultCompare;
-        }
-
-        public static bool OnHandIsThree_Of_A_Kind(List<Card> onHandCards)
-        {
-            var counts = onHandCards.GroupBy(card => card.Rank).
-                ToDictionary(group => group.Key, group => group.Count());
-
-            foreach (var count in counts.Values)
-                if (count == 3)
-                    return true;
-            return false;
         }
     }
 }
