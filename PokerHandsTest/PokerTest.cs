@@ -27,7 +27,7 @@ namespace PokerHandsTest
 
         #region RecognizeCatagory
         [Test]
-        public void OnHandIs_77QQA_CategoryShouldBe_TwoPair()
+        public void OnHandIs_77QQA_CategoryShouldBe_TwoPairs()
         {
             var onHandCards = new List<Card>()
             {
@@ -36,7 +36,7 @@ namespace PokerHandsTest
                 dummyCardRankAce
             };
 
-            Assert.AreEqual(Poker.Category.TwoPair, Poker.RecognizeCategory(onHandCards));
+            Assert.AreEqual(Poker.Category.TwoPairs, Poker.RecognizeCategory(onHandCards));
         }
 
         [Test]
@@ -291,9 +291,9 @@ namespace PokerHandsTest
         }
         #endregion
 
-        #region TwoPair
+        #region TwoPairs
         [Test]
-        public void OnHandIs_24A2A_TwoPair_ShouldBe_True()
+        public void OnHandIs_24A2A_TwoPairs_ShouldBe_True()
         {
             var onHandCards = new List<Card>()
             {
@@ -301,11 +301,11 @@ namespace PokerHandsTest
                 dummyCardRank2, dummyCardRankAce
             };
 
-            Assert.True(Poker.OnHandIsTwoPair(onHandCards));
+            Assert.True(Poker.OnHandIsTwoPairs(onHandCards));
         }
 
         [Test]
-        public void OnHandIs_22345_TwoPair_ShouldBe_False()
+        public void OnHandIs_22345_TwoPairs_ShouldBe_False()
         {
             var onHandCards = new List<Card>()
             {
@@ -313,11 +313,11 @@ namespace PokerHandsTest
                 dummyCardRank3, dummyCardRank4, dummyCardRank5
             };
 
-            Assert.False(Poker.OnHandIsTwoPair(onHandCards));
+            Assert.False(Poker.OnHandIsTwoPairs(onHandCards));
         }
 
         [Test]
-        public void CompareTwoPairValue_HandOneIs_5577J_And_HandTwoIs_77QQA_ResultShouldBe_Lose()
+        public void CompareTwoPairsValue_HandOneIs_5577J_And_HandTwoIs_77QQA_ResultShouldBe_Lose()
         {
             var cardsOnHand1 = new List<Card>()
             {
@@ -333,11 +333,11 @@ namespace PokerHandsTest
                 dummyCardRankAce
             };
 
-            Assert.AreEqual(ResultDual.Lose, Poker.CompareTwoPair(cardsOnHand1, cardsOnHand2));
+            Assert.AreEqual(ResultDual.Lose, Poker.CompareTwoPairs(cardsOnHand1, cardsOnHand2));
         }
 
         [Test]
-        public void CompareTwoPairValue_HandOneIs_6688T_And_HandTwoIs_3355K_ResultDualShouldBe_Win()
+        public void CompareTwoPairsValue_HandOneIs_6688T_And_HandTwoIs_3355K_ResultDualShouldBe_Win()
         {
             var cardsOnHand1 = new List<Card>()
             {
@@ -353,11 +353,11 @@ namespace PokerHandsTest
                 dummyCardRankKing
             };
 
-            Assert.AreEqual(ResultDual.Win, Poker.CompareTwoPair(cardsOnHand1, cardsOnHand2));
+            Assert.AreEqual(ResultDual.Win, Poker.CompareTwoPairs(cardsOnHand1, cardsOnHand2));
         }
 
         [Test]
-        public void CompareTwoPairValue_HandOneIs_TTKAA_And_HandTwoIs_JJQAA_ResultDualShouldBe_Lose()
+        public void CompareTwoPairsValue_HandOneIs_TTKAA_And_HandTwoIs_JJQAA_ResultDualShouldBe_Lose()
         {
             var cardsOnHand1 = new List<Card>()
             {
@@ -373,11 +373,11 @@ namespace PokerHandsTest
                 dummyCardRankAce, dummyCardRankAce
             };
 
-            Assert.AreEqual(ResultDual.Lose, Poker.CompareTwoPair(cardsOnHand1, cardsOnHand2));
+            Assert.AreEqual(ResultDual.Lose, Poker.CompareTwoPairs(cardsOnHand1, cardsOnHand2));
         }
 
         [Test]
-        public void CompareTwoPairValue_HandOneIs_JJKAA_And_HandTwoIs_JJQAA_ResultDualShouldBe_Win()
+        public void CompareTwoPairsValue_HandOneIs_JJKAA_And_HandTwoIs_JJQAA_ResultDualShouldBe_Win()
         {
             var cardsOnHand1 = new List<Card>()
             {
@@ -393,7 +393,7 @@ namespace PokerHandsTest
                 dummyCardRankAce, dummyCardRankAce
             };
 
-            Assert.AreEqual(ResultDual.Win, Poker.CompareTwoPair(cardsOnHand1, cardsOnHand2));
+            Assert.AreEqual(ResultDual.Win, Poker.CompareTwoPairs(cardsOnHand1, cardsOnHand2));
         }
         #endregion
     }

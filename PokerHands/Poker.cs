@@ -20,7 +20,7 @@ namespace PokerHands
         {
             HighCard,
             Pair,
-            TwoPair
+            TwoPairs
         }
 
         public static ResultDual CompareScoring(Card card1, Card card2)
@@ -38,8 +38,8 @@ namespace PokerHands
 
         public static Category RecognizeCategory(List<Card> onHandCards)
         {
-            if (OnHandIsTwoPair(onHandCards))
-                return Category.TwoPair;
+            if (OnHandIsTwoPairs(onHandCards))
+                return Category.TwoPairs;
             if (OnHandIsPair(onHandCards))
                 return Category.Pair;
             return Category.HighCard;
@@ -51,7 +51,7 @@ namespace PokerHands
             return pairCount == 1;
         }
 
-        public static bool OnHandIsTwoPair(List<Card> onHandCards)
+        public static bool OnHandIsTwoPairs(List<Card> onHandCards)
         {
             int pairCount = GetPairCount(onHandCards);
             return pairCount == 2;
@@ -138,7 +138,7 @@ namespace PokerHands
             return resultCompare;
         }
 
-        public static ResultDual CompareTwoPair(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
+        public static ResultDual CompareTwoPairs(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
             var resultCompare = ComparePairCard(cardsOnHand1, cardsOnHand2);
 
