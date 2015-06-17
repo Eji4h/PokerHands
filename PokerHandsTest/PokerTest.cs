@@ -410,6 +410,18 @@ namespace PokerHandsTest
 
             Assert.False(Poker.OnHandIsThree_Of_A_Kind(onHandCards));
         }
+
+        [Test]
+        public void OnHandIs_222JK_Three_Of_A_Kind_ShouldBe_True()
+        {
+            var onHandCards = new List<Card>()
+            {
+                dummyCardRank2, dummyCardRank2, dummyCardRank2,
+                dummyCardRankJack, dummyCardRankKing
+            };
+
+            Assert.True(Poker.OnHandIsThree_Of_A_Kind(onHandCards));
+        }
         #endregion
     }
 }

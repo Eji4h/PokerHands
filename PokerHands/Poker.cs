@@ -158,6 +158,12 @@ namespace PokerHands
 
         public static bool OnHandIsThree_Of_A_Kind(List<Card> onHandCards)
         {
+            var counts = onHandCards.GroupBy(card => card.Rank).
+                ToDictionary(group => group.Key, group => group.Count());
+
+            foreach (var count in counts.Values)
+                if (count == 3)
+                    return true;
             return false;
         }
     }
