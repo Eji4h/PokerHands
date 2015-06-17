@@ -146,6 +146,14 @@ namespace PokerHands
 
                 resultCompareScoring = CompareScoring(secondPairCardOfHand1, secondPairCardOfHand2);
             }
+
+            if(resultCompareScoring == ResultDual.Draw)
+            {
+                var cardsOnHand1NotPairCards = GetOtherCardsOnHand(cardsOnHand1, cardPairOfHand1);
+                var cardsOnHand2NotPairCards = GetOtherCardsOnHand(cardsOnHand2, cardPairOfHand2);
+
+                resultCompareScoring = CompareHighCard(cardsOnHand1NotPairCards, cardsOnHand2NotPairCards);
+            }
             return resultCompareScoring;
         }
     }

@@ -375,6 +375,26 @@ namespace PokerHandsTest
 
             Assert.AreEqual(ResultDual.Lose, Poker.CompareTwoPair(cardsOnHand1, cardsOnHand2));
         }
+
+        [Test]
+        public void CompareTwoPairValue_HandOneIs_JJKAA_And_HandTwoIs_JJQAA_ResultDualShouldBe_Win()
+        {
+            var cardsOnHand1 = new List<Card>()
+            {
+                dummyCardRankJack, dummyCardRankJack,
+                dummyCardRankKing,
+                dummyCardRankAce, dummyCardRankAce
+            };
+
+            var cardsOnHand2 = new List<Card>()
+            {
+                dummyCardRankJack, dummyCardRankJack,
+                dummyCardRankQueen,
+                dummyCardRankAce, dummyCardRankAce
+            };
+
+            Assert.AreEqual(ResultDual.Win, Poker.CompareTwoPair(cardsOnHand1, cardsOnHand2));
+        }
         #endregion
     }
 }
