@@ -27,6 +27,18 @@ namespace PokerHandsTest
 
         #region RecognizeCatagory
         [Test]
+        public void OnHandIs_QQQKA_CategoryShouldBe_Three_Of_A_Kind()
+        {
+            var onHandCards = new List<Card>()
+            {
+                dummyCardRankQueen, dummyCardRankQueen, dummyCardRankQueen,
+                dummyCardRankKing, dummyCardRankAce
+            };
+
+            Assert.AreEqual(Poker.Category.Three_Of_A_Kind, Poker.RecognizeCategory(onHandCards));
+        }
+
+        [Test]
         public void OnHandIs_77QQA_CategoryShouldBe_TwoPairs()
         {
             var onHandCards = new List<Card>()
