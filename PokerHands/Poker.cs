@@ -107,8 +107,6 @@ namespace PokerHands
 
         static Card GetNextPairCard(List<Card> onHandCards)
         {
-            Hand.OrderCard(onHandCards);
-
             var oldCard = onHandCards.Last();
 
             for (int i = onHandCards.Count - 2; i >= 0; i--)
@@ -131,6 +129,9 @@ namespace PokerHands
 
         public static ResultDual ComparePair(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
+            Hand.OrderCard(cardsOnHand1);
+            Hand.OrderCard(cardsOnHand2);
+
             var resultCompare = ComparePairCard(cardsOnHand1, cardsOnHand2);
 
             if (resultCompare == ResultDual.Draw)
@@ -140,6 +141,9 @@ namespace PokerHands
 
         public static ResultDual CompareTwoPairs(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
+            Hand.OrderCard(cardsOnHand1);
+            Hand.OrderCard(cardsOnHand2);
+
             var resultCompare = ComparePairCard(cardsOnHand1, cardsOnHand2);
 
             if(resultCompare == ResultDual.Draw)
