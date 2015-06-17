@@ -50,44 +50,40 @@ namespace PokerHands
 
         public static bool OnHandIsPair(List<Card> onHandCards)
         {
-            int pairCount = GetPairCount(onHandCards);
-            return pairCount == 1;
+            var groupRankCard = GetGroupRankCard(onHandCards);
+
+            foreach (var group in groupRankCard.Values)
+                if (group.Count == 2)
+                    return true;
+            return false;
         }
 
         public static bool OnHandIsTwoPairs(List<Card> onHandCards)
         {
-            int pairCount = GetPairCount(onHandCards);
+            int pairCount = 0;
+            var groupRankCard = GetGroupRankCard(onHandCards);
+
+            foreach (var group in groupRankCard.Values)
+                if (group.Count == 2)
+                    pairCount++;
+
             return pairCount == 2;
         }
 
         public static bool OnHandIsThree_Of_A_Kind(List<Card> onHandCards)
         {
-            var groupCounts = onHandCards.GroupBy(card => card.Rank).
-                ToDictionary(group => group.Key, group => group.Count());
+            var groupRankCard = GetGroupRankCard(onHandCards);
 
-            foreach (var groupCount in groupCounts.Values)
-                if (groupCount == 3)
+            foreach (var group in groupRankCard.Values)
+                if (group.Count == 3)
                     return true;
             return false;
         }
 
-        private static int GetPairCount(List<Card> onHandCards)
+        static Dictionary<RankType, List<Card>> GetGroupRankCard(List<Card> onHandCards)
         {
-            Hand.OrderCard(onHandCards);
-
-            int pairCount = 0;
-
-            for (int i = 1; i < onHandCards.Count; i++)
-            {
-                var oldCard = onHandCards[i - 1];
-
-                if (onHandCards[i].Rank == oldCard.Rank)
-                {
-                    pairCount++;
-                    i++;
-                }
-            }
-            return pairCount;
+            return onHandCards.GroupBy(card => card.Rank).
+                ToDictionary(g => g.Key, g => g.ToList());
         }
 
         public static ResultDual CompareHighCard(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
