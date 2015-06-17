@@ -177,7 +177,7 @@ namespace PokerHands
             var resultDual = CompareScoring(three_Of_A_Kind_CardOnHand1, three_Of_A_Kind_CardOnHand2);
 
             if (resultDual == ResultDual.Draw)
-                resultDual = ResultDual.Lose;
+                resultDual = CompareHighCard(cardsOnHand1, cardsOnHand2);
             return resultDual;
         }
 
