@@ -210,7 +210,7 @@ namespace PokerHandsTest
 
         #region Pair
         [Test]
-        public void OnHandIs_22345_ShouldBe_Pair()
+        public void OnHandIs_22345_Pair_ShouldBe_True()
         {
             var onHandCards = new List<Card>()
             {
@@ -222,7 +222,7 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void OnHandIs_23456_ShouldBe_NotPair()
+        public void OnHandIs_23456_Pair_ShouldBe_False()
         {
             var onHandCards = new List<Card>()
             {
@@ -293,7 +293,7 @@ namespace PokerHandsTest
 
         #region TwoPair
         [Test]
-        public void OnHandIs_24A2A_ShouldBe_TwoPair()
+        public void OnHandIs_24A2A_TwoPair_ShouldBe_True()
         {
             var onHandCards = new List<Card>()
             {
@@ -305,7 +305,7 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void OnHandIs_22345_ShouldBe_NotTwoPair()
+        public void OnHandIs_22345_TwoPair_ShouldBe_False()
         {
             var onHandCards = new List<Card>()
             {
