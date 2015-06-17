@@ -83,67 +83,66 @@ namespace PokerHands
 
             for (int i = cardsOnHand1.Count - 1; i >= 0; i--)
             {
-                var nextHighestCardFromHand1 = cardsOnHand1[i];
-                var nextHighestCardFromHand2 = cardsOnHand2[i];
+                var cardFromHand1 = cardsOnHand1[i];
+                var cardFromHand2 = cardsOnHand2[i];
 
-                var nextIndexResultDual = CompareScoring(nextHighestCardFromHand1, nextHighestCardFromHand2);
-                if (nextIndexResultDual != ResultDual.Draw)
-                    return nextIndexResultDual;
+                var resultDual = CompareScoring(cardFromHand1, cardFromHand2);
+                if (resultDual != ResultDual.Draw)
+                    return resultDual;
             }
             return ResultDual.Draw;
         }
 
         public static ResultDual ComparePair(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
-            var cardPairOfHand1 = GetPairCard(cardsOnHand1);
-            var cardPairOfHand2 = GetPairCard(cardsOnHand2);
+            var cardPairOfHand1 = GetNextPairCard(cardsOnHand1);
+            var cardPairOfHand2 = GetNextPairCard(cardsOnHand2);
 
             var resultCompareScoring = CompareScoring(cardPairOfHand1, cardPairOfHand2);
 
             if (resultCompareScoring == ResultDual.Draw)
             {
-                var onHand1NotPairCards = GetOnHandNotPairCards(cardsOnHand1, cardPairOfHand1);
-                var onHand2NotPairCards = GetOnHandNotPairCards(cardsOnHand2, cardPairOfHand2);
+                var cardsOnHand1NotPairCards = GetOtherCardsOnHand(cardsOnHand1, cardPairOfHand1);
+                var cardsOnHand2NotPairCards = GetOtherCardsOnHand(cardsOnHand2, cardPairOfHand2);
 
-                resultCompareScoring = CompareHighCard(onHand1NotPairCards, onHand2NotPairCards);
+                resultCompareScoring = CompareHighCard(cardsOnHand1NotPairCards, cardsOnHand2NotPairCards);
             }
             return resultCompareScoring;
         }
 
-        private static List<Card> GetOnHandNotPairCards(List<Card> onHandCards, Card cardPairOfHand)
+        private static List<Card> GetOtherCardsOnHand(List<Card> onHandCards, Card cardPairOfHand)
         {
             return onHandCards.Where(card => card.Rank != cardPairOfHand.Rank).ToList();
         }
 
-        static Card GetPairCard(List<Card> onHandCards)
+        static Card GetNextPairCard(List<Card> onHandCards)
         {
             var oldCard = onHandCards.Last();
 
             for (int i = onHandCards.Count - 2; i >= 0; i--)
             {
-                if (onHandCards[i].Rank == oldCard.Rank)
-                    return onHandCards[i];
-                oldCard = onHandCards[i];
+                var card = onHandCards[i];
+                if (card.Rank == oldCard.Rank)
+                    return card;
+                oldCard = card;
             }
             return null;
         }
 
         public static ResultDual CompareTwoPair(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
-            var cardPairOfHand1 = GetPairCard(cardsOnHand1);
-            var cardPairOfHand2 = GetPairCard(cardsOnHand2);
+            var cardPairOfHand1 = GetNextPairCard(cardsOnHand1);
+            var cardPairOfHand2 = GetNextPairCard(cardsOnHand2);
 
             var resultCompareScoring = CompareScoring(cardPairOfHand1, cardPairOfHand2);
 
             if(resultCompareScoring == ResultDual.Draw)
             {
-                var cardsOnHand1_NotHighestPair = cardsOnHand1.Where(card =>
-                    card.Rank != cardPairOfHand1.Rank).ToList();
-                var cardsOnHand2_NotHighestPair = cardsOnHand2.Where(card =>
-                    card.Rank != cardPairOfHand2.Rank).ToList();
+                var remainCardsOnHand1 = GetOtherCardsOnHand(cardsOnHand1, cardPairOfHand1);
+                var remainCardsOnHand2 = GetOtherCardsOnHand(cardsOnHand2, cardPairOfHand2);
 
-                var secondPairCardOfHand1 = GetPairCard(cardsOnHand1_NotHighestPair);
-                var secondPairCardOfHand2 = GetPairCard(cardsOnHand2_NotHighestPair);
+                var secondPairCardOfHand1 = GetNextPairCard(remainCardsOnHand1);
+                var secondPairCardOfHand2 = GetNextPairCard(remainCardsOnHand2);
 
                 resultCompareScoring = CompareScoring(secondPairCardOfHand1, secondPairCardOfHand2);
             }
