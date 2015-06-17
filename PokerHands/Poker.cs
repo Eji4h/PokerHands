@@ -128,9 +128,26 @@ namespace PokerHands
             return null;
         }
 
-        public static ResultDual CompareTwoPair(List<Card> onHandCards1, List<Card> onHandCards2)
+        public static ResultDual CompareTwoPair(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
-            return ComparePair(onHandCards1, onHandCards2);
+            var cardPairOfHand1 = GetPairCard(cardsOnHand1);
+            var cardPairOfHand2 = GetPairCard(cardsOnHand2);
+
+            var resultCompareScoring = CompareScoring(cardPairOfHand1, cardPairOfHand2);
+
+            if(resultCompareScoring == ResultDual.Draw)
+            {
+                var cardsOnHand1_NotHighestPair = cardsOnHand1.Where(card =>
+                    card.Rank != cardPairOfHand1.Rank).ToList();
+                var cardsOnHand2_NotHighestPair = cardsOnHand2.Where(card =>
+                    card.Rank != cardPairOfHand2.Rank).ToList();
+
+                var secondPairCardOfHand1 = GetPairCard(cardsOnHand1_NotHighestPair);
+                var secondPairCardOfHand2 = GetPairCard(cardsOnHand2_NotHighestPair);
+
+                resultCompareScoring = CompareScoring(secondPairCardOfHand1, secondPairCardOfHand2);
+            }
+            return resultCompareScoring;
         }
     }
 }
