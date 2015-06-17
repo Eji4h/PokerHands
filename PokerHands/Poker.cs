@@ -165,5 +165,10 @@ namespace PokerHands
             }
             return resultCompare;
         }
+
+        public static ResultDual CompareThree_Of_A_Kind(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
+        {
+            return ResultDual.Lose;
+        }
     }
 }

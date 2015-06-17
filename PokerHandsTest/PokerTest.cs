@@ -434,6 +434,24 @@ namespace PokerHandsTest
 
             Assert.True(Poker.OnHandIsThree_Of_A_Kind(onHandCards));
         }
+
+        [Test]
+        public void CompareThree_Of_A_Kind_HandOneIs_222JK_And_HandTwoIs_333JK_ResultShouldBe_Lose()
+        {
+            var cardsOnHand1 = new List<Card>()
+            {
+                dummyCardRank2, dummyCardRank2, dummyCardRank2,
+                dummyCardRankJack, dummyCardRankKing
+            };
+
+            var cardsOnHand2 = new List<Card>()
+            {
+                dummyCardRank3, dummyCardRank3, dummyCardRank3,
+                dummyCardRankJack, dummyCardRankKing
+            };
+
+            Assert.AreEqual(ResultDual.Lose, Poker.CompareThree_Of_A_Kind(cardsOnHand1, cardsOnHand2));
+        }
         #endregion
     }
 }
