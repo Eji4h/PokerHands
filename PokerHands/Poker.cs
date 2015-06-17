@@ -93,30 +93,22 @@ namespace PokerHands
             return ResultDual.Draw;
         }
 
-        public static ResultDual ComparePair(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
-        {
-            var cardPairOfHand1 = GetNextPairCard(cardsOnHand1);
-            var cardPairOfHand2 = GetNextPairCard(cardsOnHand2);
-
-            var resultCompareScoring = CompareScoring(cardPairOfHand1, cardPairOfHand2);
-
-            if (resultCompareScoring == ResultDual.Draw)
-            {
-                var cardsOnHand1NotPairCards = GetOtherCardsOnHand(cardsOnHand1, cardPairOfHand1);
-                var cardsOnHand2NotPairCards = GetOtherCardsOnHand(cardsOnHand2, cardPairOfHand2);
-
-                resultCompareScoring = CompareHighCard(cardsOnHand1NotPairCards, cardsOnHand2NotPairCards);
-            }
-            return resultCompareScoring;
-        }
-
-        private static List<Card> GetOtherCardsOnHand(List<Card> onHandCards, Card cardPairOfHand)
+        private static List<Card> GetOtherCardsRankOnHand(List<Card> onHandCards, Card cardPairOfHand)
         {
             return onHandCards.Where(card => card.Rank != cardPairOfHand.Rank).ToList();
         }
 
+        private static List<Card> RemoveHighestPairCardsOnHand(List<Card> onHandCards)
+        {
+            var highestCardPairOfHand = GetNextPairCard(onHandCards);
+
+            return GetOtherCardsRankOnHand(onHandCards, highestCardPairOfHand);
+        }
+
         static Card GetNextPairCard(List<Card> onHandCards)
         {
+            Hand.OrderCard(onHandCards);
+
             var oldCard = onHandCards.Last();
 
             for (int i = onHandCards.Count - 2; i >= 0; i--)
@@ -129,32 +121,35 @@ namespace PokerHands
             return null;
         }
 
-        public static ResultDual CompareTwoPair(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
+        private static ResultDual ComparePairCard(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
             var cardPairOfHand1 = GetNextPairCard(cardsOnHand1);
             var cardPairOfHand2 = GetNextPairCard(cardsOnHand2);
 
-            var resultCompareScoring = CompareScoring(cardPairOfHand1, cardPairOfHand2);
+            return CompareScoring(cardPairOfHand1, cardPairOfHand2);
+        }
 
-            if(resultCompareScoring == ResultDual.Draw)
+        public static ResultDual ComparePair(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
+        {
+            var resultCompare = ComparePairCard(cardsOnHand1, cardsOnHand2);
+
+            if (resultCompare == ResultDual.Draw)
+                resultCompare = CompareHighCard(cardsOnHand1, cardsOnHand2);
+            return resultCompare;
+        }
+
+        public static ResultDual CompareTwoPair(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
+        {
+            var resultCompare = ComparePairCard(cardsOnHand1, cardsOnHand2);
+
+            if(resultCompare == ResultDual.Draw)
             {
-                var remainCardsOnHand1 = GetOtherCardsOnHand(cardsOnHand1, cardPairOfHand1);
-                var remainCardsOnHand2 = GetOtherCardsOnHand(cardsOnHand2, cardPairOfHand2);
+                var remainCardsOnHand1 = RemoveHighestPairCardsOnHand(cardsOnHand1);
+                var remainCardsOnHand2 = RemoveHighestPairCardsOnHand(cardsOnHand2);
 
-                var secondPairCardOfHand1 = GetNextPairCard(remainCardsOnHand1);
-                var secondPairCardOfHand2 = GetNextPairCard(remainCardsOnHand2);
-
-                resultCompareScoring = CompareScoring(secondPairCardOfHand1, secondPairCardOfHand2);
+                resultCompare = ComparePair(remainCardsOnHand1, remainCardsOnHand2);
             }
-
-            if(resultCompareScoring == ResultDual.Draw)
-            {
-                var cardsOnHand1NotPairCards = GetOtherCardsOnHand(cardsOnHand1, cardPairOfHand1);
-                var cardsOnHand2NotPairCards = GetOtherCardsOnHand(cardsOnHand2, cardPairOfHand2);
-
-                resultCompareScoring = CompareHighCard(cardsOnHand1NotPairCards, cardsOnHand2NotPairCards);
-            }
-            return resultCompareScoring;
+            return resultCompare;
         }
     }
 }
