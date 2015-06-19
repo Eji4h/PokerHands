@@ -512,5 +512,19 @@ namespace PokerHandsTest
             Assert.AreEqual(ResultDual.Win, Poker.CompareThree_Of_A_Kind(cardsOnHand1, cardsOnHand2));
         }
         #endregion
+
+        #region Straight
+        [Test]
+        public void OnHandIs_22234_Straight_ShouldBe_False()
+        {
+            var onHandCards = new List<Card>()
+            {
+                dummyCardRank2, dummyCardRank2, dummyCardRank2,
+                dummyCardRank3, dummyCardRank4
+            };
+
+            Assert.False(Poker.OnHandIsStraight(onHandCards));
+        }
+        #endregion
     }
 }

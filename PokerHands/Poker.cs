@@ -188,5 +188,10 @@ namespace PokerHands
                     where rankGroupCard.Count() == 3
                     select rankGroupCard).First().First();
         }
+
+        public static bool OnHandIsStraight(List<Card> onHandCards)
+        {
+            return false;
+        }
     }
 }
