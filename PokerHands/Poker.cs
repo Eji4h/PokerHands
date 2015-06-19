@@ -191,7 +191,20 @@ namespace PokerHands
 
         public static bool OnHandIsStraight(List<Card> onHandCards)
         {
-            return false;
+            Hand.OrderCard(onHandCards);
+
+            int nextRankToCheck = (int)onHandCards.First().Rank;
+
+            for (int i = 0; i < onHandCards.Count; i++)
+            {
+                int currentRank = (int)onHandCards[i].Rank;
+
+                if (currentRank == nextRankToCheck)
+                    nextRankToCheck++;
+                else
+                    return false;
+            }
+            return true;
         }
     }
 }
