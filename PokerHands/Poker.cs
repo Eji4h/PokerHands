@@ -206,5 +206,10 @@ namespace PokerHands
             }
             return true;
         }
+
+        public static ResultDual CompareStraight(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
+        {
+            return ResultDual.Lose;
+        }
     }
 }

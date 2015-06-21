@@ -537,6 +537,24 @@ namespace PokerHandsTest
 
             Assert.True(Poker.OnHandIsStraight(onHandCards));
         }
+
+        [Test]
+        public void CompareStraight_HandOneIs_23456_And_HandTwoIs_34567_ResultShouldBe_Lose()
+        {
+            var cardsOnHand1 = new List<Card>()
+            {
+                dummyCardRank2, dummyCardRank3, dummyCardRank4,
+                dummyCardRank5, dummyCardRank6
+            };
+
+            var cardsOnHand2 = new List<Card>()
+            {
+                dummyCardRank3, dummyCardRank4, dummyCardRank5,
+                dummyCardRank6, dummyCardRank7
+            };
+
+            Assert.AreEqual(ResultDual.Lose, Poker.CompareStraight(cardsOnHand1, cardsOnHand2));
+        }
         #endregion
     }
 }
