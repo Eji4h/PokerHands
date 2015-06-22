@@ -200,14 +200,27 @@ namespace PokerHands
         {
             Hand.OrderCard(onHandCards);
 
+            NewCardsOrderForCheckStraight(onHandCards);
+
+            bool isStraight = IsStraight(onHandCards);
+            Hand.OrderCard(onHandCards);
+
+            return isStraight;
+        }
+
+        private static void NewCardsOrderForCheckStraight(List<Card> onHandCards)
+        {
             var lastCardOnHand = onHandCards.Last();
 
-            if(lastCardOnHand.Rank == RankType.Ace)
+            if (lastCardOnHand.Rank == RankType.Ace)
             {
                 onHandCards.Remove(lastCardOnHand);
                 onHandCards.Insert(0, lastCardOnHand);
             }
+        }
 
+        private static bool IsStraight(List<Card> onHandCards)
+        {
             int nextRankToCheck = (int)onHandCards.First().Rank;
 
             for (int i = 0; i < onHandCards.Count; i++)
@@ -217,12 +230,8 @@ namespace PokerHands
                 if (currentRank == nextRankToCheck)
                     nextRankToCheck++;
                 else
-                {
-                    Hand.OrderCard(onHandCards);
                     return false;
-                }
             }
-            Hand.OrderCard(onHandCards);
             return true;
         }
 
