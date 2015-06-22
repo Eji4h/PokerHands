@@ -258,6 +258,8 @@ namespace PokerHands
 
             if (lastCardOnHand1.Rank == RankType.Ace)
                 return ResultDual.Lose;
+            if (lastCardOnHand2.Rank == RankType.Ace)
+                return ResultDual.Win;
 
             return CompareScoring(lastCardOnHand1, lastCardOnHand2);
         }
