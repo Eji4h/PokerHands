@@ -210,12 +210,16 @@ namespace PokerHands
 
         private static void NewCardsOrderForCheckStraight(List<Card> onHandCards)
         {
+            var firstCardOnHand = onHandCards.First();
             var lastCardOnHand = onHandCards.Last();
 
             if (lastCardOnHand.Rank == RankType.Ace)
             {
-                onHandCards.Remove(lastCardOnHand);
-                onHandCards.Insert(0, lastCardOnHand);
+                if (firstCardOnHand.Rank == RankType.Two)
+                {
+                    onHandCards.Remove(lastCardOnHand);
+                    onHandCards.Insert(0, lastCardOnHand);
+                }
             }
         }
 
@@ -227,9 +231,11 @@ namespace PokerHands
             {
                 int currentRank = (int)onHandCards[i].Rank;
 
-                if (currentRank == nextRankToCheck)
-                    nextRankToCheck++;
-                else
+                if (i == onHandCards.Count - 1 &&
+                    currentRank == (int)RankType.Ace)
+                    currentRank = (int)RankType.King + 1;
+
+                if (currentRank != nextRankToCheck++)
                     return false;
             }
             return true;
