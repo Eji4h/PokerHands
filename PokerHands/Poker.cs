@@ -48,6 +48,13 @@ namespace PokerHands
             return Category.HighCard;
         }
 
+        public static bool OnHandIsHighCard(List<Card> onHandCards)
+        {
+            var onHandCardsCatagory = RecognizeCategory(onHandCards);
+
+            return onHandCardsCatagory == Category.HighCard;
+        }
+
         public static bool OnHandIsPair(List<Card> onHandCards)
         {
             var rankCardGroupsCount = GetRankCardGroupsCount(onHandCards);
@@ -213,13 +220,6 @@ namespace PokerHands
             Hand.OrderCard(cardsOnHand2);
 
             return CompareScoring(cardsOnHand1.Last(), cardsOnHand2.Last());
-        }
-
-        public static bool OnHandIsHighCard(List<Card> onHandCards)
-        {
-            var onHandCardsCatagory = RecognizeCategory(onHandCards);
-
-            return onHandCardsCatagory == Category.HighCard;
         }
     }
 }
