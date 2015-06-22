@@ -226,32 +226,26 @@ namespace PokerHands
         private static bool IsStraight(List<Card> onHandCards)
         {
             int nextRankToCheck = (int)onHandCards.First().Rank;
-            int loopCount = onHandCards.Count;
+            var onHandCardsRank = new RankType[onHandCards.Count];
+
+            SetOnHandCardsForCheckOnHandIsStraight(onHandCards, onHandCardsRank);
+
+            for (int i = 0; i < onHandCardsRank.Length; i++)
+            {
+                if ((int)onHandCardsRank[i] != nextRankToCheck++)
+                    return false;
+            }
+            return true;
+        }
+
+        private static void SetOnHandCardsForCheckOnHandIsStraight(List<Card> onHandCards, RankType[] onHandCardsRank)
+        {
+            for (int i = 0; i < onHandCardsRank.Length; i++)
+                onHandCardsRank[i] = onHandCards[i].Rank;
 
             var lastCardOnHand = onHandCards.Last();
-            bool lastCardOnHandIsAce = lastCardOnHand.Rank == RankType.Ace;
-
-            if (lastCardOnHandIsAce)
-                loopCount--;
-
-            for (int i = 0; i < loopCount; i++)
-            {
-                int currentRank = (int)onHandCards[i].Rank;
-
-                if (currentRank != nextRankToCheck++)
-                    return false;
-            }
-
-            if(lastCardOnHandIsAce)
-            {
-                int currentRank = (int)RankType.King + 1;
-
-                if (currentRank != nextRankToCheck)
-                    return false;
-            }
-
-
-            return true;
+            if (lastCardOnHand.Rank == RankType.Ace)
+                onHandCardsRank[onHandCardsRank.Length - 1] = RankType.King + 1;
         }
 
         public static ResultDual CompareStraight(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
