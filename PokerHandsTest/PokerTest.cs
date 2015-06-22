@@ -622,6 +622,18 @@ namespace PokerHandsTest
         }
 
         [Test]
+        public void OnHandIs_12345_Straight_ShouldBe_True()
+        {
+            var onHandCards = new List<Card>()
+            {
+                dummyCardRankAce, dummyCardRank2, dummyCardRank3, 
+                dummyCardRank4, dummyCardRank5
+            };
+
+            Assert.True(Poker.OnHandIsStraight(onHandCards));
+        }
+
+        [Test]
         public void CompareStraight_HandOneIs_23456_And_HandTwoIs_34567_ResultShouldBe_Lose()
         {
             var cardsOnHand1 = new List<Card>()

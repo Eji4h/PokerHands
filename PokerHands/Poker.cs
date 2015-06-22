@@ -200,6 +200,14 @@ namespace PokerHands
         {
             Hand.OrderCard(onHandCards);
 
+            var lastCardOnHand = onHandCards.Last();
+
+            if(lastCardOnHand.Rank == RankType.Ace)
+            {
+                onHandCards.Remove(lastCardOnHand);
+                onHandCards.Insert(0, lastCardOnHand);
+            }
+
             int nextRankToCheck = (int)onHandCards.First().Rank;
 
             for (int i = 0; i < onHandCards.Count; i++)
@@ -209,8 +217,12 @@ namespace PokerHands
                 if (currentRank == nextRankToCheck)
                     nextRankToCheck++;
                 else
+                {
+                    Hand.OrderCard(onHandCards);
                     return false;
+                }
             }
+            Hand.OrderCard(onHandCards);
             return true;
         }
 
