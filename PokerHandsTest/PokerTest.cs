@@ -404,6 +404,9 @@ namespace PokerHandsTest
                 dummyCardRankAce
             };
 
+            Assert.True(Poker.OnHandIsTwoPairs(cardsOnHand1));
+            Assert.True(Poker.OnHandIsTwoPairs(cardsOnHand2));
+
             Assert.AreEqual(ResultDual.Lose, Poker.CompareTwoPairs(cardsOnHand1, cardsOnHand2));
         }
 
@@ -423,6 +426,9 @@ namespace PokerHandsTest
                 dummyCardRank5, dummyCardRank5,
                 dummyCardRankKing
             };
+
+            Assert.True(Poker.OnHandIsTwoPairs(cardsOnHand1));
+            Assert.True(Poker.OnHandIsTwoPairs(cardsOnHand2));
 
             Assert.AreEqual(ResultDual.Win, Poker.CompareTwoPairs(cardsOnHand1, cardsOnHand2));
         }
@@ -444,6 +450,9 @@ namespace PokerHandsTest
                 dummyCardRankAce, dummyCardRankAce
             };
 
+            Assert.True(Poker.OnHandIsTwoPairs(cardsOnHand1));
+            Assert.True(Poker.OnHandIsTwoPairs(cardsOnHand2));
+
             Assert.AreEqual(ResultDual.Lose, Poker.CompareTwoPairs(cardsOnHand1, cardsOnHand2));
         }
 
@@ -463,6 +472,9 @@ namespace PokerHandsTest
                 dummyCardRankQueen,
                 dummyCardRankAce, dummyCardRankAce
             };
+
+            Assert.True(Poker.OnHandIsTwoPairs(cardsOnHand1));
+            Assert.True(Poker.OnHandIsTwoPairs(cardsOnHand2));
 
             Assert.AreEqual(ResultDual.Win, Poker.CompareTwoPairs(cardsOnHand1, cardsOnHand2));
         }
