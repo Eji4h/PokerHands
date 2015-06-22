@@ -253,7 +253,13 @@ namespace PokerHands
             Hand.OrderCard(cardsOnHand1);
             Hand.OrderCard(cardsOnHand2);
 
-            return CompareScoring(cardsOnHand1.Last(), cardsOnHand2.Last());
+            var lastCardOnHand1 = cardsOnHand1.Last();
+            var lastCardOnHand2 = cardsOnHand2.Last();
+
+            if (lastCardOnHand1.Rank == RankType.Ace)
+                return ResultDual.Lose;
+
+            return CompareScoring(lastCardOnHand1, lastCardOnHand2);
         }
     }
 }
