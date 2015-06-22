@@ -209,7 +209,10 @@ namespace PokerHands
 
         public static ResultDual CompareStraight(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
-            return ResultDual.Lose;
+            Hand.OrderCard(cardsOnHand1);
+            Hand.OrderCard(cardsOnHand2);
+
+            return CompareScoring(cardsOnHand1.Last(), cardsOnHand2.Last());
         }
     }
 }
