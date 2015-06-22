@@ -229,7 +229,9 @@ namespace PokerHands
             int loopCount = onHandCards.Count;
 
             var lastCardOnHand = onHandCards.Last();
-            if (lastCardOnHand.Rank == RankType.Ace)
+            bool lastCardOnHandIsAce = lastCardOnHand.Rank == RankType.Ace;
+
+            if (lastCardOnHandIsAce)
                 loopCount--;
 
             for (int i = 0; i < loopCount; i++)
@@ -239,6 +241,15 @@ namespace PokerHands
                 if (currentRank != nextRankToCheck++)
                     return false;
             }
+
+            if(lastCardOnHandIsAce)
+            {
+                int currentRank = (int)RankType.King + 1;
+
+                if (currentRank != nextRankToCheck)
+                    return false;
+            }
+
 
             return true;
         }
