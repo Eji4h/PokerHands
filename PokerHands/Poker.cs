@@ -209,14 +209,14 @@ namespace PokerHands
         {
             NewCardsOrderForCheckIsStraight(onHandCards);
 
-            int nextRankToCheck = (int)onHandCards.First().Rank;
+            var nextRankToCheck = onHandCards.First().Rank;
             var onHandCardsRank = new RankType[onHandCards.Count];
 
             SetOnHandCardsRankForCheckOnHandIsStraight(onHandCards, onHandCardsRank);
 
             for (int i = 0; i < onHandCardsRank.Length; i++)
             {
-                if ((int)onHandCardsRank[i] != nextRankToCheck++)
+                if (onHandCardsRank[i] != nextRankToCheck++)
                     return false;
             }
             return true;
