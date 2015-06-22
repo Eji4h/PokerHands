@@ -310,6 +310,9 @@ namespace PokerHandsTest
                 dummyCardRank4, dummyCardRank5
             };
 
+            Assert.True(Poker.OnHandIsPair(cardsOnHand1));
+            Assert.True(Poker.OnHandIsPair(cardsOnHand2));
+
             Assert.AreEqual(ResultDual.Lose,
                 Poker.ComparePair(cardsOnHand1, cardsOnHand2));
         }
@@ -330,6 +333,9 @@ namespace PokerHandsTest
                 dummyCardRank3, dummyCardRank4, dummyCardRank5
             };
 
+            Assert.True(Poker.OnHandIsPair(cardsOnHand1));
+            Assert.True(Poker.OnHandIsPair(cardsOnHand2));
+
             Assert.AreEqual(ResultDual.Win,
                 Poker.ComparePair(cardsOnHand1, cardsOnHand2));
         }
@@ -337,19 +343,22 @@ namespace PokerHandsTest
         [Test]
         public void ComparePair_HandOneIs_22356_And_HandTwoIs_22456_ResultDual_ShouldBe_Lose()
         {
-            var onHand22356 = new List<Card>()
+            var cardsOnHand1 = new List<Card>()
             {
                 dummyCardRank2, dummyCardRank2,
                 dummyCardRank3, dummyCardRank5, dummyCardRank6
             };
 
-            var onHand22456 = new List<Card>()
+            var cardsOnHand2 = new List<Card>()
             {
                 dummyCardRank2, dummyCardRank2,
                 dummyCardRank4, dummyCardRank5, dummyCardRank6
             };
 
-            Assert.AreEqual(ResultDual.Lose, Poker.ComparePair(onHand22356, onHand22456));
+            Assert.True(Poker.OnHandIsPair(cardsOnHand1));
+            Assert.True(Poker.OnHandIsPair(cardsOnHand2));
+
+            Assert.AreEqual(ResultDual.Lose, Poker.ComparePair(cardsOnHand1, cardsOnHand2));
         }
         #endregion
 
