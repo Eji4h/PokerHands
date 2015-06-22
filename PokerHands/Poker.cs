@@ -199,16 +199,30 @@ namespace PokerHands
         public static bool OnHandIsStraight(List<Card> onHandCards)
         {
             Hand.OrderCard(onHandCards);
-
-            NewCardsOrderForCheckStraight(onHandCards);
-
             bool isStraight = IsStraight(onHandCards);
             Hand.OrderCard(onHandCards);
 
             return isStraight;
         }
 
-        private static void NewCardsOrderForCheckStraight(List<Card> onHandCards)
+        private static bool IsStraight(List<Card> onHandCards)
+        {
+            NewCardsOrderForCheckIsStraight(onHandCards);
+
+            int nextRankToCheck = (int)onHandCards.First().Rank;
+            var onHandCardsRank = new RankType[onHandCards.Count];
+
+            SetOnHandCardsRankForCheckOnHandIsStraight(onHandCards, onHandCardsRank);
+
+            for (int i = 0; i < onHandCardsRank.Length; i++)
+            {
+                if ((int)onHandCardsRank[i] != nextRankToCheck++)
+                    return false;
+            }
+            return true;
+        }
+
+        private static void NewCardsOrderForCheckIsStraight(List<Card> onHandCards)
         {
             var firstCardOnHand = onHandCards.First();
             var lastCardOnHand = onHandCards.Last();
@@ -223,22 +237,8 @@ namespace PokerHands
             }
         }
 
-        private static bool IsStraight(List<Card> onHandCards)
-        {
-            int nextRankToCheck = (int)onHandCards.First().Rank;
-            var onHandCardsRank = new RankType[onHandCards.Count];
-
-            SetOnHandCardsForCheckOnHandIsStraight(onHandCards, onHandCardsRank);
-
-            for (int i = 0; i < onHandCardsRank.Length; i++)
-            {
-                if ((int)onHandCardsRank[i] != nextRankToCheck++)
-                    return false;
-            }
-            return true;
-        }
-
-        private static void SetOnHandCardsForCheckOnHandIsStraight(List<Card> onHandCards, RankType[] onHandCardsRank)
+        private static void SetOnHandCardsRankForCheckOnHandIsStraight(List<Card> onHandCards, 
+            RankType[] onHandCardsRank)
         {
             for (int i = 0; i < onHandCardsRank.Length; i++)
                 onHandCardsRank[i] = onHandCards[i].Rank;
