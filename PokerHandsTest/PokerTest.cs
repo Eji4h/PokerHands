@@ -636,6 +636,9 @@ namespace PokerHandsTest
                 dummyCardRank6, dummyCardRank7
             };
 
+            Assert.True(Poker.OnHandIsStraight(cardsOnHand1));
+            Assert.True(Poker.OnHandIsStraight(cardsOnHand2));
+
             Assert.AreEqual(ResultDual.Lose, Poker.CompareStraight(cardsOnHand1, cardsOnHand2));
         }
 
@@ -653,6 +656,9 @@ namespace PokerHandsTest
                 dummyCardRank3, dummyCardRank4, dummyCardRank5,
                 dummyCardRank6, dummyCardRank7
             };
+
+            Assert.True(Poker.OnHandIsStraight(cardsOnHand1));
+            Assert.True(Poker.OnHandIsStraight(cardsOnHand2));
 
             Assert.AreEqual(ResultDual.Win, Poker.CompareStraight(cardsOnHand1, cardsOnHand2));
         }
