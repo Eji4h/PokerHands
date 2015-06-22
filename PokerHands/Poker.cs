@@ -226,18 +226,20 @@ namespace PokerHands
         private static bool IsStraight(List<Card> onHandCards)
         {
             int nextRankToCheck = (int)onHandCards.First().Rank;
+            int loopCount = onHandCards.Count;
 
-            for (int i = 0; i < onHandCards.Count; i++)
+            var lastCardOnHand = onHandCards.Last();
+            if (lastCardOnHand.Rank == RankType.Ace)
+                loopCount--;
+
+            for (int i = 0; i < loopCount; i++)
             {
                 int currentRank = (int)onHandCards[i].Rank;
-
-                if (i == onHandCards.Count - 1 &&
-                    currentRank == (int)RankType.Ace)
-                    currentRank = (int)RankType.King + 1;
 
                 if (currentRank != nextRankToCheck++)
                     return false;
             }
+
             return true;
         }
 
