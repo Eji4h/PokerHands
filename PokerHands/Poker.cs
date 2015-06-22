@@ -214,5 +214,12 @@ namespace PokerHands
 
             return CompareScoring(cardsOnHand1.Last(), cardsOnHand2.Last());
         }
+
+        public static bool OnHandIsHighCard(List<Card> onHandCards)
+        {
+            var onHandCardsCatagory = RecognizeCategory(onHandCards);
+
+            return onHandCardsCatagory == Category.HighCard;
+        }
     }
 }

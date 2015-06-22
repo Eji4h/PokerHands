@@ -137,84 +137,134 @@ namespace PokerHandsTest
         }
         #endregion
 
-        #region CompareHighCard
+        #region HighCard
         [Test]
-        public void CompareHighCard_HandOneIs_23456_And_HandTwoIs_34567_ResultDual_ShouldBe_Lose()
+        public void OnHandIs_22445_HighCard_ShouldBe_False()
+        {
+            var onHandCards = new List<Card>()
+            {
+                dummyCardRank2, dummyCardRank2,
+                dummyCardRank4, dummyCardRank4,
+                dummyCardRank5
+            };
+
+            Assert.False(Poker.OnHandIsHighCard(onHandCards));
+        }
+
+        [Test]
+        public void OnHandIs_2468T_HighCard_ShouldBe_True()
+        {
+            var onHandCards = new List<Card>()
+            {
+                dummyCardRank2, dummyCardRank4, dummyCardRank6, 
+                dummyCardRank8, dummyCardRank10
+            };
+
+            Assert.True(Poker.OnHandIsHighCard(onHandCards));
+        }
+
+        [Test]
+        public void CompareHighCard_HandOneIs_2468T_And_HandTwoIs_3579J_ResultDual_ShouldBe_Lose()
         {
             var cardsOnHand1 = new List<Card>()
             {
-                dummyCardRank2, dummyCardRank3, dummyCardRank4, dummyCardRank5, dummyCardRank6
+                dummyCardRank2, dummyCardRank4, dummyCardRank6, 
+                dummyCardRank8, dummyCardRank10
             };
 
             var cardsOnHand2 = new List<Card>()
             {
-                dummyCardRank3, dummyCardRank4, dummyCardRank5, dummyCardRank6, dummyCardRank7
+                dummyCardRank3, dummyCardRank5, dummyCardRank7, 
+                dummyCardRank9, dummyCardRankJack
             };
+
+            Assert.True(Poker.OnHandIsHighCard(cardsOnHand1));
+            Assert.True(Poker.OnHandIsHighCard(cardsOnHand2));
 
             Assert.AreEqual(ResultDual.Lose,
                 Poker.CompareHighCard(cardsOnHand1, cardsOnHand2));
         }
 
         [Test]
-        public void CompareHighCard_HandOneIs_A23K5_And_HandTwoIs_10J6K7_ResultDual_ShouldBe_Win()
+        public void CompareHighCard_HandOneIs_A23K5_And_HandTwoIs_TJ6K7_ResultDual_ShouldBe_Win()
         {
             var cardsOnHand1 = new List<Card>()
             {
-                dummyCardRankAce, dummyCardRank2, dummyCardRank3, dummyCardRankKing, dummyCardRank5
+                dummyCardRankAce, dummyCardRank2, dummyCardRank3, 
+                dummyCardRankKing, dummyCardRank5
             };
 
             var cardsOnHand2 = new List<Card>()
             {
-                dummyCardRank10, dummyCardRankJack, dummyCardRank6, dummyCardRankKing, dummyCardRank7
+                dummyCardRank10, dummyCardRankJack, dummyCardRank6, 
+                dummyCardRankKing, dummyCardRank7
             };
+
+            Assert.True(Poker.OnHandIsHighCard(cardsOnHand1));
+            Assert.True(Poker.OnHandIsHighCard(cardsOnHand2));
 
             Assert.AreEqual(ResultDual.Win, Poker.CompareHighCard(cardsOnHand1, cardsOnHand2));
         }
 
         [Test]
-        public void CompareHighCard_HandOneIs_AKQJT_And_HandTwoIs_AQJT9_ResultDual_ShouldBe_Win()
+        public void CompareHighCard_HandOneIs_AQJT9_And_HandTwoIs_AQJT8_ResultDual_ShouldBe_Win()
         {
             var cardsOnHand1 = new List<Card>()
             {
-                dummyCardRankAce, dummyCardRankKing, dummyCardRankQueen, dummyCardRankJack, dummyCardRank10
+                dummyCardRankAce, dummyCardRankQueen, dummyCardRankJack, 
+                dummyCardRank10, dummyCardRank9
             };
 
             var cardsOnHand2 = new List<Card>()
             {
-                dummyCardRankAce, dummyCardRankQueen, dummyCardRankJack, dummyCardRank10, dummyCardRank9
+                dummyCardRankAce, dummyCardRankQueen, dummyCardRankJack, 
+                dummyCardRank10, dummyCardRank8
             };
+
+            Assert.True(Poker.OnHandIsHighCard(cardsOnHand1));
+            Assert.True(Poker.OnHandIsHighCard(cardsOnHand2));
 
             Assert.AreEqual(ResultDual.Win, Poker.CompareHighCard(cardsOnHand1, cardsOnHand2));
         }
 
         [Test]
-        public void CompareHighCard_HandOneIs_AKQJ9_And_HandTwoIs_AKQJT_ResultDual_ShouldBe_Lose()
+        public void CompareHighCard_HandOneIs_AKQJ8_And_HandTwoIs_AKQJ9_ResultDual_ShouldBe_Lose()
         {
             var cardsOnHand1 = new List<Card>()
             {
-                dummyCardRankAce, dummyCardRankKing, dummyCardRankQueen, dummyCardRankJack, dummyCardRank9
+                dummyCardRankAce, dummyCardRankKing, dummyCardRankQueen, 
+                dummyCardRankJack, dummyCardRank8
             };
 
             var cardsOnHand2 = new List<Card>()
             {
-                dummyCardRankAce, dummyCardRankKing, dummyCardRankQueen, dummyCardRankJack, dummyCardRank10
+                dummyCardRankAce, dummyCardRankKing, dummyCardRankQueen, 
+                dummyCardRankJack, dummyCardRank9
             };
+
+            Assert.True(Poker.OnHandIsHighCard(cardsOnHand1));
+            Assert.True(Poker.OnHandIsHighCard(cardsOnHand2));
 
             Assert.AreEqual(ResultDual.Lose, Poker.CompareHighCard(cardsOnHand1, cardsOnHand2));
         }
 
         [Test]
-        public void CompareHighCard_HandOneIs_AKQJT_And_HandTwoIs_AKQJT_ResultDual_ShouldBe_Draw()
+        public void CompareHighCard_HandOneIs_AKQJ9_And_HandTwoIs_AKQJ9_ResultDual_ShouldBe_Draw()
         {
             var cardsOnHand1 = new List<Card>()
             {
-                dummyCardRankAce, dummyCardRankKing, dummyCardRankQueen, dummyCardRankJack, dummyCardRank10
+                dummyCardRankAce, dummyCardRankKing, dummyCardRankQueen, 
+                dummyCardRankJack, dummyCardRank9
             };
 
             var cardsOnHand2 = new List<Card>()
             {
-                dummyCardRankAce, dummyCardRankKing, dummyCardRankQueen, dummyCardRankJack, dummyCardRank10
+                dummyCardRankAce, dummyCardRankKing, dummyCardRankQueen, 
+                dummyCardRankJack, dummyCardRank9
             };
+
+            Assert.True(Poker.OnHandIsHighCard(cardsOnHand1));
+            Assert.True(Poker.OnHandIsHighCard(cardsOnHand2));
 
             Assert.AreEqual(ResultDual.Draw, Poker.CompareHighCard(cardsOnHand1, cardsOnHand2));
         }
