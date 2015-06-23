@@ -286,5 +286,10 @@ namespace PokerHands
         {
             return OnHandIsPair(onHandCards) && OnHandIsThree_Of_A_Kind(onHandCards);
         }
+
+        public static ResultDual CompareFullHouse(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
+        {
+            return CompareThree_Of_A_Kind(cardsOnHand1, cardsOnHand2);
+        }
     }
 }
