@@ -955,6 +955,21 @@ namespace PokerHandsTest
 
             Assert.False(Poker.OnHandIsStraightFlush(onHandCards));
         }
+
+        [Test]
+        public void OnHandIs_2S_3S_4S_5S_6S_StraightFlush_ShouldBe_True()
+        {
+            var onHandCards = new List<Card>()
+            {
+                new Card(SuitType.Spade, RankType.Two),
+                new Card(SuitType.Spade, RankType.Three),
+                new Card(SuitType.Spade, RankType.Four),
+                new Card(SuitType.Spade, RankType.Five),
+                new Card(SuitType.Spade, RankType.Six)
+            };
+
+            Assert.True(Poker.OnHandIsStraightFlush(onHandCards));
+        }
         #endregion
     }
 }

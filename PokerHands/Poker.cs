@@ -316,7 +316,7 @@ namespace PokerHands
 
         public static bool OnHandIsStraightFlush(List<Card> onHandCards)
         {
-            return false;
+            return OnHandIsStraight(onHandCards) && OnHandIsFlush(onHandCards);
         }
     }
 }
