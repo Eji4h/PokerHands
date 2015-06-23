@@ -106,10 +106,7 @@ namespace PokerHands
 
             for (int i = cardsOnHand1.Count - 1; i >= 0; i--)
             {
-                var cardFromHand1 = cardsOnHand1[i];
-                var cardFromHand2 = cardsOnHand2[i];
-
-                var resultDual = CompareScoring(cardFromHand1, cardFromHand2);
+                var resultDual = CompareScoring(cardsOnHand1[i], cardsOnHand2[i]);
                 if (resultDual != ResultDual.Draw)
                     return resultDual;
             }
@@ -197,7 +194,8 @@ namespace PokerHands
         private static Card GetThree_Of_A_KindCardOnHand(List<Card> onHandCards)
         {
             return (from card in onHandCards
-                    group card by card.Rank into rankGroupCard
+                    group card by card.Rank 
+                    into rankGroupCard
                     where rankGroupCard.Count() == 3
                     select rankGroupCard).First().First();
         }
