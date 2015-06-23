@@ -291,5 +291,10 @@ namespace PokerHands
         {
             return CompareThree_Of_A_Kind(cardsOnHand1, cardsOnHand2);
         }
+
+        public static bool OnHandIsFour_Of_A_Kind(List<Card> onHandCards)
+        {
+            return false;
+        }
     }
 }

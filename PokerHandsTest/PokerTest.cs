@@ -892,5 +892,19 @@ namespace PokerHandsTest
             Assert.AreEqual(ResultDual.Lose, Poker.CompareFullHouse(cardsOnHand1, cardsOnHand2));
         }
         #endregion
+
+        #region Four_Of_A_Kind
+        [Test]
+        public void OnHandIs_77799_Four_Of_A_Kind_ShouldBe_False()
+        {
+            var onHandCards = new List<Card>()
+            {
+                dummyCardRank7, dummyCardRank7, dummyCardRank7,
+                dummyCardRank9, dummyCardRank9
+            };
+
+            Assert.False(Poker.OnHandIsFour_Of_A_Kind(onHandCards));
+        }
+        #endregion
     }
 }
