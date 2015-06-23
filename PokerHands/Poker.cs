@@ -264,9 +264,10 @@ namespace PokerHands
 
         public static bool OnHandIsFlush(List<Card> onHandCards)
         {
-            for(int i = 0; i < onHandCards.Count - 1; i++)
+            var firstCardSuit = onHandCards.First().Suit;
+            for(int i = 1; i < onHandCards.Count; i++)
             {
-                if (onHandCards[i].Suit != onHandCards[i + 1].Suit)
+                if (onHandCards[i].Suit != firstCardSuit)
                     return false;
             }
             return true;
