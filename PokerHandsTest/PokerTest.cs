@@ -780,6 +780,18 @@ namespace PokerHandsTest
 
             Assert.False(Poker.OnHandIsFlush(onHandCards));
         }
+
+        [Test]
+        public void OnHandIs_CCCCC_Flush_ShouldBe_True()
+        {
+            var onHandCards = new List<Card>()
+            {
+                dummyCardSuitClub, dummyCardSuitClub, dummyCardSuitClub, 
+                dummyCardSuitClub, dummyCardSuitClub
+            };
+
+            Assert.True(Poker.OnHandIsFlush(onHandCards));
+        }
         #endregion
     }
 }
