@@ -284,7 +284,19 @@ namespace PokerHands
 
         public static bool OnHandIsFullHouse(List<Card> onHandCards)
         {
-            return false;
+            bool haveThree_Of_A_Kind = false;
+            bool havePair = false;
+
+            var rankCardGroupsCount = GetRankCardGroupsCount(onHandCards);
+
+            foreach (var rankCardGroupCount in rankCardGroupsCount.Values)
+            {
+                if (rankCardGroupCount == 3)
+                    haveThree_Of_A_Kind = true;
+                if (rankCardGroupCount == 2)
+                    havePair = true;
+            }
+            return haveThree_Of_A_Kind && havePair;
         }
     }
 }

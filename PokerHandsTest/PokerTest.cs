@@ -858,6 +858,18 @@ namespace PokerHandsTest
 
             Assert.False(Poker.OnHandIsFullHouse(onHandCards));
         }
+
+        [Test]
+        public void OnHandIs_22233_FullHouse_ShouldBe_True()
+        {
+            var onHandCards = new List<Card>()
+            {
+                dummyCardRank2, dummyCardRank2, dummyCardRank2,
+                dummyCardRank3, dummyCardRank3
+            };
+
+            Assert.True(Poker.OnHandIsFullHouse(onHandCards));
+        }
         #endregion
     }
 }
