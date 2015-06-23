@@ -21,7 +21,8 @@ namespace PokerHands
             HighCard,
             Pair,
             TwoPairs,
-            Three_Of_A_Kind
+            Three_Of_A_Kind,
+            Straight
         }
 
         public static ResultDual CompareScoring(Card card1, Card card2)
@@ -39,6 +40,8 @@ namespace PokerHands
 
         public static Category RecognizeCategory(List<Card> onHandCards)
         {
+            if (OnHandIsStraight(onHandCards))
+                return Category.Straight;
             if (OnHandIsThree_Of_A_Kind(onHandCards))
                 return Category.Three_Of_A_Kind;
             if (OnHandIsTwoPairs(onHandCards))

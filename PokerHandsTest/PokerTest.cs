@@ -32,6 +32,18 @@ namespace PokerHandsTest
 
         #region RecognizeCatagory
         [Test]
+        public void OnHandIs_12345_CategoryShouldBe_Straight()
+        {
+            var onHandCards = new List<Card>()
+            {
+                dummyCardRankAce, dummyCardRank2, dummyCardRank3, 
+                dummyCardRank4, dummyCardRank5
+            };
+
+            Assert.AreEqual(Poker.Category.Straight, Poker.RecognizeCategory(onHandCards));
+        }
+
+        [Test]
         public void OnHandIs_QQQKA_CategoryShouldBe_Three_Of_A_Kind()
         {
             var onHandCards = new List<Card>()
@@ -69,11 +81,12 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void OnHandIs_23456_CategoryShouldBe_HighCard()
+        public void OnHandIs_2468T_CategoryShouldBe_HighCard()
         {
             var onHandCards = new List<Card>()
             {
-                dummyCardRank2, dummyCardRank3, dummyCardRank4, dummyCardRank5, dummyCardRank6
+                dummyCardRank2, dummyCardRank4, dummyCardRank6,
+                dummyCardRank8, dummyCardRank10
             };
 
             Assert.AreEqual(Poker.Category.HighCard, Poker.RecognizeCategory(onHandCards));
