@@ -113,6 +113,19 @@ namespace PokerHands
         {
             return OnHandHaveASameKindCardsCount(onHandCards, 4);
         }
+
+        public static bool OnHandIsStraightFlush(List<Card> onHandCards)
+        {
+            return OnHandIsStraight(onHandCards) && OnHandIsFlush(onHandCards);
+        }
+
+        public static bool OnHandIsRoyalStraightFlush(List<Card> onHandCards)
+        {
+            bool isStraightFlush = OnHandIsStraightFlush(onHandCards);
+            bool isRoyal = onHandCards.Last().Rank == RankType.Ace;
+
+            return isStraightFlush && isRoyal;
+        }
         #endregion
 
         #region SameKindCard
@@ -314,31 +327,9 @@ namespace PokerHands
             return CompareThree_Of_A_Kind(cardsOnHand1, cardsOnHand2);
         }
 
-        public static bool OnHandIsStraightFlush(List<Card> onHandCards)
-        {
-            return OnHandIsStraight(onHandCards) && OnHandIsFlush(onHandCards);
-        }
-
         public static ResultDual CompareStraightFlush(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
             return CompareHighCard(cardsOnHand1, cardsOnHand2);
-        }
-
-        public static bool OnHandIsRoyalStraightFlush(List<Card> onHandCards)
-        {
-            OrderCardsForCheckIsStraight(onHandCards);
-
-            var nextRankToCheck = RankType.Ten;
-            var onHandCardsRank = new RankType[onHandCards.Count];
-
-            SetOnHandCardsRankForCheckOnHandIsStraight(onHandCards, onHandCardsRank);
-
-            for (int i = 0; i < onHandCardsRank.Length; i++)
-            {
-                if (onHandCardsRank[i] != nextRankToCheck++)
-                    return false;
-            }
-            return true;
         }
     }
 }
