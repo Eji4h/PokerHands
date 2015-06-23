@@ -32,6 +32,21 @@ namespace PokerHandsTest
 
         #region RecognizeCatagory
         [Test]
+        public void OnHandIs_TJQKA_Spade_CategoryShouldBe_RoyalStraightFlush()
+        {
+            var onHandCards = new List<Card>()
+            {
+                new Card(SuitType.Spade, RankType.Ten),
+                new Card(SuitType.Spade, RankType.Jack),
+                new Card(SuitType.Spade, RankType.Queen),
+                new Card(SuitType.Spade, RankType.King),
+                new Card(SuitType.Spade, RankType.Ace)
+            };
+
+            Assert.AreEqual(Poker.Category.RoyalStraightFlush, Poker.RecognizeCategory(onHandCards));
+        }
+
+        [Test]
         public void OnHandIs_7C_8C_9C_10C_JC_CategoryShouldBe_StraightFlush()
         {
             var onHandCards = new List<Card>()

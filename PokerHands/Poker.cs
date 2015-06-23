@@ -26,7 +26,8 @@ namespace PokerHands
             Flush,
             FullHouse,
             Four_Of_A_Kind,
-            StraightFlush
+            StraightFlush,
+            RoyalStraightFlush
         }
 
         public static ResultDual CompareScoring(Card card1, Card card2)
@@ -58,6 +59,8 @@ namespace PokerHands
 
         public static Category RecognizeCategory(List<Card> onHandCards)
         {
+            if (OnHandIsRoyalStraightFlush(onHandCards))
+                return Category.RoyalStraightFlush;
             if (OnHandIsStraightFlush(onHandCards))
                 return Category.StraightFlush;
             if (OnHandIsFour_Of_A_Kind(onHandCards))
