@@ -25,6 +25,11 @@ namespace PokerHandsTest
         Card dummyCardRankKing = new Card(SuitType.Club, RankType.King);
         Card dummyCardRankAce = new Card(SuitType.Club, RankType.Ace);
 
+        Card dummyCardSuitClub = new Card(SuitType.Club, RankType.Ace);
+        Card dummyCardSuitDiamond = new Card(SuitType.Diamond, RankType.Three);
+        Card dummyCardSuitHeart = new Card(SuitType.Heart, RankType.Five);
+        Card dummyCardSuitSpade = new Card(SuitType.Spade, RankType.Seven);
+
         #region RecognizeCatagory
         [Test]
         public void OnHandIs_QQQKA_CategoryShouldBe_Three_Of_A_Kind()
@@ -760,6 +765,20 @@ namespace PokerHandsTest
             Assert.True(Poker.OnHandIsStraight(cardsOnHand2));
 
             Assert.AreEqual(ResultDual.Lose, Poker.CompareStraight(cardsOnHand1, cardsOnHand2));
+        }
+        #endregion
+
+        #region Flush
+        [Test]
+        public void OnHandIs_CDHSS_Flush_ShouldBe_False()
+        {
+            var onHandCards = new List<Card>()
+            {
+                dummyCardSuitClub, dummyCardSuitDiamond, dummyCardSuitHeart, 
+                dummyCardSuitSpade, dummyCardSuitSpade
+            };
+
+            Assert.False(Poker.OnHandIsFlush(onHandCards));
         }
         #endregion
     }

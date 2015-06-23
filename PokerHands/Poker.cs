@@ -261,5 +261,10 @@ namespace PokerHands
 
             return CompareScoring(lastCardOnHand1, lastCardOnHand2);
         }
+
+        public static bool OnHandIsFlush(List<Card> onHandCards)
+        {
+            return false;
+        }
     }
 }
