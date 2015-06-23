@@ -52,6 +52,24 @@ namespace PokerHandsTest
             Assert.AreEqual(ResultDual.Win, Poker.CompareCategory(cardsOnHand1, cardsOnHand2));
         }
 
+        [Test]
+        public void CompareCatagory_HandOneIs_44466_Spade_And_HandTwoIs_88899_ResultShouldBe_Lose()
+        {
+            var cardsOnHand1 = new List<Card>()
+            {
+                dummyCardRank4, dummyCardRank4, dummyCardRank4,
+                dummyCardRank6, dummyCardRank6
+            };
+
+            var cardsOnHand2 = new List<Card>()
+            {
+                dummyCardRank8, dummyCardRank8, dummyCardRank8,
+                dummyCardRank9, dummyCardRank9
+            };
+
+            Assert.AreEqual(ResultDual.Lose, Poker.CompareCategory(cardsOnHand1, cardsOnHand2));
+        }
+
         #region RecognizeCatagory
         [Test]
         public void OnHandIs_TJQKA_Spade_CategoryShouldBe_RoyalStraightFlush()
