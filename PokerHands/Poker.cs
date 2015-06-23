@@ -198,7 +198,6 @@ namespace PokerHands
 
         public static bool OnHandIsStraight(List<Card> onHandCards)
         {
-            Hand.OrderCard(onHandCards);
             bool isStraight = IsStraight(onHandCards);
             Hand.OrderCard(onHandCards);
 
@@ -207,7 +206,7 @@ namespace PokerHands
 
         private static bool IsStraight(List<Card> onHandCards)
         {
-            NewCardsOrderForCheckIsStraight(onHandCards);
+            OrderCardsForCheckIsStraight(onHandCards);
 
             var nextRankToCheck = onHandCards.First().Rank;
             var onHandCardsRank = new RankType[onHandCards.Count];
@@ -222,8 +221,9 @@ namespace PokerHands
             return true;
         }
 
-        private static void NewCardsOrderForCheckIsStraight(List<Card> onHandCards)
+        private static void OrderCardsForCheckIsStraight(List<Card> onHandCards)
         {
+            Hand.OrderCard(onHandCards);
             var firstCardOnHand = onHandCards.First();
             var lastCardOnHand = onHandCards.Last();
 
@@ -250,16 +250,11 @@ namespace PokerHands
 
         public static ResultDual CompareStraight(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
-            Hand.OrderCard(cardsOnHand1);
-            Hand.OrderCard(cardsOnHand2);
+            OrderCardsForCheckIsStraight(cardsOnHand1);
+            OrderCardsForCheckIsStraight(cardsOnHand2);
 
             var lastCardOnHand1 = cardsOnHand1.Last();
             var lastCardOnHand2 = cardsOnHand2.Last();
-
-            if (lastCardOnHand1.Rank == RankType.Ace)
-                return ResultDual.Lose;
-            if (lastCardOnHand2.Rank == RankType.Ace)
-                return ResultDual.Win;
 
             return CompareScoring(lastCardOnHand1, lastCardOnHand2);
         }
