@@ -845,5 +845,19 @@ namespace PokerHandsTest
             Assert.AreEqual(ResultDual.Lose, Poker.CompareFlush(cardsOnHand1, cardsOnHand2));
         }
         #endregion
+
+        #region FullHouse
+        [Test]
+        public void OnHandIs_22234_FullHouse_ShouldBe_False()
+        {
+            var onHandCards = new List<Card>()
+            {
+                dummyCardRank2, dummyCardRank2, dummyCardRank2,
+                dummyCardRank3, dummyCardRank4
+            };
+
+            Assert.False(Poker.OnHandIsFullHouse(onHandCards));
+        }
+        #endregion
     }
 }
