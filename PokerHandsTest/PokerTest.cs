@@ -32,6 +32,21 @@ namespace PokerHandsTest
 
         #region RecognizeCatagory
         [Test]
+        public void OnHandIs_7C_8C_9C_10C_JC_CategoryShouldBe_StraightFlush()
+        {
+            var onHandCards = new List<Card>()
+            {
+                new Card(SuitType.Club, RankType.Seven),
+                new Card(SuitType.Club, RankType.Eight),
+                new Card(SuitType.Club, RankType.Nine),
+                new Card(SuitType.Club, RankType.Ten),
+                new Card(SuitType.Club, RankType.Jack)
+            };
+
+            Assert.AreEqual(Poker.Category.StraightFlush, Poker.RecognizeCategory(onHandCards));
+        }
+
+        [Test]
         public void OnHandIs_5555A_CategoryShouldBe_Four_Of_A_Kind()
         {
             var onHandCards = new List<Card>()
