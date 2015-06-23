@@ -12,17 +12,17 @@ namespace PokerHandsTest
     public class PokerTest
     {
         Card dummyCardRank2 = new Card(SuitType.Club, RankType.Two);
-        Card dummyCardRank3 = new Card(SuitType.Club, RankType.Three);
-        Card dummyCardRank4 = new Card(SuitType.Club, RankType.Four);
-        Card dummyCardRank5 = new Card(SuitType.Club, RankType.Five);
-        Card dummyCardRank6 = new Card(SuitType.Club, RankType.Six);
-        Card dummyCardRank7 = new Card(SuitType.Club, RankType.Seven);
-        Card dummyCardRank8 = new Card(SuitType.Club, RankType.Eight);
+        Card dummyCardRank3 = new Card(SuitType.Diamond, RankType.Three);
+        Card dummyCardRank4 = new Card(SuitType.Heart, RankType.Four);
+        Card dummyCardRank5 = new Card(SuitType.Spade, RankType.Five);
+        Card dummyCardRank6 = new Card(SuitType.Spade, RankType.Six);
+        Card dummyCardRank7 = new Card(SuitType.Heart, RankType.Seven);
+        Card dummyCardRank8 = new Card(SuitType.Diamond, RankType.Eight);
         Card dummyCardRank9 = new Card(SuitType.Club, RankType.Nine);
         Card dummyCardRank10 = new Card(SuitType.Club, RankType.Ten);
-        Card dummyCardRankJack = new Card(SuitType.Club, RankType.Jack);
-        Card dummyCardRankQueen = new Card(SuitType.Club, RankType.Queen);
-        Card dummyCardRankKing = new Card(SuitType.Club, RankType.King);
+        Card dummyCardRankJack = new Card(SuitType.Diamond, RankType.Jack);
+        Card dummyCardRankQueen = new Card(SuitType.Heart, RankType.Queen);
+        Card dummyCardRankKing = new Card(SuitType.Spade, RankType.King);
         Card dummyCardRankAce = new Card(SuitType.Club, RankType.Ace);
 
         Card dummyCardSuitClub = new Card(SuitType.Club, RankType.Ace);
@@ -31,6 +31,18 @@ namespace PokerHandsTest
         Card dummyCardSuitSpade = new Card(SuitType.Spade, RankType.Seven);
 
         #region RecognizeCatagory
+        [Test]
+        public void OnHandIs_SSSSS_CategoryShouldBe_Flush()
+        {
+            var onHandCards = new List<Card>()
+            {
+                dummyCardSuitSpade, dummyCardSuitSpade, dummyCardSuitSpade, 
+                dummyCardSuitSpade, dummyCardSuitSpade
+            };
+
+            Assert.AreEqual(Poker.Category.Flush, Poker.RecognizeCategory(onHandCards));
+        }
+
         [Test]
         public void OnHandIs_12345_CategoryShouldBe_Straight()
         {
@@ -807,18 +819,24 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void CompareFlush_HandOneIs_2468TClub_And_HandTwoIs_79JQKClub_ResultShouldBe_Lose()
+        public void CompareFlush_HandOneIs_2468TDiamond_And_HandTwoIs_79JQKHeart_ResultShouldBe_Lose()
         {
             var cardsOnHand1 = new List<Card>()
             {
-                dummyCardRank2, dummyCardRank4, dummyCardRank6, 
-                dummyCardRank8, dummyCardRank10
+                new Card(SuitType.Diamond, RankType.Two),
+                new Card(SuitType.Diamond, RankType.Four),
+                new Card(SuitType.Diamond, RankType.Six),
+                new Card(SuitType.Diamond, RankType.Eight),
+                new Card(SuitType.Diamond, RankType.Ten)
             };
 
             var cardsOnHand2 = new List<Card>()
             {
-                dummyCardRank7, dummyCardRank9,
-                dummyCardRankJack, dummyCardRankQueen, dummyCardRankKing
+                new Card(SuitType.Heart, RankType.Seven),
+                new Card(SuitType.Heart, RankType.Nine),
+                new Card(SuitType.Heart, RankType.Jack),
+                new Card(SuitType.Heart, RankType.Queen),
+                new Card(SuitType.Heart, RankType.King)
             };
 
             Assert.True(Poker.OnHandIsFlush(cardsOnHand1));
