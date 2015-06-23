@@ -65,7 +65,7 @@ namespace PokerHands
 
         public static bool OnHandIsPair(List<Card> onHandCards)
         {
-            return OnHandHaveASameCardsCount(onHandCards, 2);
+            return OnHandHaveASameKindCardsCount(onHandCards, 2);
         }
 
         public static bool OnHandIsTwoPairs(List<Card> onHandCards)
@@ -82,7 +82,7 @@ namespace PokerHands
 
         public static bool OnHandIsThree_Of_A_Kind(List<Card> onHandCards)
         {
-            return OnHandHaveASameCardsCount(onHandCards, 3);
+            return OnHandHaveASameKindCardsCount(onHandCards, 3);
         }
 
         public static bool OnHandIsStraight(List<Card> onHandCards)
@@ -111,17 +111,17 @@ namespace PokerHands
 
         public static bool OnHandIsFour_Of_A_Kind(List<Card> onHandCards)
         {
-            return OnHandHaveASameCardsCount(onHandCards, 4);
+            return OnHandHaveASameKindCardsCount(onHandCards, 4);
         }
         #endregion
 
-        #region SameCard
-        private static bool OnHandHaveASameCardsCount(List<Card> onHandCards, int numberOfSameCardToCheck)
+        #region SameKindCard
+        private static bool OnHandHaveASameKindCardsCount(List<Card> onHandCards, int numberOfSameKindCardToCheck)
         {
             var rankCardGroupsCount = GetRankCardGroupsCount(onHandCards);
 
             foreach (var rankCardGroupCount in rankCardGroupsCount.Values)
-                if (rankCardGroupCount == numberOfSameCardToCheck)
+                if (rankCardGroupCount == numberOfSameKindCardToCheck)
                     return true;
             return false;
         }
@@ -197,24 +197,35 @@ namespace PokerHands
 
         public static ResultDual CompareThree_Of_A_Kind(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
+            return CompareKindCard(cardsOnHand1, cardsOnHand2, 3);
+        }
+
+        public static ResultDual CompareFour_Of_A_Kind(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
+        {
+            return CompareKindCard(cardsOnHand1, cardsOnHand2, 4);
+        }
+
+        private static ResultDual CompareKindCard(List<Card> cardsOnHand1, List<Card> cardsOnHand2, 
+            int numberOfSameKindCardToGet)
+        {
             Hand.OrderCard(cardsOnHand1);
             Hand.OrderCard(cardsOnHand2);
 
-            var three_Of_A_Kind_CardOnHand1 = GetThree_Of_A_KindCardOnHand(cardsOnHand1);
-            var three_Of_A_Kind_CardOnHand2 = GetThree_Of_A_KindCardOnHand(cardsOnHand2);
+            var kindCardOnHand1 = GetSameKindCardOnHand(cardsOnHand1, numberOfSameKindCardToGet);
+            var kindCardOnHand2 = GetSameKindCardOnHand(cardsOnHand2, numberOfSameKindCardToGet);
 
-            var resultDual = CompareScoring(three_Of_A_Kind_CardOnHand1, three_Of_A_Kind_CardOnHand2);
+            var resultDual = CompareScoring(kindCardOnHand1, kindCardOnHand2);
 
             if (resultDual == ResultDual.Draw)
                 resultDual = CompareHighCard(cardsOnHand1, cardsOnHand2);
             return resultDual;
         }
 
-        private static Card GetThree_Of_A_KindCardOnHand(List<Card> onHandCards)
+        static Card GetSameKindCardOnHand(List<Card> onHandCards, int numberOfSameKindCardToGet)
         {
             return (from card in onHandCards
                     group card by card.Rank into rankGroupCard
-                    where rankGroupCard.Count() == 3
+                    where rankGroupCard.Count() == numberOfSameKindCardToGet
                     select rankGroupCard).First().First();
         }
         #endregion
@@ -301,29 +312,6 @@ namespace PokerHands
         public static ResultDual CompareFullHouse(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
             return CompareThree_Of_A_Kind(cardsOnHand1, cardsOnHand2);
-        }
-
-        public static ResultDual CompareFour_Of_A_Kind(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
-        {
-            Hand.OrderCard(cardsOnHand1);
-            Hand.OrderCard(cardsOnHand2);
-
-            var four_Of_A_Kind_CardOnHand1 = GetFour_Of_A_KindCardOnHand(cardsOnHand1);
-            var four_Of_A_Kind_CardOnHand2 = GetFour_Of_A_KindCardOnHand(cardsOnHand2);
-
-            var resultDual = CompareScoring(four_Of_A_Kind_CardOnHand1, four_Of_A_Kind_CardOnHand2);
-
-            if (resultDual == ResultDual.Draw)
-                resultDual = CompareHighCard(cardsOnHand1, cardsOnHand2);
-            return resultDual;
-        }
-
-        private static Card GetFour_Of_A_KindCardOnHand(List<Card> onHandCards)
-        {
-            return (from card in onHandCards
-                    group card by card.Rank into rankGroupCard
-                    where rankGroupCard.Count() == 4
-                    select rankGroupCard).First().First();
         }
     }
 }
