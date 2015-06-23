@@ -23,7 +23,8 @@ namespace PokerHands
             TwoPairs,
             Three_Of_A_Kind,
             Straight,
-            Flush
+            Flush,
+            FullHouse
         }
 
         public static ResultDual CompareScoring(Card card1, Card card2)
@@ -55,6 +56,8 @@ namespace PokerHands
 
         public static Category RecognizeCategory(List<Card> onHandCards)
         {
+            if (OnHandIsFullHouse(onHandCards))
+                return Category.FullHouse;
             if (OnHandIsFlush(onHandCards))
                 return Category.Flush;
             if (OnHandIsStraight(onHandCards))

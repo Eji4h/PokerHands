@@ -32,6 +32,18 @@ namespace PokerHandsTest
 
         #region RecognizeCatagory
         [Test]
+        public void OnHandIs_666TT_CategoryShouldBe_FullHouse()
+        {
+            var onHandCards = new List<Card>()
+            {
+                dummyCardRank6, dummyCardRank6, dummyCardRank6,
+                dummyCardRank7, dummyCardRank7
+            };
+
+            Assert.AreEqual(Poker.Category.FullHouse, Poker.RecognizeCategory(onHandCards));
+        }
+
+        [Test]
         public void OnHandIs_SSSSS_CategoryShouldBe_Flush()
         {
             var onHandCards = new List<Card>()
