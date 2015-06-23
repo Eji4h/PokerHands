@@ -792,6 +792,27 @@ namespace PokerHandsTest
 
             Assert.True(Poker.OnHandIsFlush(onHandCards));
         }
+
+        [Test]
+        public void CompareFlush_HandOneIs_2468TClub_And_HandTwoIs_79JQKClub_ResultShouldBe_Lose()
+        {
+            var cardsOnHand1 = new List<Card>()
+            {
+                dummyCardRank2, dummyCardRank4, dummyCardRank6, 
+                dummyCardRank8, dummyCardRank10
+            };
+
+            var cardsOnHand2 = new List<Card>()
+            {
+                dummyCardRank7, dummyCardRank9,
+                dummyCardRankJack, dummyCardRankQueen, dummyCardRankKing
+            };
+
+            Assert.True(Poker.OnHandIsFlush(cardsOnHand1));
+            Assert.True(Poker.OnHandIsFlush(cardsOnHand2));
+
+            Assert.AreEqual(ResultDual.Lose, Poker.CompareFlush(cardsOnHand1, cardsOnHand2));
+        }
         #endregion
     }
 }

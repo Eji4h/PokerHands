@@ -272,5 +272,10 @@ namespace PokerHands
             }
             return true;
         }
+
+        public static ResultDual CompareFlush(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
+        {
+            return CompareHighCard(cardsOnHand1, cardsOnHand2);
+        }
     }
 }
