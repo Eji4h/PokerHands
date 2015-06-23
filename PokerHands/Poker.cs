@@ -55,7 +55,7 @@ namespace PokerHands
             return ResultDual.Lose;
         }
 
-        #region RecognizeCatagory
+        #region RecognizeCategory
 
         public static Category RecognizeCategory(List<Card> onHandCards)
         {
@@ -82,9 +82,9 @@ namespace PokerHands
 
         public static bool OnHandIsHighCard(List<Card> onHandCards)
         {
-            var onHandCardsCatagory = RecognizeCategory(onHandCards);
+            var onHandCardsCategory = RecognizeCategory(onHandCards);
 
-            return onHandCardsCatagory == Category.HighCard;
+            return onHandCardsCategory == Category.HighCard;
         }
 
         public static bool OnHandIsPair(List<Card> onHandCards)
@@ -361,14 +361,14 @@ namespace PokerHands
             return CompareSuit(cardsOnHand1, cardsOnHand2);
         }
 
-        public static ResultDual CompareCatagory(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
+        public static ResultDual CompareCategory(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
-            var catagoryOfHand1 = RecognizeCategory(cardsOnHand1);
-            var catagoryOfHand2 = RecognizeCategory(cardsOnHand2);
+            var categoryOfHand1 = RecognizeCategory(cardsOnHand1);
+            var categoryOfHand2 = RecognizeCategory(cardsOnHand2);
 
-            if (catagoryOfHand1 == catagoryOfHand2)
+            if (categoryOfHand1 == categoryOfHand2)
                 return ResultDual.Draw;
-            if (catagoryOfHand1 > catagoryOfHand2)
+            if (categoryOfHand1 > categoryOfHand2)
                 return ResultDual.Win;
             return ResultDual.Lose;
         }

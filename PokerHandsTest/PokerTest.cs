@@ -49,7 +49,7 @@ namespace PokerHandsTest
                 dummyCardRankAce
             };
 
-            Assert.AreEqual(ResultDual.Win, Poker.CompareCatagory(cardsOnHand1, cardsOnHand2));
+            Assert.AreEqual(ResultDual.Win, Poker.CompareCategory(cardsOnHand1, cardsOnHand2));
         }
 
         #region RecognizeCatagory
