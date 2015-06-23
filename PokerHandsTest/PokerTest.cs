@@ -1029,6 +1029,33 @@ namespace PokerHandsTest
 
             Assert.True(Poker.OnHandIsRoyalStraightFlush(onHandCards));
         }
+
+        [Test]
+        public void CompareStraight_HandOneIs_TJQKA_Heart_And_HandTwoIs_TJQKA_Club_ResultShouldBe_Win()
+        {
+            var cardsOnHand1 = new List<Card>()
+            {
+                new Card(SuitType.Heart, RankType.Ten),
+                new Card(SuitType.Heart, RankType.Jack),
+                new Card(SuitType.Heart, RankType.Queen),
+                new Card(SuitType.Heart, RankType.King),
+                new Card(SuitType.Heart, RankType.Ace)
+            };
+
+            var cardsOnHand2 = new List<Card>()
+            {
+                new Card(SuitType.Club, RankType.Ten),
+                new Card(SuitType.Club, RankType.Jack),
+                new Card(SuitType.Club, RankType.Queen),
+                new Card(SuitType.Club, RankType.King),
+                new Card(SuitType.Club, RankType.Ace)
+            };
+
+            Assert.True(Poker.OnHandIsRoyalStraightFlush(cardsOnHand1));
+            Assert.True(Poker.OnHandIsRoyalStraightFlush(cardsOnHand2));
+
+            Assert.AreEqual(ResultDual.Win, Poker.CompareRoyalStraightFlush(cardsOnHand1, cardsOnHand2));
+        }
         #endregion
     }
 }

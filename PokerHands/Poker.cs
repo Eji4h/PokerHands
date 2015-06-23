@@ -331,5 +331,17 @@ namespace PokerHands
         {
             return CompareHighCard(cardsOnHand1, cardsOnHand2);
         }
+
+        public static object CompareRoyalStraightFlush(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
+        {
+            var suitOnHand1 = cardsOnHand1.First().Suit;
+            var suitOnHand2 = cardsOnHand2.First().Suit;
+
+            if (suitOnHand1 == suitOnHand2)
+                return ResultDual.Draw;
+            if (suitOnHand1 > suitOnHand2)
+                return ResultDual.Win;
+            return ResultDual.Lose;
+        }
     }
 }
