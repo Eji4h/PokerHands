@@ -256,6 +256,9 @@ namespace PokerHands
             var lastCardOnHand1 = cardsOnHand1.Last();
             var lastCardOnHand2 = cardsOnHand2.Last();
 
+            Hand.OrderCard(cardsOnHand1);
+            Hand.OrderCard(cardsOnHand2);
+
             return CompareScoring(lastCardOnHand1, lastCardOnHand2);
         }
     }
