@@ -318,5 +318,10 @@ namespace PokerHands
         {
             return OnHandIsStraight(onHandCards) && OnHandIsFlush(onHandCards);
         }
+
+        public static ResultDual CompareStraightFlush(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
+        {
+            return CompareHighCard(cardsOnHand1, cardsOnHand2);
+        }
     }
 }

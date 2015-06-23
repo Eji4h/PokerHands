@@ -970,6 +970,33 @@ namespace PokerHandsTest
 
             Assert.True(Poker.OnHandIsStraightFlush(onHandCards));
         }
+
+        [Test]
+        public void CompareStraight_HandOneIs_23456Spade_And_HandTwoIs_34567Diamond_ResultShouldBe_Lose()
+        {
+            var cardsOnHand1 = new List<Card>()
+            {
+                new Card(SuitType.Spade, RankType.Two),
+                new Card(SuitType.Spade, RankType.Three),
+                new Card(SuitType.Spade, RankType.Four),
+                new Card(SuitType.Spade, RankType.Five),
+                new Card(SuitType.Spade, RankType.Six)
+            };
+
+            var cardsOnHand2 = new List<Card>()
+            {
+                new Card(SuitType.Diamond, RankType.Three),
+                new Card(SuitType.Diamond, RankType.Four),
+                new Card(SuitType.Diamond, RankType.Five),
+                new Card(SuitType.Diamond, RankType.Six),
+                new Card(SuitType.Diamond, RankType.Seven)
+            };
+
+            Assert.True(Poker.OnHandIsStraightFlush(cardsOnHand1));
+            Assert.True(Poker.OnHandIsStraightFlush(cardsOnHand2));
+
+            Assert.AreEqual(ResultDual.Lose, Poker.CompareStraightFlush(cardsOnHand1, cardsOnHand2));
+        }
         #endregion
     }
 }
