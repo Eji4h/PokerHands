@@ -30,6 +30,28 @@ namespace PokerHandsTest
         Card dummyCardSuitHeart = new Card(SuitType.Heart, RankType.Five);
         Card dummyCardSuitSpade = new Card(SuitType.Spade, RankType.Seven);
 
+        [Test]
+        public void CompareCatagory_HandOneIs_TJQKA_Spade_And_HandTwoIs_77QQA_ResultShouldBe_Win()
+        {
+            var cardsOnHand1 = new List<Card>()
+            {
+                new Card(SuitType.Spade, RankType.Ten),
+                new Card(SuitType.Spade, RankType.Jack),
+                new Card(SuitType.Spade, RankType.Queen),
+                new Card(SuitType.Spade, RankType.King),
+                new Card(SuitType.Spade, RankType.Ace)
+            };
+
+            var cardsOnHand2 = new List<Card>()
+            {
+                dummyCardRank7, dummyCardRank7,
+                dummyCardRankQueen, dummyCardRankQueen,
+                dummyCardRankAce
+            };
+
+            Assert.AreEqual(ResultDual.Win, Poker.CompareCatagory(cardsOnHand1, cardsOnHand2));
+        }
+
         #region RecognizeCatagory
         [Test]
         public void OnHandIs_TJQKA_Spade_CategoryShouldBe_RoyalStraightFlush()

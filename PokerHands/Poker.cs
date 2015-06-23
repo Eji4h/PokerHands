@@ -360,5 +360,17 @@ namespace PokerHands
         {
             return CompareSuit(cardsOnHand1, cardsOnHand2);
         }
+
+        public static ResultDual CompareCatagory(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
+        {
+            var catagoryOfHand1 = RecognizeCategory(cardsOnHand1);
+            var catagoryOfHand2 = RecognizeCategory(cardsOnHand2);
+
+            if (catagoryOfHand1 == catagoryOfHand2)
+                return ResultDual.Draw;
+            if (catagoryOfHand1 > catagoryOfHand2)
+                return ResultDual.Win;
+            return ResultDual.Lose;
+        }
     }
 }
