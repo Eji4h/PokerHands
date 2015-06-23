@@ -213,10 +213,9 @@ namespace PokerHands
         private static Card GetThree_Of_A_KindCardOnHand(List<Card> onHandCards)
         {
             return (from card in onHandCards
-                    group card by card.Rank
-                        into rankGroupCard
-                        where rankGroupCard.Count() == 3
-                        select rankGroupCard).First().First();
+                    group card by card.Rank into rankGroupCard
+                    where rankGroupCard.Count() == 3
+                    select rankGroupCard).First().First();
         }
         #endregion
 
@@ -254,7 +253,7 @@ namespace PokerHands
             }
         }
 
-        private static void SetOnHandCardsRankForCheckOnHandIsStraight(List<Card> onHandCards, 
+        private static void SetOnHandCardsRankForCheckOnHandIsStraight(List<Card> onHandCards,
             RankType[] onHandCardsRank)
         {
             for (int i = 0; i < onHandCardsRank.Length; i++)
@@ -302,6 +301,29 @@ namespace PokerHands
         public static ResultDual CompareFullHouse(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
             return CompareThree_Of_A_Kind(cardsOnHand1, cardsOnHand2);
+        }
+
+        public static ResultDual CompareFour_Of_A_Kind(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
+        {
+            Hand.OrderCard(cardsOnHand1);
+            Hand.OrderCard(cardsOnHand2);
+
+            var four_Of_A_Kind_CardOnHand1 = GetFour_Of_A_KindCardOnHand(cardsOnHand1);
+            var four_Of_A_Kind_CardOnHand2 = GetFour_Of_A_KindCardOnHand(cardsOnHand2);
+
+            var resultDual = CompareScoring(four_Of_A_Kind_CardOnHand1, four_Of_A_Kind_CardOnHand2);
+
+            if (resultDual == ResultDual.Draw)
+                resultDual = CompareHighCard(cardsOnHand1, cardsOnHand2);
+            return resultDual;
+        }
+
+        private static Card GetFour_Of_A_KindCardOnHand(List<Card> onHandCards)
+        {
+            return (from card in onHandCards
+                    group card by card.Rank into rankGroupCard
+                    where rankGroupCard.Count() == 4
+                    select rankGroupCard).First().First();
         }
     }
 }
