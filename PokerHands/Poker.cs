@@ -313,5 +313,10 @@ namespace PokerHands
         {
             return CompareThree_Of_A_Kind(cardsOnHand1, cardsOnHand2);
         }
+
+        public static bool OnHandIsStraightFlush(List<Card> onHandCards)
+        {
+            return false;
+        }
     }
 }

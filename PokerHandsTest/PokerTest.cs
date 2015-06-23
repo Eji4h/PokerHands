@@ -942,5 +942,19 @@ namespace PokerHandsTest
             Assert.AreEqual(ResultDual.Lose, Poker.CompareFour_Of_A_Kind(cardsOnHand1, cardsOnHand2));
         }
         #endregion
+
+        #region StraightFlush
+        [Test]
+        public void OnHandIs_2C_3D_4H_5S_6S_StraightFlush_ShouldBe_False()
+        {
+            var onHandCards = new List<Card>()
+            {
+                dummyCardRank2, dummyCardRank3, dummyCardRank4, 
+                dummyCardRank5, dummyCardRank6
+            };
+
+            Assert.False(Poker.OnHandIsStraightFlush(onHandCards));
+        }
+        #endregion
     }
 }
