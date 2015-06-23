@@ -39,6 +39,8 @@ namespace PokerHands
             return ResultDual.Lose;
         }
 
+        #region RecognizeCatagory
+
         public static Category RecognizeCategory(List<Card> onHandCards)
         {
             if (OnHandIsFlush(onHandCards))
@@ -63,12 +65,7 @@ namespace PokerHands
 
         public static bool OnHandIsPair(List<Card> onHandCards)
         {
-            var rankCardGroupsCount = GetRankCardGroupsCount(onHandCards);
-
-            foreach (var rankCardGroupCount in rankCardGroupsCount.Values)
-                if (rankCardGroupCount == 2)
-                    return true;
-            return false;
+            return OnHandHaveASameCardsCount(onHandCards, 2);
         }
 
         public static bool OnHandIsTwoPairs(List<Card> onHandCards)
@@ -85,10 +82,46 @@ namespace PokerHands
 
         public static bool OnHandIsThree_Of_A_Kind(List<Card> onHandCards)
         {
+            return OnHandHaveASameCardsCount(onHandCards, 3);
+        }
+
+        public static bool OnHandIsStraight(List<Card> onHandCards)
+        {
+            bool isStraight = IsStraight(onHandCards);
+            Hand.OrderCard(onHandCards);
+
+            return isStraight;
+        }
+
+        public static bool OnHandIsFlush(List<Card> onHandCards)
+        {
+            var firstCardSuit = onHandCards.First().Suit;
+            for (int i = 1; i < onHandCards.Count; i++)
+            {
+                if (onHandCards[i].Suit != firstCardSuit)
+                    return false;
+            }
+            return true;
+        }
+
+        public static bool OnHandIsFullHouse(List<Card> onHandCards)
+        {
+            return OnHandIsPair(onHandCards) && OnHandIsThree_Of_A_Kind(onHandCards);
+        }
+
+        public static bool OnHandIsFour_Of_A_Kind(List<Card> onHandCards)
+        {
+            return OnHandHaveASameCardsCount(onHandCards, 4);
+        }
+        #endregion
+
+        #region SameCard
+        private static bool OnHandHaveASameCardsCount(List<Card> onHandCards, int numberOfSameCardToCheck)
+        {
             var rankCardGroupsCount = GetRankCardGroupsCount(onHandCards);
 
             foreach (var rankCardGroupCount in rankCardGroupsCount.Values)
-                if (rankCardGroupCount == 3)
+                if (rankCardGroupCount == numberOfSameCardToCheck)
                     return true;
             return false;
         }
@@ -97,20 +130,6 @@ namespace PokerHands
         {
             return onHandCards.GroupBy(card => card.Rank).
                 ToDictionary(g => g.Key, g => g.Count());
-        }
-
-        public static ResultDual CompareHighCard(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
-        {
-            Hand.OrderCard(cardsOnHand1);
-            Hand.OrderCard(cardsOnHand2);
-
-            for (int i = cardsOnHand1.Count - 1; i >= 0; i--)
-            {
-                var resultDual = CompareScoring(cardsOnHand1[i], cardsOnHand2[i]);
-                if (resultDual != ResultDual.Draw)
-                    return resultDual;
-            }
-            return ResultDual.Draw;
         }
 
         private static List<Card> GetOtherCardsRankOnHand(List<Card> onHandCards, Card cardPairOfHand)
@@ -194,20 +213,14 @@ namespace PokerHands
         private static Card GetThree_Of_A_KindCardOnHand(List<Card> onHandCards)
         {
             return (from card in onHandCards
-                    group card by card.Rank 
-                    into rankGroupCard
-                    where rankGroupCard.Count() == 3
-                    select rankGroupCard).First().First();
+                    group card by card.Rank
+                        into rankGroupCard
+                        where rankGroupCard.Count() == 3
+                        select rankGroupCard).First().First();
         }
+        #endregion
 
-        public static bool OnHandIsStraight(List<Card> onHandCards)
-        {
-            bool isStraight = IsStraight(onHandCards);
-            Hand.OrderCard(onHandCards);
-
-            return isStraight;
-        }
-
+        #region Straight
         private static bool IsStraight(List<Card> onHandCards)
         {
             OrderCardsForCheckIsStraight(onHandCards);
@@ -265,16 +278,20 @@ namespace PokerHands
 
             return CompareScoring(lastCardOnHand1, lastCardOnHand2);
         }
+        #endregion
 
-        public static bool OnHandIsFlush(List<Card> onHandCards)
+        public static ResultDual CompareHighCard(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
-            var firstCardSuit = onHandCards.First().Suit;
-            for(int i = 1; i < onHandCards.Count; i++)
+            Hand.OrderCard(cardsOnHand1);
+            Hand.OrderCard(cardsOnHand2);
+
+            for (int i = cardsOnHand1.Count - 1; i >= 0; i--)
             {
-                if (onHandCards[i].Suit != firstCardSuit)
-                    return false;
+                var resultDual = CompareScoring(cardsOnHand1[i], cardsOnHand2[i]);
+                if (resultDual != ResultDual.Draw)
+                    return resultDual;
             }
-            return true;
+            return ResultDual.Draw;
         }
 
         public static ResultDual CompareFlush(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
@@ -282,24 +299,9 @@ namespace PokerHands
             return CompareHighCard(cardsOnHand1, cardsOnHand2);
         }
 
-        public static bool OnHandIsFullHouse(List<Card> onHandCards)
-        {
-            return OnHandIsPair(onHandCards) && OnHandIsThree_Of_A_Kind(onHandCards);
-        }
-
         public static ResultDual CompareFullHouse(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
             return CompareThree_Of_A_Kind(cardsOnHand1, cardsOnHand2);
-        }
-
-        public static bool OnHandIsFour_Of_A_Kind(List<Card> onHandCards)
-        {
-            var rankCardGroupsCount = GetRankCardGroupsCount(onHandCards);
-
-            foreach (var rankCardGroupCount in rankCardGroupsCount.Values)
-                if (rankCardGroupCount == 4)
-                    return true;
-            return false;
         }
     }
 }
