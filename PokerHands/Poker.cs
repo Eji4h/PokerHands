@@ -323,5 +323,10 @@ namespace PokerHands
         {
             return CompareHighCard(cardsOnHand1, cardsOnHand2);
         }
+
+        public static bool OnHandIsRoyalStraightFlush(List<Card> onHandCards)
+        {
+            return false;
+        }
     }
 }

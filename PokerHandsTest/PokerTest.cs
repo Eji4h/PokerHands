@@ -998,5 +998,22 @@ namespace PokerHandsTest
             Assert.AreEqual(ResultDual.Lose, Poker.CompareStraightFlush(cardsOnHand1, cardsOnHand2));
         }
         #endregion
+
+        #region RoyalStraightFlush
+        [Test]
+        public void OnHandIs_2S_3S_4S_5S_6S_RoyalStraightFlush_ShouldBe_False()
+        {
+            var onHandCards = new List<Card>()
+            {
+                new Card(SuitType.Spade, RankType.Two),
+                new Card(SuitType.Spade, RankType.Three),
+                new Card(SuitType.Spade, RankType.Four),
+                new Card(SuitType.Spade, RankType.Five),
+                new Card(SuitType.Spade, RankType.Six)
+            };
+
+            Assert.False(Poker.OnHandIsRoyalStraightFlush(onHandCards));
+        }
+        #endregion
     }
 }
