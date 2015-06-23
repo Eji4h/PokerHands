@@ -32,6 +32,19 @@ namespace PokerHandsTest
 
         #region RecognizeCatagory
         [Test]
+        public void OnHandIs_5555A_CategoryShouldBe_Four_Of_A_Kind()
+        {
+            var onHandCards = new List<Card>()
+            {
+                dummyCardRank5, dummyCardRank5, 
+                dummyCardRank5, dummyCardRank5,
+                dummyCardRankAce
+            };
+
+            Assert.AreEqual(Poker.Category.Four_Of_A_Kind, Poker.RecognizeCategory(onHandCards));
+        }
+
+        [Test]
         public void OnHandIs_666TT_CategoryShouldBe_FullHouse()
         {
             var onHandCards = new List<Card>()
