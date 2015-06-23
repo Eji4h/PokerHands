@@ -1014,6 +1014,21 @@ namespace PokerHandsTest
 
             Assert.False(Poker.OnHandIsRoyalStraightFlush(onHandCards));
         }
+
+        [Test]
+        public void OnHandIs_10H_JH_QH_KH_AH_RoyalStraightFlush_ShouldBe_True()
+        {
+            var onHandCards = new List<Card>()
+            {
+                new Card(SuitType.Heart, RankType.Ten),
+                new Card(SuitType.Heart, RankType.Jack),
+                new Card(SuitType.Heart, RankType.Queen),
+                new Card(SuitType.Heart, RankType.King),
+                new Card(SuitType.Heart, RankType.Ace)
+            };
+
+            Assert.True(Poker.OnHandIsRoyalStraightFlush(onHandCards));
+        }
         #endregion
     }
 }

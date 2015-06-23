@@ -326,7 +326,19 @@ namespace PokerHands
 
         public static bool OnHandIsRoyalStraightFlush(List<Card> onHandCards)
         {
-            return false;
+            OrderCardsForCheckIsStraight(onHandCards);
+
+            var nextRankToCheck = RankType.Ten;
+            var onHandCardsRank = new RankType[onHandCards.Count];
+
+            SetOnHandCardsRankForCheckOnHandIsStraight(onHandCards, onHandCardsRank);
+
+            for (int i = 0; i < onHandCardsRank.Length; i++)
+            {
+                if (onHandCardsRank[i] != nextRankToCheck++)
+                    return false;
+            }
+            return true;
         }
     }
 }
