@@ -294,6 +294,11 @@ namespace PokerHands
 
         public static bool OnHandIsFour_Of_A_Kind(List<Card> onHandCards)
         {
+            var rankCardGroupsCount = GetRankCardGroupsCount(onHandCards);
+
+            foreach (var rankCardGroupCount in rankCardGroupsCount.Values)
+                if (rankCardGroupCount == 4)
+                    return true;
             return false;
         }
     }

@@ -905,6 +905,19 @@ namespace PokerHandsTest
 
             Assert.False(Poker.OnHandIsFour_Of_A_Kind(onHandCards));
         }
+
+        [Test]
+        public void OnHandIs_77779_Four_Of_A_Kind_ShouldBe_True()
+        {
+            var onHandCards = new List<Card>()
+            {
+                dummyCardRank7, dummyCardRank7, 
+                dummyCardRank7, dummyCardRank7,
+                dummyCardRank9
+            };
+
+            Assert.True(Poker.OnHandIsFour_Of_A_Kind(onHandCards));
+        }
         #endregion
     }
 }
