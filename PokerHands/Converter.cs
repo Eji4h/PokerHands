@@ -15,5 +15,10 @@ namespace PokerHands
         {
             return (SuitType)input;
         }
+
+        public static RankType StringToRank(string p)
+        {
+            return RankType.Two;
+        }
     }
 }

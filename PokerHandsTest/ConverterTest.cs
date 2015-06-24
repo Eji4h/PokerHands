@@ -34,5 +34,11 @@ namespace PokerHandsTest
         {
             Assert.AreEqual(SuitType.Spade, Converter.CharToSuit('S'));
         }
+
+        [Test]
+        public void ConvertStringToRank_ShouldBe_2_WhenInputIs2()
+        {
+            Assert.AreEqual(RankType.Two, Converter.StringToRank("2"));
+        }
     }
 }
