@@ -16,8 +16,11 @@ namespace PokerHands
             return (SuitType)input;
         }
 
-        public static RankType StringToRank(string p)
+        public static RankType StringToRank(string input)
         {
+            int convertNumber;
+            if (int.TryParse(input, out convertNumber))
+                return (RankType)convertNumber;
             return RankType.Two;
         }
     }

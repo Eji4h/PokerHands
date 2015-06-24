@@ -40,5 +40,11 @@ namespace PokerHandsTest
         {
             Assert.AreEqual(RankType.Two, Converter.StringToRank("2"));
         }
+
+        [Test]
+        public void ConvertStringToRank_ShouldBe_10_WhenInputIs10()
+        {
+            Assert.AreEqual(RankType.Ten, Converter.StringToRank("10"));
+        }
     }
 }
