@@ -52,5 +52,11 @@ namespace PokerHandsTest
         {
             Assert.AreEqual(RankType.Jack, Converter.StringToRank("J"));
         }
+
+        [Test]
+        public void ConvertStringToRank_ShouldBe_Queen_WhenInputIsQ()
+        {
+            Assert.AreEqual(RankType.Queen, Converter.StringToRank("Q"));
+        }
     }
 }

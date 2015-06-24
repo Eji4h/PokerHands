@@ -22,7 +22,9 @@ namespace PokerHands
             if (int.TryParse(input, out convertNumber))
                 return (RankType)convertNumber;
 
-            return RankType.Jack;
+            if (input == "J")
+                return RankType.Jack;
+            return RankType.Queen;
         }
     }
 }
