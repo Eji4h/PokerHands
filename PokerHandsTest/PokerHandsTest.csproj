@@ -50,6 +50,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CardTest.cs" />
+    <Compile Include="ConverterTest.cs" />
     <Compile Include="DeckTest.cs" />
     <Compile Include="HandTest.cs" />
     <Compile Include="PokerTest.cs" />
