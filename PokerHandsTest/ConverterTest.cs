@@ -16,5 +16,11 @@ namespace PokerHandsTest
         {
             Assert.AreEqual(SuitType.Club, Converter.CharToSuit('C'));
         }
+
+        [Test]
+        public void ConvertCharToSuit_ShouldBe_Diamond_WhenInputIsD()
+        {
+            Assert.AreEqual(SuitType.Diamond, Converter.CharToSuit('D'));
+        }
     }
 }
