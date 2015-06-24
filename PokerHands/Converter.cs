@@ -21,7 +21,8 @@ namespace PokerHands
             int convertNumber;
             if (int.TryParse(input, out convertNumber))
                 return (RankType)convertNumber;
-            return RankType.Two;
+
+            return RankType.Jack;
         }
     }
 }
