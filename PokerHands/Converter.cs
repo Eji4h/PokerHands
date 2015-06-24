@@ -22,9 +22,22 @@ namespace PokerHands
             if (int.TryParse(input, out convertNumber))
                 return (RankType)convertNumber;
 
-            if (input == "J")
-                return RankType.Jack;
-            return RankType.Queen;
+            return ConvertCourtToRank(input);
+        }
+
+        private static RankType ConvertCourtToRank(string input)
+        {
+            switch(input)
+            {
+                case "J":
+                    return RankType.Jack;
+                case "Q":
+                    return RankType.Queen;
+                case "K":
+                    return RankType.King;
+                default:
+                    return RankType.Jack;
+            }
         }
     }
 }
