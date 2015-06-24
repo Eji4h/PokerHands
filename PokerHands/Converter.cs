@@ -11,9 +11,9 @@ namespace PokerHands
 {
     public static class Converter
     {
-        public static SuitType CharToSuit(char p)
+        public static SuitType CharToSuit(char input)
         {
-            if (p == 'C')
+            if (input == 'C')
                 return SuitType.Club;
             return SuitType.Diamond;
         }
