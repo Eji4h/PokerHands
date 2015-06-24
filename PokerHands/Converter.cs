@@ -13,13 +13,7 @@ namespace PokerHands
     {
         public static SuitType CharToSuit(char input)
         {
-            if (input == 'C')
-                return SuitType.Club;
-            if (input == 'D')
-                return SuitType.Diamond;
-            if (input == 'H')
-                return SuitType.Heart;
-            return SuitType.Spade;
+            return (SuitType)input;
         }
     }
 }

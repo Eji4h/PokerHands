@@ -10,10 +10,10 @@ namespace PokerHands
     {
         public enum SuitType
         {
-            Club,
-            Diamond,
-            Heart,
-            Spade
+            Club = 'C',
+            Diamond = 'D',
+            Heart = 'H',
+            Spade = 'S'
         }
 
         public enum RankType
