@@ -28,5 +28,11 @@ namespace PokerHandsTest
         {
             Assert.AreEqual(SuitType.Heart, Converter.CharToSuit('H'));
         }
+
+        [Test]
+        public void ConvertCharToSuit_ShouldBe_Spade_WhenInputIsS()
+        {
+            Assert.AreEqual(SuitType.Spade, Converter.CharToSuit('S'));
+        }
     }
 }
