@@ -22,5 +22,11 @@ namespace PokerHandsTest
         {
             Assert.AreEqual(SuitType.Diamond, Converter.CharToSuit('D'));
         }
+
+        [Test]
+        public void ConvertCharToSuit_ShouldBe_Heart_WhenInputIsH()
+        {
+            Assert.AreEqual(SuitType.Heart, Converter.CharToSuit('H'));
+        }
     }
 }

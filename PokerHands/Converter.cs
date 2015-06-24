@@ -15,7 +15,9 @@ namespace PokerHands
         {
             if (input == 'C')
                 return SuitType.Club;
-            return SuitType.Diamond;
+            if (input == 'D')
+                return SuitType.Diamond;
+            return SuitType.Heart;
         }
     }
 }
