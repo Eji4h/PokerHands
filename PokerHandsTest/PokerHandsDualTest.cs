@@ -52,5 +52,11 @@ namespace PokerHandsTest
         {
             Assert.AreEqual("straight", PokerHandsDual.ChangeCategoryForDisplay(Category.Straight));
         }
+
+        [Test]
+        public void ChangeCategoryForDisplay_ShouldBe_flush_WhenInputIs_Flush()
+        {
+            Assert.AreEqual("flush", PokerHandsDual.ChangeCategoryForDisplay(Category.Flush));
+        }
     }
 }
