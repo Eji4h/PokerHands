@@ -41,7 +41,7 @@ namespace PokerHands
                 return "pair";
             if (category == Category.TwoPairs)
                 return "two pairs";
-            if (category == Category.Three_Of_A_Kind)
+            if (category == Category.ThreeOfA_Kind)
                 return "three of a kind";
             return "full house";
         }

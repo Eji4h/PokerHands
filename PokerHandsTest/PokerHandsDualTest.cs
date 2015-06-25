@@ -42,9 +42,9 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void ChangeCategoryForDisplay_ShouldBe_three_of_a_kind_WhenInputIs_Three_Of_A_Kind()
+        public void ChangeCategoryForDisplay_ShouldBe_threeOfA_Kind_WhenInputIs_ThreeOfA_Kind()
         {
-            Assert.AreEqual("three of a kind", PokerHandsDual.ChangeCategoryForDisplay(Category.Three_Of_A_Kind));
+            Assert.AreEqual("three of a kind", PokerHandsDual.ChangeCategoryForDisplay(Category.ThreeOfA_Kind));
         }
     }
 }

@@ -21,11 +21,11 @@ namespace PokerHands
             HighCard,
             Pair,
             TwoPairs,
-            Three_Of_A_Kind,
+            ThreeOfA_Kind,
             Straight,
             Flush,
             FullHouse,
-            Four_Of_A_Kind,
+            FourOfA_Kind,
             StraightFlush,
             RoyalStraightFlush
         }
@@ -63,16 +63,16 @@ namespace PokerHands
                 return Category.RoyalStraightFlush;
             if (OnHandIsStraightFlush(onHandCards))
                 return Category.StraightFlush;
-            if (OnHandIsFour_Of_A_Kind(onHandCards))
-                return Category.Four_Of_A_Kind;
+            if (OnHandIsFourOfA_Kind(onHandCards))
+                return Category.FourOfA_Kind;
             if (OnHandIsFullHouse(onHandCards))
                 return Category.FullHouse;
             if (OnHandIsFlush(onHandCards))
                 return Category.Flush;
             if (OnHandIsStraight(onHandCards))
                 return Category.Straight;
-            if (OnHandIsThree_Of_A_Kind(onHandCards))
-                return Category.Three_Of_A_Kind;
+            if (OnHandIsThreeOfA_Kind(onHandCards))
+                return Category.ThreeOfA_Kind;
             if (OnHandIsTwoPairs(onHandCards))
                 return Category.TwoPairs;
             if (OnHandIsPair(onHandCards))
@@ -104,7 +104,7 @@ namespace PokerHands
             return pairCount == 2;
         }
 
-        public static bool OnHandIsThree_Of_A_Kind(List<Card> onHandCards)
+        public static bool OnHandIsThreeOfA_Kind(List<Card> onHandCards)
         {
             return OnHandHaveASameKindCardsCount(onHandCards, 3);
         }
@@ -130,10 +130,10 @@ namespace PokerHands
 
         public static bool OnHandIsFullHouse(List<Card> onHandCards)
         {
-            return OnHandIsPair(onHandCards) && OnHandIsThree_Of_A_Kind(onHandCards);
+            return OnHandIsPair(onHandCards) && OnHandIsThreeOfA_Kind(onHandCards);
         }
 
-        public static bool OnHandIsFour_Of_A_Kind(List<Card> onHandCards)
+        public static bool OnHandIsFourOfA_Kind(List<Card> onHandCards)
         {
             return OnHandHaveASameKindCardsCount(onHandCards, 4);
         }
@@ -175,16 +175,16 @@ namespace PokerHands
                     return CompareRoyalStraightFlush(cardsOnHand1, cardsOnHand2);
                 case Category.StraightFlush:
                     return CompareStraightFlush(cardsOnHand1, cardsOnHand2);
-                case Category.Four_Of_A_Kind:
-                    return CompareFour_Of_A_Kind(cardsOnHand1, cardsOnHand2);
+                case Category.FourOfA_Kind:
+                    return CompareFourOfA_Kind(cardsOnHand1, cardsOnHand2);
                 case Category.FullHouse:
                     return CompareFullHouse(cardsOnHand1, cardsOnHand2);
                 case Category.Flush:
                     return CompareFlush(cardsOnHand1, cardsOnHand2);
                 case Category.Straight:
                     return CompareStraight(cardsOnHand1, cardsOnHand2);
-                case Category.Three_Of_A_Kind:
-                    return CompareThree_Of_A_Kind(cardsOnHand1, cardsOnHand2);
+                case Category.ThreeOfA_Kind:
+                    return CompareThreeOfA_Kind(cardsOnHand1, cardsOnHand2);
                 case Category.TwoPairs:
                     return CompareTwoPairs(cardsOnHand1, cardsOnHand2);
                 case Category.Pair:
@@ -275,12 +275,12 @@ namespace PokerHands
             return resultCompare;
         }
 
-        public static ResultDual CompareThree_Of_A_Kind(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
+        public static ResultDual CompareThreeOfA_Kind(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
             return CompareKindCard(cardsOnHand1, cardsOnHand2, 3);
         }
 
-        public static ResultDual CompareFour_Of_A_Kind(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
+        public static ResultDual CompareFourOfA_Kind(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
             return CompareKindCard(cardsOnHand1, cardsOnHand2, 4);
         }
@@ -391,7 +391,7 @@ namespace PokerHands
 
         public static ResultDual CompareFullHouse(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
-            return CompareThree_Of_A_Kind(cardsOnHand1, cardsOnHand2);
+            return CompareThreeOfA_Kind(cardsOnHand1, cardsOnHand2);
         }
 
         public static ResultDual CompareStraightFlush(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
