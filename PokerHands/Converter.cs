@@ -22,10 +22,10 @@ namespace PokerHands
             if (int.TryParse(input, out convertNumber))
                 return (RankType)convertNumber;
 
-            return ConvertCourtToRank(input);
+            return ConvertNotNumberToRank(input);
         }
 
-        private static RankType ConvertCourtToRank(string input)
+        private static RankType ConvertNotNumberToRank(string input)
         {
             switch(input)
             {

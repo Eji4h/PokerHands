@@ -189,10 +189,9 @@ namespace PokerHands
                     return CompareTwoPairs(cardsOnHand1, cardsOnHand2);
                 case Category.Pair:
                     return ComparePair(cardsOnHand1, cardsOnHand2);
-                case Category.HighCard:
+                default:
                     return CompareHighCard(cardsOnHand1, cardsOnHand2);
             }
-            return CompareHighCard(cardsOnHand1, cardsOnHand2);
         }
         #endregion
 
