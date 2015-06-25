@@ -51,6 +51,8 @@ namespace PokerHands
                 return "full house";
             if (category == Category.FourOfA_Kind)
                 return "four of a kind";
+            if (category == Category.StraightFlush)
+                return "straight flush";
             return "";
         }
     }
