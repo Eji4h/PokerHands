@@ -11,23 +11,23 @@ namespace PokerHands
 {
     public static class Converter
     {
-        public static SuitType ToSuit(char input)
+        public static SuitType ToSuit(char suit)
         {
-            return (SuitType)input;
+            return (SuitType)suit;
         }
 
-        public static RankType ToRank(string input)
+        public static RankType ToRank(string rank)
         {
             int convertNumber;
-            if (int.TryParse(input, out convertNumber))
+            if (int.TryParse(rank, out convertNumber))
                 return (RankType)convertNumber;
 
-            return ConvertNotNumberToRank(input);
+            return ConvertNotNumberToRank(rank);
         }
 
-        private static RankType ConvertNotNumberToRank(string input)
+        private static RankType ConvertNotNumberToRank(string rank)
         {
-            switch(input)
+            switch(rank)
             {
                 case "J":
                     return RankType.Jack;
@@ -40,12 +40,12 @@ namespace PokerHands
             }
         }
 
-        public static Card ToCard(string input)
+        public static Card ToCard(string card)
         {
-            int lastIndexOfInput = input.Length - 1;
+            int lastIndexOfInput = card.Length - 1;
 
-            var rankStr = input.Substring(0, lastIndexOfInput);
-            var suitChar = input[lastIndexOfInput];
+            var rankStr = card.Substring(0, lastIndexOfInput);
+            var suitChar = card[lastIndexOfInput];
 
             var rank = ToRank(rankStr);
             var suit = ToSuit(suitChar);
@@ -53,10 +53,10 @@ namespace PokerHands
             return new Card(suit, rank);
         }
 
-        public static List<Card> ToCardsList(string input)
+        public static List<Card> ToCardsList(string cardsList)
         {
             var cards = new List<Card>();
-            string[] cardsStr = input.Split(' ');
+            string[] cardsStr = cardsList.Split(' ');
 
             foreach (var cardStr in cardsStr)
                 cards.Add(ToCard(cardStr));
