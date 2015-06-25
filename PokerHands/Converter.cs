@@ -52,5 +52,17 @@ namespace PokerHands
 
             return new Card(suit, rank);
         }
+
+        public static List<Card> ToCardsList(string input)
+        {
+            var cards = new List<Card>();
+            string[] cardsStr = input.Split(' ');
+
+            foreach (var cardStr in cardsStr)
+                cards.Add(ToCard(cardStr));
+
+            Hand.OrderCard(cards);
+            return cards;
+        }
     }
 }

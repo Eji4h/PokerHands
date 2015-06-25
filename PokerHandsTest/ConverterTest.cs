@@ -100,5 +100,26 @@ namespace PokerHandsTest
             Assert.AreEqual(expectedCard.Suit, actualCard.Suit);
             Assert.AreEqual(expectedCard.Rank, actualCard.Rank);
         }
+
+        [Test]
+        public void ConvertToCardsList_ShouldBe_2D_2H_4C_4H_4S_WhenInputIs_2H_4S_4C_2D_4H()
+        {
+            var expectedCardsList = new List<Card>()
+            {
+                new Card(SuitType.Diamond, RankType.Two),
+                new Card(SuitType.Heart, RankType.Two),
+                new Card(SuitType.Club, RankType.Four),
+                new Card(SuitType.Heart, RankType.Four),
+                new Card(SuitType.Spade, RankType.Four)
+            };
+
+            var actualCardsList = Converter.ToCardsList("2H 4S 4C 2D 4H");
+
+            for(int i = 0; i < expectedCardsList.Count; i++)
+            {
+                Assert.AreEqual(expectedCardsList[i].Suit, actualCardsList[i].Suit);
+                Assert.AreEqual(expectedCardsList[i].Rank, actualCardsList[i].Rank);
+            }
+        }
     }
 }
