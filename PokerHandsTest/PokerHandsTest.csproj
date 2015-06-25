@@ -53,6 +53,7 @@
     <Compile Include="ConverterTest.cs" />
     <Compile Include="DeckTest.cs" />
     <Compile Include="HandTest.cs" />
+    <Compile Include="PokerHandsDualTest.cs" />
     <Compile Include="PokerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
