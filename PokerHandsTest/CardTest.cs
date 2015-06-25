@@ -68,5 +68,14 @@ namespace PokerHandsTest
 
             Assert.False(Card.IsEquals(card1, card2));
         }
+
+        [Test]
+        public void Card_IsEquals_ShouldBe_True_WhenInputIs_7Heart_And_7Heart()
+        {
+            var card1 = new Card(SuitType.Heart, RankType.Seven);
+            var card2 = new Card(SuitType.Heart, RankType.Seven);
+
+            Assert.True(Card.IsEquals(card1, card2));
+        }
     }
 }

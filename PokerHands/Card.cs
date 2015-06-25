@@ -61,7 +61,11 @@ namespace PokerHands
 
         public static bool IsEquals(Card card1, Card card2)
         {
-            return false;
+            if (card1.Suit != card2.Suit)
+                return false;
+            if (card1.Rank != card2.Rank)
+                return false;
+            return true;
         }
     }
 }
