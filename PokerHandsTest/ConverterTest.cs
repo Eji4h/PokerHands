@@ -64,5 +64,11 @@ namespace PokerHandsTest
         {
             Assert.AreEqual(RankType.King, Converter.ToRank("K"));
         }
+
+        [Test]
+        public void ConvertToRank_ShouldBe_Ace_WhenInputIsA()
+        {
+            Assert.AreEqual(RankType.Ace, Converter.ToRank("A"));
+        }
     }
 }

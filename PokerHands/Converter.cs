@@ -36,7 +36,7 @@ namespace PokerHands
                 case "K":
                     return RankType.King;
                 default:
-                    return RankType.Jack;
+                    return RankType.Ace;
             }
         }
     }
