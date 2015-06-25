@@ -46,5 +46,11 @@ namespace PokerHandsTest
         {
             Assert.AreEqual("three of a kind", PokerHandsDual.ChangeCategoryForDisplay(Category.ThreeOfA_Kind));
         }
+
+        [Test]
+        public void ChangeCategoryForDisplay_ShouldBe_straight_WhenInputIs_Straight()
+        {
+            Assert.AreEqual("straight", PokerHandsDual.ChangeCategoryForDisplay(Category.Straight));
+        }
     }
 }
