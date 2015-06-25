@@ -47,7 +47,9 @@ namespace PokerHands
                 return "straight";
             if (category == Category.Flush)
                 return "flush";
-            return "full house";
+            if(category == Category.FullHouse)
+                return "full house";
+            return "";
         }
     }
 }

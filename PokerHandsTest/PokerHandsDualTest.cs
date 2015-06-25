@@ -58,5 +58,11 @@ namespace PokerHandsTest
         {
             Assert.AreEqual("flush", PokerHandsDual.ChangeCategoryForDisplay(Category.Flush));
         }
+
+        [Test]
+        public void ChangeCategoryForDisplay_ShouldBe_full_house_WhenInputIs_FullHouse()
+        {
+            Assert.AreEqual("full house", PokerHandsDual.ChangeCategoryForDisplay(Category.FullHouse));
+        }
     }
 }
