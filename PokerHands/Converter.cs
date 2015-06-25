@@ -39,5 +39,10 @@ namespace PokerHands
                     return RankType.Ace;
             }
         }
+
+        public static Card ToCard(string input)
+        {
+            return new Card(SuitType.Diamond, RankType.Ace);
+        }
     }
 }

@@ -70,5 +70,15 @@ namespace PokerHandsTest
         {
             Assert.AreEqual(RankType.Ace, Converter.ToRank("A"));
         }
+
+        [Test]
+        public void ConvertToCard_ShouldBe_AceDiamond_WhenInputIs_AD()
+        {
+            var expectedCard = new Card(SuitType.Diamond, RankType.Ace);
+            var actualCard = Converter.ToCard("AD");
+
+            Assert.AreEqual(expectedCard.Suit, actualCard.Suit);
+            Assert.AreEqual(expectedCard.Rank, actualCard.Rank);
+        }
     }
 }
