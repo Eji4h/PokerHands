@@ -58,5 +58,10 @@ namespace PokerHands
                 return this.Suit.CompareTo(other.Suit);
             return this.Rank.CompareTo(other.Rank);
         }
+
+        public static bool IsEquals(Card card1, Card card2)
+        {
+            return false;
+        }
     }
 }

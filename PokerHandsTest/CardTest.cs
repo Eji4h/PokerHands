@@ -59,5 +59,14 @@ namespace PokerHandsTest
             Card cardRankJ = new Card(dummyCardSuit, RankType.Jack);
             Assert.AreEqual(RankType.Jack, cardRankJ.Rank);
         }
+
+        [Test]
+        public void Card_IsEquals_ShouldBe_False_WhenInputIs_AceClub_And_2Spade()
+        {
+            var card1 = new Card(SuitType.Club, RankType.Ace);
+            var card2 = new Card(SuitType.Spade, RankType.Two);
+
+            Assert.False(Card.IsEquals(card1, card2));
+        }
     }
 }
