@@ -77,7 +77,8 @@ namespace PokerHandsTest
             var expectedCard = new Card(SuitType.Diamond, RankType.Ace);
             var actualCard = Converter.ToCard("AD");
 
-            Assert.True(Card.IsEquals(expectedCard, actualCard));
+            Assert.AreEqual(expectedCard.Suit, actualCard.Suit);
+            Assert.AreEqual(expectedCard.Rank, actualCard.Rank);
         }
 
         [Test]
@@ -86,7 +87,8 @@ namespace PokerHandsTest
             var expectedCard = new Card(SuitType.Spade, RankType.Two);
             var actualCard = Converter.ToCard("2S");
 
-            Assert.True(Card.IsEquals(expectedCard, actualCard));
+            Assert.AreEqual(expectedCard.Suit, actualCard.Suit);
+            Assert.AreEqual(expectedCard.Rank, actualCard.Rank);
         }
 
         [Test]
