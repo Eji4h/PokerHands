@@ -42,7 +42,7 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void ChangeCategoryForDisplay_ShouldBe_threeOfA_Kind_WhenInputIs_ThreeOfA_Kind()
+        public void ChangeCategoryForDisplay_ShouldBe_three_of_a_Kind_WhenInputIs_ThreeOfA_Kind()
         {
             Assert.AreEqual("three of a kind", PokerHandsDual.ChangeCategoryForDisplay(Category.ThreeOfA_Kind));
         }
@@ -63,6 +63,12 @@ namespace PokerHandsTest
         public void ChangeCategoryForDisplay_ShouldBe_full_house_WhenInputIs_FullHouse()
         {
             Assert.AreEqual("full house", PokerHandsDual.ChangeCategoryForDisplay(Category.FullHouse));
+        }
+
+        [Test]
+        public void ChangeCategoryForDisplay_ShouldBe_four_of_a_Kind_WhenInputIs_FourOfA_Kind()
+        {
+            Assert.AreEqual("four of a kind", PokerHandsDual.ChangeCategoryForDisplay(Category.FourOfA_Kind));
         }
     }
 }
