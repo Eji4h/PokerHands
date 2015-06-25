@@ -30,9 +30,9 @@ namespace PokerHandsTest
         Card dummyCardSuitHeart = new Card(SuitType.Heart, RankType.Five);
         Card dummyCardSuitSpade = new Card(SuitType.Spade, RankType.Seven);
 
-        #region CompareCategory
+        #region ComparePokerHands
         [Test]
-        public void CompareCategory_HandOneIs_TJQKA_Spade_And_HandTwoIs_77QQA_ResultShouldBe_Win()
+        public void ComparePokerHands_HandOneIs_TJQKA_Spade_And_HandTwoIs_77QQA_ResultShouldBe_Win()
         {
             var cardsOnHand1 = new List<Card>()
             {
@@ -50,11 +50,11 @@ namespace PokerHandsTest
                 dummyCardRankAce
             };
 
-            Assert.AreEqual(ResultDual.Win, Poker.CompareCategory(cardsOnHand1, cardsOnHand2));
+            Assert.AreEqual(ResultDual.Win, Poker.ComparePokerHands(cardsOnHand1, cardsOnHand2));
         }
 
         [Test]
-        public void CompareCategory_HandOneIs_44466_Spade_And_HandTwoIs_88899_ResultShouldBe_Lose()
+        public void ComparePokerHands_HandOneIs_44466_Spade_And_HandTwoIs_88899_ResultShouldBe_Lose()
         {
             var cardsOnHand1 = new List<Card>()
             {
@@ -68,7 +68,7 @@ namespace PokerHandsTest
                 dummyCardRank9, dummyCardRank9
             };
 
-            Assert.AreEqual(ResultDual.Lose, Poker.CompareCategory(cardsOnHand1, cardsOnHand2));
+            Assert.AreEqual(ResultDual.Lose, Poker.ComparePokerHands(cardsOnHand1, cardsOnHand2));
         }
         #endregion
 

@@ -11,12 +11,12 @@ namespace PokerHands
 {
     public static class Converter
     {
-        public static SuitType CharToSuit(char input)
+        public static SuitType ToSuit(char input)
         {
             return (SuitType)input;
         }
 
-        public static RankType StringToRank(string input)
+        public static RankType ToRank(string input)
         {
             int convertNumber;
             if (int.TryParse(input, out convertNumber))

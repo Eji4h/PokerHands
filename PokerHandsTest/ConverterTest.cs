@@ -12,57 +12,57 @@ namespace PokerHandsTest
     class ConverterTest
     {
         [Test]
-        public void ConvertCharToSuit_ShouldBe_Club_WhenInputIsC()
+        public void ConvertToSuit_ShouldBe_Club_WhenInputIsC()
         {
-            Assert.AreEqual(SuitType.Club, Converter.CharToSuit('C'));
+            Assert.AreEqual(SuitType.Club, Converter.ToSuit('C'));
         }
 
         [Test]
-        public void ConvertCharToSuit_ShouldBe_Diamond_WhenInputIsD()
+        public void ConvertToSuit_ShouldBe_Diamond_WhenInputIsD()
         {
-            Assert.AreEqual(SuitType.Diamond, Converter.CharToSuit('D'));
+            Assert.AreEqual(SuitType.Diamond, Converter.ToSuit('D'));
         }
 
         [Test]
-        public void ConvertCharToSuit_ShouldBe_Heart_WhenInputIsH()
+        public void ConvertToSuit_ShouldBe_Heart_WhenInputIsH()
         {
-            Assert.AreEqual(SuitType.Heart, Converter.CharToSuit('H'));
+            Assert.AreEqual(SuitType.Heart, Converter.ToSuit('H'));
         }
 
         [Test]
-        public void ConvertCharToSuit_ShouldBe_Spade_WhenInputIsS()
+        public void ConvertToSuit_ShouldBe_Spade_WhenInputIsS()
         {
-            Assert.AreEqual(SuitType.Spade, Converter.CharToSuit('S'));
+            Assert.AreEqual(SuitType.Spade, Converter.ToSuit('S'));
         }
 
         [Test]
-        public void ConvertStringToRank_ShouldBe_2_WhenInputIs2()
+        public void ConvertToRank_ShouldBe_2_WhenInputIs2()
         {
-            Assert.AreEqual(RankType.Two, Converter.StringToRank("2"));
+            Assert.AreEqual(RankType.Two, Converter.ToRank("2"));
         }
 
         [Test]
-        public void ConvertStringToRank_ShouldBe_10_WhenInputIs10()
+        public void ConvertToRank_ShouldBe_10_WhenInputIs10()
         {
-            Assert.AreEqual(RankType.Ten, Converter.StringToRank("10"));
+            Assert.AreEqual(RankType.Ten, Converter.ToRank("10"));
         }
 
         [Test]
-        public void ConvertStringToRank_ShouldBe_Jack_WhenInputIsJ()
+        public void ConvertToRank_ShouldBe_Jack_WhenInputIsJ()
         {
-            Assert.AreEqual(RankType.Jack, Converter.StringToRank("J"));
+            Assert.AreEqual(RankType.Jack, Converter.ToRank("J"));
         }
 
         [Test]
-        public void ConvertStringToRank_ShouldBe_Queen_WhenInputIsQ()
+        public void ConvertToRank_ShouldBe_Queen_WhenInputIsQ()
         {
-            Assert.AreEqual(RankType.Queen, Converter.StringToRank("Q"));
+            Assert.AreEqual(RankType.Queen, Converter.ToRank("Q"));
         }
 
         [Test]
-        public void ConvertStringToRank_ShouldBe_King_WhenInputIsK()
+        public void ConvertToRank_ShouldBe_King_WhenInputIsK()
         {
-            Assert.AreEqual(RankType.King, Converter.StringToRank("K"));
+            Assert.AreEqual(RankType.King, Converter.ToRank("K"));
         }
     }
 }

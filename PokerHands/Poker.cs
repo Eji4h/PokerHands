@@ -152,6 +152,50 @@ namespace PokerHands
         }
         #endregion
 
+        #region ComparePokerHands
+        public static ResultDual ComparePokerHands(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
+        {
+            var categoryOfHand1 = RecognizeCategory(cardsOnHand1);
+            var categoryOfHand2 = RecognizeCategory(cardsOnHand2);
+
+            if (categoryOfHand1 == categoryOfHand2)
+                return ComparePokerHandsSameCategory(cardsOnHand1, cardsOnHand2);
+            if (categoryOfHand1 > categoryOfHand2)
+                return ResultDual.Win;
+            return ResultDual.Lose;
+        }
+
+        private static ResultDual ComparePokerHandsSameCategory(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
+        {
+            var categoryOfHand1 = RecognizeCategory(cardsOnHand1);
+
+            switch (categoryOfHand1)
+            {
+                case Category.RoyalStraightFlush:
+                    return CompareRoyalStraightFlush(cardsOnHand1, cardsOnHand2);
+                case Category.StraightFlush:
+                    return CompareStraightFlush(cardsOnHand1, cardsOnHand2);
+                case Category.Four_Of_A_Kind:
+                    return CompareFour_Of_A_Kind(cardsOnHand1, cardsOnHand2);
+                case Category.FullHouse:
+                    return CompareFullHouse(cardsOnHand1, cardsOnHand2);
+                case Category.Flush:
+                    return CompareFlush(cardsOnHand1, cardsOnHand2);
+                case Category.Straight:
+                    return CompareStraight(cardsOnHand1, cardsOnHand2);
+                case Category.Three_Of_A_Kind:
+                    return CompareThree_Of_A_Kind(cardsOnHand1, cardsOnHand2);
+                case Category.TwoPairs:
+                    return CompareTwoPairs(cardsOnHand1, cardsOnHand2);
+                case Category.Pair:
+                    return ComparePair(cardsOnHand1, cardsOnHand2);
+                case Category.HighCard:
+                    return CompareHighCard(cardsOnHand1, cardsOnHand2);
+            }
+            return CompareHighCard(cardsOnHand1, cardsOnHand2);
+        }
+        #endregion
+
         #region SameKindCard
         private static bool OnHandHaveASameKindCardsCount(List<Card> onHandCards, int numberOfSameKindCardToCheck)
         {
@@ -359,48 +403,6 @@ namespace PokerHands
         public static ResultDual CompareRoyalStraightFlush(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
             return CompareSuit(cardsOnHand1, cardsOnHand2);
-        }
-
-        public static ResultDual CompareCategory(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
-        {
-            var categoryOfHand1 = RecognizeCategory(cardsOnHand1);
-            var categoryOfHand2 = RecognizeCategory(cardsOnHand2);
-
-            if (categoryOfHand1 == categoryOfHand2)
-                return CompareSameCategory(cardsOnHand1, cardsOnHand2);
-            if (categoryOfHand1 > categoryOfHand2)
-                return ResultDual.Win;
-            return ResultDual.Lose;
-        }
-
-        private static ResultDual CompareSameCategory(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
-        {
-            var categoryOfHand1 = RecognizeCategory(cardsOnHand1);
-
-            switch (categoryOfHand1)
-            {
-                case Category.RoyalStraightFlush:
-                    return CompareRoyalStraightFlush(cardsOnHand1, cardsOnHand2);
-                case Category.StraightFlush:
-                    return CompareStraightFlush(cardsOnHand1, cardsOnHand2);
-                case Category.Four_Of_A_Kind:
-                    return CompareFour_Of_A_Kind(cardsOnHand1, cardsOnHand2);
-                case Category.FullHouse:
-                    return CompareFullHouse(cardsOnHand1, cardsOnHand2);
-                case Category.Flush:
-                    return CompareFlush(cardsOnHand1, cardsOnHand2);
-                case Category.Straight:
-                    return CompareStraight(cardsOnHand1, cardsOnHand2);
-                case Category.Three_Of_A_Kind:
-                    return CompareThree_Of_A_Kind(cardsOnHand1, cardsOnHand2);
-                case Category.TwoPairs:
-                    return CompareTwoPairs(cardsOnHand1, cardsOnHand2);
-                case Category.Pair:
-                    return ComparePair(cardsOnHand1, cardsOnHand2);
-                case Category.HighCard:
-                    return CompareHighCard(cardsOnHand1, cardsOnHand2);
-            } 
-            return CompareHighCard(cardsOnHand1, cardsOnHand2);
         }
     }
 }
