@@ -77,8 +77,7 @@ namespace PokerHandsTest
             var expectedCard = new Card(SuitType.Diamond, RankType.Ace);
             var actualCard = Converter.ToCard("AD");
 
-            Assert.AreEqual(expectedCard.Suit, actualCard.Suit);
-            Assert.AreEqual(expectedCard.Rank, actualCard.Rank);
+            Assert.True(Card.IsEquals(expectedCard, actualCard));
         }
     }
 }
