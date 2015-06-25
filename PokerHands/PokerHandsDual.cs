@@ -53,6 +53,8 @@ namespace PokerHands
                 return "four of a kind";
             if (category == Category.StraightFlush)
                 return "straight flush";
+            if (category == Category.RoyalStraightFlush)
+                return "royal straight flush";
             return "";
         }
     }
