@@ -37,6 +37,8 @@ namespace PokerHands
         {
             if (category == Category.HighCard)
                 return "high card";
+            if (category == Category.Pair)
+                return "pair";
             return "full house";
         }
     }

@@ -28,5 +28,11 @@ namespace PokerHandsTest
         {
             Assert.AreEqual("high card", PokerHandsDual.ChangeCategoryForDisplay(Category.HighCard));
         }
+
+        [Test]
+        public void ChangeCategoryForDisplay_ShouldBe_pair_WhenInputIs_Pair()
+        {
+            Assert.AreEqual("pair", PokerHandsDual.ChangeCategoryForDisplay(Category.Pair));
+        }
     }
 }
