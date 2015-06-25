@@ -42,7 +42,13 @@ namespace PokerHands
 
         public static Card ToCard(string input)
         {
-            return new Card(SuitType.Diamond, RankType.Ace);
+            var rankStr = input[0].ToString();
+            var suitChar = input[1];
+
+            var rank = ToRank(rankStr);
+            var suit = ToSuit(suitChar);
+
+            return new Card(suit, rank);
         }
     }
 }

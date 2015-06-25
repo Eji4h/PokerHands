@@ -79,5 +79,14 @@ namespace PokerHandsTest
 
             Assert.True(Card.IsEquals(expectedCard, actualCard));
         }
+
+        [Test]
+        public void ConvertToCard_ShouldBe_2Spade_WhenInputIs_2S()
+        {
+            var expectedCard = new Card(SuitType.Spade, RankType.Two);
+            var actualCard = Converter.ToCard("2S");
+
+            Assert.True(Card.IsEquals(expectedCard, actualCard));
+        }
     }
 }
