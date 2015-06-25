@@ -18,7 +18,7 @@ namespace PokerHands
             string winnerSide;
             Category categoryWinner;
 
-            if(resultDual == ResultDual.Win)
+            if (resultDual == ResultDual.Win)
             {
                 winnerSide = "Black";
                 categoryWinner = Poker.RecognizeCategory(blackCards);
@@ -35,6 +35,8 @@ namespace PokerHands
 
         public static string ChangeCategoryForDisplay(Category category)
         {
+            if (category == Category.HighCard)
+                return "high card";
             return "full house";
         }
     }

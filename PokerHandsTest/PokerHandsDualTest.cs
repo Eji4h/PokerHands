@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using RankType = PokerHands.Card.RankType;
 using ResultDual = PokerHands.Poker.ResultDual;
 using SuitType = PokerHands.Card.SuitType;
+using Category = PokerHands.Poker.Category;
 
 namespace PokerHandsTest
 {
@@ -20,6 +21,12 @@ namespace PokerHandsTest
             var whiteCards = Converter.ToCardsList("2S 8S AS QS 3S");
 
             Assert.AreEqual(expected, PokerHandsDual.GetResualDual(blackCards, whiteCards));
+        }
+
+        [Test]
+        public void ChangeCategoryForDisplay_ShouldBe_high_card_WhenInputIs_HighCard()
+        {
+            Assert.AreEqual("high card", PokerHandsDual.ChangeCategoryForDisplay(Category.HighCard));
         }
     }
 }
