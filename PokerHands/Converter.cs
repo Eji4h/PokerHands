@@ -42,8 +42,8 @@ namespace PokerHands
 
         public static Card ToCard(string input)
         {
-            var rankStr = input[0].ToString();
-            var suitChar = input[1];
+            var rankStr = input.Substring(0, input.Length - 1);
+            var suitChar = input[input.Length - 1];
 
             var rank = ToRank(rankStr);
             var suit = ToSuit(suitChar);

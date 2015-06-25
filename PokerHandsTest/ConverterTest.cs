@@ -88,5 +88,15 @@ namespace PokerHandsTest
 
             Assert.True(Card.IsEquals(expectedCard, actualCard));
         }
+
+        [Test]
+        public void ConvertToCard_ShouldBe_10Club_WhenInputIs_10C()
+        {
+            var expectedCard = new Card(SuitType.Club, RankType.Ten);
+            var actualCard = Converter.ToCard("10C");
+
+            Assert.AreEqual(expectedCard.Suit, actualCard.Suit);
+            Assert.AreEqual(expectedCard.Rank, actualCard.Rank);
+        }
     }
 }
