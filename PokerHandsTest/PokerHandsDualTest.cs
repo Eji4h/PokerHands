@@ -34,5 +34,11 @@ namespace PokerHandsTest
         {
             Assert.AreEqual("pair", PokerHandsDual.ChangeCategoryForDisplay(Category.Pair));
         }
+
+        [Test]
+        public void ChangeCategoryForDisplay_ShouldBe_two_pairs_WhenInputIs_TwoPairs()
+        {
+            Assert.AreEqual("two pairs", PokerHandsDual.ChangeCategoryForDisplay(Category.TwoPairs));
+        }
     }
 }
