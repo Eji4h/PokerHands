@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using RankType = PokerHands.Card.RankType;
-using ResultDual = PokerHands.Poker.ResultDual;
-using SuitType = PokerHands.Card.SuitType;
+﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Category = PokerHands.Poker.Category;
+using ResultDual = PokerHands.Poker.ResultDual;
 
 namespace PokerHands
 {
@@ -35,27 +30,12 @@ namespace PokerHands
 
         public static string ChangeCategoryForDisplay(Category category)
         {
-            if (category == Category.HighCard)
-                return "high card";
-            if (category == Category.Pair)
-                return "pair";
-            if (category == Category.TwoPairs)
-                return "two pairs";
-            if (category == Category.ThreeOfA_Kind)
-                return "three of a kind";
-            if (category == Category.Straight)
-                return "straight";
-            if (category == Category.Flush)
-                return "flush";
-            if(category == Category.FullHouse)
-                return "full house";
-            if (category == Category.FourOfA_Kind)
-                return "four of a kind";
-            if (category == Category.StraightFlush)
-                return "straight flush";
-            if (category == Category.RoyalStraightFlush)
-                return "royal straight flush";
-            return "";
+            string outputCategory = category.ToString();
+
+            outputCategory = Regex.Replace(outputCategory, @"\B\p{Lu}", m => " " + m.ToString().ToLower());
+            outputCategory = outputCategory.Replace("_", "");
+
+            return outputCategory.ToLower();
         }
     }
 }
