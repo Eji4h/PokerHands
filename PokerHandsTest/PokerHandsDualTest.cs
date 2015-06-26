@@ -20,7 +20,7 @@ namespace PokerHandsTest
             var blackCards = Converter.ToCardsList("2H 4S 4C 2D 4H");
             var whiteCards = Converter.ToCardsList("2S 8S AS QS 3S");
 
-            Assert.AreEqual(expected, PokerHandsDual.GetResualDual(blackCards, whiteCards));
+            Assert.AreEqual(expected, PokerHandsDual.GetResultDual(blackCards, whiteCards));
         }
 
         [Test]
@@ -31,7 +31,7 @@ namespace PokerHandsTest
             var blackCards = Converter.ToCardsList("2H 3D 5S 9C KD");
             var whiteCards = Converter.ToCardsList("2C 3H 4S 8C AH");
 
-            Assert.AreEqual(expected, PokerHandsDual.GetResualDual(blackCards, whiteCards));
+            Assert.AreEqual(expected, PokerHandsDual.GetResultDual(blackCards, whiteCards));
         }
 
         [Test]
@@ -42,7 +42,7 @@ namespace PokerHandsTest
             var blackCards = Converter.ToCardsList("2H 3D 5S 9C KD");
             var whiteCards = Converter.ToCardsList("2H 3D 5S 9C KD");
 
-            Assert.AreEqual(expected, PokerHandsDual.GetResualDual(blackCards, whiteCards));
+            Assert.AreEqual(expected, PokerHandsDual.GetResultDual(blackCards, whiteCards));
         }
 
         [Test]
