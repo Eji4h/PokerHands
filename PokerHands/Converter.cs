@@ -35,8 +35,10 @@ namespace PokerHands
                     return RankType.Queen;
                 case "K":
                     return RankType.King;
-                default:
+                case "A":
                     return RankType.Ace;
+                default:
+                    return RankType.Ten;
             }
         }
 
