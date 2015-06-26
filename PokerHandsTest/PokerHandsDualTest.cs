@@ -35,6 +35,17 @@ namespace PokerHandsTest
         }
 
         [Test]
+        public void OutputShouldBe_Tie_WhenBlackCardsIs_2H_3D_5S_9C_KD_And_WhiteCardsIs_2H_3D_5S_9C_KD()
+        {
+            string expected = "Tie";
+
+            var blackCards = Converter.ToCardsList("2H 3D 5S 9C KD");
+            var whiteCards = Converter.ToCardsList("2H 3D 5S 9C KD");
+
+            Assert.AreEqual(expected, PokerHandsDual.GetResualDual(blackCards, whiteCards));
+        }
+
+        [Test]
         public void ChangeCategoryForDisplay_ShouldBe_high_card_WhenInputIs_HighCard()
         {
             Assert.AreEqual("high card", PokerHandsDual.ChangeCategoryForDisplay(Category.HighCard));

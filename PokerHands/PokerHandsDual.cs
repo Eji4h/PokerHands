@@ -20,6 +20,9 @@ namespace PokerHands
             Side winnerSide;
             Category categoryWinner;
 
+            if (resultDual == ResultDual.Draw)
+                return "Tie";
+
             if (resultDual == ResultDual.Win)
             {
                 winnerSide = Side.Black;
