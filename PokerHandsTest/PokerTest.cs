@@ -1084,7 +1084,7 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void CompareStraight_HandOneIs_23456Spade_And_HandTwoIs_34567Diamond_ResultShouldBe_Lose()
+        public void CompareStraightFlush_HandOneIs_23456_Spade_And_HandTwoIs_34567_Diamond_ResultShouldBe_Lose()
         {
             var cardsOnHand1 = new List<Card>()
             {
@@ -1102,6 +1102,33 @@ namespace PokerHandsTest
                 new Card(SuitType.Diamond, RankType.Five),
                 new Card(SuitType.Diamond, RankType.Six),
                 new Card(SuitType.Diamond, RankType.Seven)
+            };
+
+            Assert.True(Poker.OnHandIsStraightFlush(cardsOnHand1));
+            Assert.True(Poker.OnHandIsStraightFlush(cardsOnHand2));
+
+            Assert.AreEqual(ResultDual.Lose, Poker.CompareStraightFlush(cardsOnHand1, cardsOnHand2));
+        }
+
+        [Test]
+        public void CompareStraightFlush_HandOneIs_12345_Spade_And_HandTwoIs_789TJ_Diamond_ResultShouldBe_Lose()
+        {
+            var cardsOnHand1 = new List<Card>()
+            {
+                new Card(SuitType.Spade, RankType.Ace),
+                new Card(SuitType.Spade, RankType.Two),
+                new Card(SuitType.Spade, RankType.Three),
+                new Card(SuitType.Spade, RankType.Four),
+                new Card(SuitType.Spade, RankType.Five)
+            };
+
+            var cardsOnHand2 = new List<Card>()
+            {
+                new Card(SuitType.Diamond, RankType.Seven),
+                new Card(SuitType.Diamond, RankType.Eight),
+                new Card(SuitType.Diamond, RankType.Nine),
+                new Card(SuitType.Diamond, RankType.Ten),
+                new Card(SuitType.Diamond, RankType.Jack),
             };
 
             Assert.True(Poker.OnHandIsStraightFlush(cardsOnHand1));

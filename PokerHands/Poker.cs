@@ -399,7 +399,7 @@ namespace PokerHands
 
         public static ResultDual CompareStraightFlush(List<Card> cardsOnHand1, List<Card> cardsOnHand2)
         {
-            return CompareHighCard(cardsOnHand1, cardsOnHand2);
+            return CompareStraight(cardsOnHand1, cardsOnHand2);
         }
 
         public static ResultDual CompareRoyalStraightFlush(List<Card> cardsOnHand1, List<Card> cardsOnHand2)

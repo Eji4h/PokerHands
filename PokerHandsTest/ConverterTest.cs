@@ -121,5 +121,26 @@ namespace PokerHandsTest
                 Assert.AreEqual(expectedCardsList[i].Rank, actualCardsList[i].Rank);
             }
         }
+
+        [Test]
+        public void ConvertToCardsList_ShouldBe_7D_8D_9D_10D_JD_WhenInputIs_7D_8D_9D_10D_JD()
+        {
+            var expectedCardsList = new List<Card>()
+            {
+                new Card(SuitType.Diamond, RankType.Seven),
+                new Card(SuitType.Diamond, RankType.Eight),
+                new Card(SuitType.Diamond, RankType.Nine),
+                new Card(SuitType.Diamond, RankType.Ten),
+                new Card(SuitType.Diamond, RankType.Jack)
+            };
+
+            var actualCardsList = Converter.ToCardsList("7D 8D 9D 10D JD");
+
+            for (int i = 0; i < expectedCardsList.Count; i++)
+            {
+                Assert.AreEqual(expectedCardsList[i].Suit, actualCardsList[i].Suit);
+                Assert.AreEqual(expectedCardsList[i].Rank, actualCardsList[i].Rank);
+            }
+        }
     }
 }
