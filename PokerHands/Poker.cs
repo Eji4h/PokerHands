@@ -146,8 +146,11 @@ namespace PokerHands
         public static bool OnHandIsRoyalStraightFlush(List<Card> onHandCards)
         {
             bool isStraightFlush = OnHandIsStraightFlush(onHandCards);
+
+            OrderCardsForCheckIsStraight(onHandCards);
             bool isRoyal = onHandCards.Last().Rank == RankType.Ace;
 
+            Hand.OrderCard(onHandCards);
             return isStraightFlush && isRoyal;
         }
         #endregion

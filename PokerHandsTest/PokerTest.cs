@@ -89,6 +89,21 @@ namespace PokerHandsTest
         }
 
         [Test]
+        public void OnHandIs_AC_2C_3C_4C_5C_CategoryShouldBe_StraightFlush()
+        {
+            var onHandCards = new List<Card>()
+            {
+                new Card(SuitType.Club, RankType.Ace),
+                new Card(SuitType.Club, RankType.Two),
+                new Card(SuitType.Club, RankType.Three),
+                new Card(SuitType.Club, RankType.Four),
+                new Card(SuitType.Club, RankType.Five)
+            };
+
+            Assert.AreEqual(Poker.Category.StraightFlush, Poker.RecognizeCategory(onHandCards));
+        }
+
+        [Test]
         public void OnHandIs_7C_8C_9C_10C_JC_CategoryShouldBe_StraightFlush()
         {
             var onHandCards = new List<Card>()
