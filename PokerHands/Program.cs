@@ -12,18 +12,10 @@ namespace PokerHands
         {
             try
             {
-                string blackCardsInput;
-                string whiteCardsInput;
+                Console.WriteLine("Input: ");
 
-                Console.Write("Input: " + NewLine +
-                    "Black: ");
-                blackCardsInput = Console.ReadLine();
-
-                Console.Write("White: ");
-                whiteCardsInput = Console.ReadLine();
-
-                var blackCards = Converter.ToCardsList(blackCardsInput);
-                var whiteCards = Converter.ToCardsList(whiteCardsInput);
+                var blackCards = GetInputAndConvertToOnHandCards("Black");
+                var whiteCards = GetInputAndConvertToOnHandCards("White");
 
                 Console.WriteLine(PokerHandsDual.GetResultDual(blackCards, whiteCards));
             }
@@ -31,6 +23,14 @@ namespace PokerHands
             {
                 Console.WriteLine(ex.ToString());
             }
+        }
+
+        private static List<Card> GetInputAndConvertToOnHandCards(string sideToDisplay)
+        {
+            Console.Write(sideToDisplay + ": ");
+            string cardsInput = Console.ReadLine();
+
+            return Converter.ToCardsList(cardsInput);
         }
 
         public static string NewLine
