@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Category = PokerHands.Poker.Category;
 using ResultDual = PokerHands.Poker.ResultDual;
@@ -7,24 +8,39 @@ namespace PokerHands
 {
     public class PokerHandsDual
     {
+        enum Side
+        {
+            Black, 
+            White
+        }
+
         public static string GetResualDual(List<Card> blackCards, List<Card> whiteCards)
         {
             var resultDual = Poker.ComparePokerHands(blackCards, whiteCards);
-            string winnerSide;
+            Side winnerSide;
             Category categoryWinner;
 
             if (resultDual == ResultDual.Win)
             {
-                winnerSide = "Black";
+                winnerSide = Side.Black;
                 categoryWinner = Poker.RecognizeCategory(blackCards);
             }
             else
             {
-                winnerSide = "White";
+                winnerSide = Side.White;
                 categoryWinner = Poker.RecognizeCategory(whiteCards);
             }
 
-            string output = winnerSide + " wins - " + ChangeCategoryForDisplay(categoryWinner);
+            string output = winnerSide.ToString() + " wins - " + ChangeCategoryForDisplay(categoryWinner);
+
+            if (categoryWinner == Category.HighCard)
+            {
+                output += ": ";
+                if (winnerSide == Side.Black)
+                    output += blackCards.Last().Rank.ToString();
+                else
+                    output += whiteCards.Last().Rank.ToString();
+            }
             return output;
         }
 
