@@ -11,9 +11,13 @@ namespace PokerHands
 {
     public static class Converter
     {
-        public static SuitType ToSuit(char suit)
+        public static SuitType ToSuit(char suitInput)
         {
-            return (SuitType)suit;
+            var suit = (SuitType)suitInput;
+            if (!Enum.IsDefined(typeof(SuitType), suit))
+                throw new InvalidCastException();
+
+            return suit;
         }
 
         public static RankType ToRank(string rank)
@@ -27,7 +31,7 @@ namespace PokerHands
 
         private static RankType ConvertNotNumberToRank(string rank)
         {
-            switch(rank)
+            switch (rank)
             {
                 case "J":
                     return RankType.Jack;

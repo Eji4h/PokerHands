@@ -36,6 +36,12 @@ namespace PokerHandsTest
         }
 
         [Test]
+        public void ConvertToSuit_ShouldThrowInvalidCastException_WhenInputIsA()
+        {
+            Assert.Throws<InvalidCastException>(() => Converter.ToSuit('A'));
+        }
+
+        [Test]
         public void ConvertToRank_ShouldBe_2_WhenInputIs2()
         {
             Assert.AreEqual(RankType.Two, Converter.ToRank("2"));
