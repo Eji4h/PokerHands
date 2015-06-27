@@ -36,10 +36,12 @@ namespace PokerHands
             return ConvertNotNumberToRank(rank);
         }
 
-        private static RankType ConvertNotNumberToRank(string rank)
+        public static RankType ConvertNotNumberToRank(string rank)
         {
             switch (rank)
             {
+                case "T":
+                    return RankType.Ten;
                 case "J":
                     return RankType.Jack;
                 case "Q":
@@ -49,7 +51,7 @@ namespace PokerHands
                 case "A":
                     return RankType.Ace;
                 default:
-                    return RankType.Ten;
+                    throw new ArgumentOutOfRangeException();
             }
         }
 
