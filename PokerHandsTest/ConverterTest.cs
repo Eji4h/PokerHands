@@ -11,6 +11,7 @@ namespace PokerHandsTest
     [TestFixture]
     class ConverterTest
     {
+        #region ConvertToSuit
         [Test]
         public void ConvertToSuit_ShouldBe_Club_WhenInputIsC()
         {
@@ -40,7 +41,9 @@ namespace PokerHandsTest
         {
             Assert.Throws<ArgumentOutOfRangeException>(() => Converter.ToSuit('A'));
         }
+        #endregion
 
+        #region ConvertToRank
         [Test]
         public void ConvertToRank_ShouldBe_2_WhenInputIs2()
         {
@@ -94,7 +97,9 @@ namespace PokerHandsTest
         {
             Assert.Throws<ArgumentOutOfRangeException>(() => Converter.ToRank("C"));
         }
+        #endregion
 
+        #region ConvertToCard
         [Test]
         public void ConvertToCard_ShouldBe_AceDiamond_WhenInputIs_AD()
         {
@@ -124,7 +129,9 @@ namespace PokerHandsTest
             Assert.AreEqual(expectedCard.Suit, actualCard.Suit);
             Assert.AreEqual(expectedCard.Rank, actualCard.Rank);
         }
+        #endregion
 
+        #region ConvertToCardsList
         [Test]
         public void ConvertToCardsList_ShouldBe_2D_2H_4C_4H_4S_WhenInputIs_2H_4S_4C_2D_4H()
         {
@@ -166,5 +173,6 @@ namespace PokerHandsTest
                 Assert.AreEqual(expectedCardsList[i].Rank, actualCardsList[i].Rank);
             }
         }
+        #endregion
     }
 }

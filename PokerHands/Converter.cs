@@ -29,11 +29,16 @@ namespace PokerHands
             int convertNumber;
             if (int.TryParse(rank, out convertNumber))
             {
-                if (convertNumber < 1 || convertNumber > 10)
-                    throw new ArgumentOutOfRangeException();
+                ValidateInRangeOneToTen(convertNumber);
                 return (RankType)convertNumber;
             }
             return ConvertNotNumberToRank(rank);
+        }
+
+        private static void ValidateInRangeOneToTen(int convertNumber)
+        {
+            if (convertNumber < 1 || convertNumber > 10)
+                throw new ArgumentOutOfRangeException();
         }
 
         public static RankType ConvertNotNumberToRank(string rank)
