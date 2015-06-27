@@ -36,9 +36,9 @@ namespace PokerHandsTest
         }
 
         [Test]
-        public void ConvertToSuit_ShouldThrowInvalidCastException_WhenInputIsA()
+        public void ConvertToSuit_ShouldThrowArgumentOutOfRangeException_WhenInputIsA()
         {
-            Assert.Throws<InvalidCastException>(() => Converter.ToSuit('A'));
+            Assert.Throws<ArgumentOutOfRangeException>(() => Converter.ToSuit('A'));
         }
 
         [Test]

@@ -14,10 +14,14 @@ namespace PokerHands
         public static SuitType ToSuit(char suitInput)
         {
             var suit = (SuitType)suitInput;
-            if (!Enum.IsDefined(typeof(SuitType), suit))
-                throw new InvalidCastException();
-
+            ValidateSuitInRange_CDHS(suit);
             return suit;
+        }
+
+        private static void ValidateSuitInRange_CDHS(SuitType suit)
+        {
+            if (!Enum.IsDefined(typeof(SuitType), suit))
+                throw new ArgumentOutOfRangeException();
         }
 
         public static RankType ToRank(string rank)
