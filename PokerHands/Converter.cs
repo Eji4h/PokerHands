@@ -24,8 +24,11 @@ namespace PokerHands
         {
             int convertNumber;
             if (int.TryParse(rank, out convertNumber))
+            {
+                if (convertNumber < 1 || convertNumber > 10)
+                    throw new ArgumentOutOfRangeException();
                 return (RankType)convertNumber;
-
+            }
             return ConvertNotNumberToRank(rank);
         }
 

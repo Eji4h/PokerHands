@@ -84,6 +84,12 @@ namespace PokerHandsTest
         }
 
         [Test]
+        public void ConvertToRank_ShouldThrowArgumentOutOfRangeException_WhenInputIsZero()
+        {
+            Assert.Throws<ArgumentOutOfRangeException>(() => Converter.ToRank("0"));
+        }
+
+        [Test]
         public void ConvertToCard_ShouldBe_AceDiamond_WhenInputIs_AD()
         {
             var expectedCard = new Card(SuitType.Diamond, RankType.Ace);
