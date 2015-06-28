@@ -41,7 +41,7 @@ namespace PokerHands
                 throw new ArgumentOutOfRangeException();
         }
 
-        public static RankType ConvertNotNumberToRank(string rank)
+        private static RankType ConvertNotNumberToRank(string rank)
         {
             switch (rank)
             {
